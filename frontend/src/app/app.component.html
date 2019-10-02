@@ -12,3 +12,16 @@
 
   </router-outlet>
 </div>
+
+<ul ngl-accordion [(activeName)]="active">
+  <ng-container *ngFor="let section of sections">
+    <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header">{{ section.content }}</ng-template>
+  </ng-container>
+
+</ul>
+<ng-template #header let-data>
+  <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+    <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+    <strong>{{ Working on it soon!!! }}</strong>
+  </div>
+</ng-template>
