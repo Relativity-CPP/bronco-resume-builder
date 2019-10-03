@@ -8,6 +8,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './component/edit/edit.component';
+import {NglModule} from 'ng-lightning';
+
+
 const routes: Routes = [
 { path: 'create', component: CreateComponent},
 { path: 'edit/:id', component: EditComponent},
@@ -27,7 +30,8 @@ const routes: Routes = [
     AppRoutingModule,
     NoopAnimationsModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule
+    MatToolbarModule,
+    NglModule
   ],
   providers: [],
   bootstrap: [AppComponent]
