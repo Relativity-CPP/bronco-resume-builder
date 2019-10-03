@@ -1,126 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Relativity Resume</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://img.icons8.com/bubbles/50/000000/create-new.png">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
 
-<!-- TITLE PAGE -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<div class="alert alert-info">
-  <strong><center>Relativity Resume</center></strong>
-</div>
-
-<div>
-  <router-outlet>
-
-  </router-outlet>
-</div>
-
-<!-- Contact Information -->
-<ul ngl-accordion [(activeName)]="active">
-  <ng-container *ngFor="let section of sections">
-    <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b>CONTACT INFORMATION: </b></ng-template>
-  </ng-container>
-</ul>
-<ng-template #header let-data>
-  <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-    <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-    <strong> Name: </strong>
-
+  <!-- TITLE PAGE -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <div class="alert alert-info">
+    <strong><center>Relativity Resume</center></strong>
   </div>
-  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Name Here:">
-      </ngl-input>
-    </div>
-</ng-template>
 
-<ng-template #header let-data>
-  <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-    <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-    <strong> Phone Number: </strong>
-  </div>
-  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Phone Number Here:">
-      </ngl-input>
-    </div>
-</ng-template>
-<ng-template #header let-data>
-  <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-    <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-    <strong> Email: </strong>
-  </div>
-  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Email Here:">
-      </ngl-input>
-    </div>
-</ng-template>
+  <div>
+    <router-outlet>
 
-<ng-template #header let-data>
-  <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-    <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-    <strong> Website: </strong>
+    </router-outlet>
   </div>
-  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="LinkedIn:">
-      </ngl-input>
+
+  <!-- Contact Information -->
+  <ul ngl-accordion [(activeName)]="active">
+    <ng-container *ngFor="let section of sections">
+      <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b>CONTACT INFORMATION: </b></ng-template>
+    </ng-container>
+  </ul>
+  <ng-template #header let-data>
+    <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+      <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+      <strong> Name: </strong>
+
     </div>
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="GitHub:">
-      </ngl-input>
-    </div>
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Other Website:">
-      </ngl-input>
-    </div>
-</ng-template>
-<!-- Education History -->
-<ul ngl-accordion [(activeName)]="active">
-  <ng-container *ngFor="let section of sections">
-    <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b>EDUCATION HISTORY: </b></ng-template>
-  </ng-container>
-</ul>
-<ng-template #header let-data>
-  <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-    <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-    <strong> School: </strong>
-  </div>
-  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-    <div class="slds-col_padded">
-      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-        <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter School:">
-      </ngl-input>
-    </div>
-    <ng-template #header let-data>
-      <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-        <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-        <strong> Expection Date: </strong>
+    <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Name Here:">
+        </ngl-input>
       </div>
-      <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-        <div class="slds-col_padded">
-          <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-            <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="End Date:">
-          </ngl-input>
+  </ng-template>
+
+  <ng-template #header let-data>
+    <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+      <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+      <strong> Phone Number: </strong>
+    </div>
+    <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Phone Number Here:">
+        </ngl-input>
+      </div>
+  </ng-template>
+  <ng-template #header let-data>
+    <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+      <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+      <strong> Email: </strong>
+    </div>
+    <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Email Here:">
+        </ngl-input>
+      </div>
+  </ng-template>
+
+  <ng-template #header let-data>
+    <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+      <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+      <strong> Website: </strong>
+    </div>
+    <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="LinkedIn:">
+        </ngl-input>
+      </div>
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="GitHub:">
+        </ngl-input>
+      </div>
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Other Website:">
+        </ngl-input>
+      </div>
+  </ng-template>
+  <!-- Education History -->
+  <ul ngl-accordion [(activeName)]="active">
+    <ng-container *ngFor="let section of sections">
+      <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b>EDUCATION HISTORY: </b></ng-template>
+    </ng-container>
+  </ul>
+  <ng-template #header let-data>
+    <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+      <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+      <strong> School: </strong>
+    </div>
+    <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+      <div class="slds-col_padded">
+        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter School:">
+        </ngl-input>
+      </div>
+      <ng-template #header let-data>
+        <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+          <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+          <strong> Expection Date: </strong>
         </div>
-        <ng-template #header let-data>
-          <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
-            <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
-            <strong> GPA: </strong>
+        <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+          <div class="slds-col_padded">
+            <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+              <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="End Date:">
+            </ngl-input>
           </div>
-          <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
-            <div class="slds-col_padded">
-              <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-                <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter GPA:">
-              </ngl-input>
+          <ng-template #header let-data>
+            <div class="slds-grid slds-grid_vertical-align-center slds-m-left_small">
+              <ngl-icon class="slds-m-right_x-small" [iconName]="data.icon" size="small"></ngl-icon>
+              <strong> GPA: </strong>
             </div>
- <!-- Download Button -->
-</ng-template>
-<div style="background-color: #16325c; padding: 12px;">
-  <button type="button" nglButton variant="inverse">Download</button>
-</div>
+            <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+              <div class="slds-col_padded">
+                <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                  <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter GPA:">
+                </ngl-input>
+              </div>
+              <!-- Download Button -->
+          </ng-template>
+          <div style="background-color: #16325c; padding: 12px;">
+            <button type="button" nglButton variant="inverse">Download</button>
+          </div>
 
 
+
+
+</body>
+</html>
