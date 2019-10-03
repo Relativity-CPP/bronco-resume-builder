@@ -8,7 +8,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './component/edit/edit.component';
-import {NglModule} from 'ng-lightning';
+import {NGL_ICON_CONFIG, NglIconConfig, NglModule} from 'ng-lightning';
 
 
 const routes: Routes = [
@@ -33,7 +33,9 @@ const routes: Routes = [
     MatToolbarModule,
     NglModule
   ],
-  providers: [],
+  providers: [
+  { provide: NGL_ICON_CONFIG, useValue: { svgPath: '/my/path' } as NglIconConfig },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

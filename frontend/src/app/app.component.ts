@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+  active: any;
+  sections: any;
+  hasError: any;
+  required: any;
+  disabled: any;
+  error: any;
 }
