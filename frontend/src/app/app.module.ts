@@ -9,7 +9,9 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './component/edit/edit.component';
 import {NGL_ICON_CONFIG, NglIconConfig, NglModule} from 'ng-lightning';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DemoInputBasic } from './app.component';
 
 const routes: Routes = [
 { path: 'create', component: CreateComponent},
@@ -23,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    DemoInputBasic
   ],
   imports: [
     BrowserModule,
@@ -31,11 +34,17 @@ const routes: Routes = [
     NoopAnimationsModule,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    NglModule
+    NglModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
   { provide: NGL_ICON_CONFIG, useValue: { svgPath: '/my/path' } as NglIconConfig },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+              AppComponent,
+              DemoInputBasic
+  ]
 })
 export class AppModule { }

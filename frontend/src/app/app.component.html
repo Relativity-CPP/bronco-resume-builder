@@ -10,14 +10,16 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
-  <app-root></app-root>
 
+
+<body>
+<app-root></app-root>
   <!-- TITLE PAGE -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <div class="alert alert-info">
     <strong>
-      <div style="text-align: center;">Relativity Resume</div></strong>
+      <div style="text-align: center;font-family:Brush Script MT,garamond,serif;font-size:64px;font-style:italic;">Relativity Resume</div></strong>
+
   </div>
 
   <div>
@@ -55,7 +57,7 @@
     <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
       <div class="slds-col_padded">
         <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
-          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter Phone Number Here:">
+          <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="(XXX) XXX-XXXX">
         </ngl-input>
       </div>
   </ng-template>
@@ -94,10 +96,27 @@
         </ngl-input>
       </div>
   </ng-template>
+
+
+<!-- Objective section -->
+<ul ngl-accordion [(activeName)]="active">
+  <ng-container *ngFor="let section of sections">
+    <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>OBJECTIVE: </br></b></ng-template>
+  </ng-container>
+</ul>
+<div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+  <div class="slds-col_padded">
+    <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+      <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Career Goals:">
+
+    </ngl-input>
+  </div>
+
+
   <!-- Education History -->
   <ul ngl-accordion [(activeName)]="active">
     <ng-container *ngFor="let section of sections">
-      <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b>EDUCATION HISTORY: </b></ng-template>
+      <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>EDUCATION HISTORY: </br></b></ng-template>
     </ng-container>
   </ul>
   <ng-template #header let-data>
@@ -133,6 +152,98 @@
                   <input ngl type="input" [required]="required" [disabled]="disabled" placeholder="Enter GPA:">
                 </ngl-input>
               </div>
+
+
+              <!-- Work Experience Section-->
+              <ul ngl-accordion [(activeName)]="active">
+                <ng-container *ngFor="let section of sections">
+                  <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>WORK EXPERIENCE: </br></b></ng-template>
+                </ng-container>
+              </ul>
+              <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                <div class="slds-col_padded">
+                  <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                    <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Current Work Experience:">
+
+                  </ngl-input>
+                </div>
+                <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                  <div class="slds-col_padded">
+                    <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                      <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Past Work Experience:">
+
+                    </ngl-input>
+                  </div>
+                  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                    <div class="slds-col_padded">
+                      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                        <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Past Work Experience:">
+
+                      </ngl-input>
+                    </div>
+
+              <!-- Clubs and Organizations joined -->
+              <ul ngl-accordion [(activeName)]="active">
+                <ng-container *ngFor="let section of sections">
+                  <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>CLUBS/ORGANIZATIONS: </br></b></ng-template>
+                </ng-container>
+              </ul>
+                    <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                      <div class="slds-col_padded">
+                        <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                          <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Clubs:">
+
+                        </ngl-input>
+                      </div>
+                      <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                        <div class="slds-col_padded">
+                          <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                            <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Clubs:">
+
+                          </ngl-input>
+                        </div>
+
+              <!-- Skills and Languages Learned Section -->
+              <ul ngl-accordion [(activeName)]="active">
+                <ng-container *ngFor="let section of sections">
+                  <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>SKILLS: </br></b></ng-template>
+                </ng-container>
+              </ul>
+              <!-- Relevant classes taken in school -->
+              <ul ngl-accordion [(activeName)]="active">
+                <ng-container *ngFor="let section of sections">
+                  <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>COURSEWORK: </br></b></ng-template>
+                </ng-container>
+              </ul>
+              <!-- Side Projects created -->
+              <ul ngl-accordion [(activeName)]="active">
+                <ng-container *ngFor="let section of sections">
+                  <ng-template nglAccordionSection [name]="section.name" [label]="header" [labelContext]="section.header"><b><br>PROJECTS: </br></b></ng-template>
+                </ng-container>
+              </ul>
+              <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                <div class="slds-col_padded">
+                  <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                    <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Projects 1:">
+
+                  </ngl-input>
+                </div>
+                <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                  <div class="slds-col_padded">
+                    <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                      <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Project 2:">
+
+                    </ngl-input>
+                  </div>
+                  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-m-top_large">
+                    <div class="slds-col_padded">
+                      <ngl-input label="Input Label" fieldLevelHelpTooltip="Some helpful information" [error]="hasError ? error : null">
+                        <input ngl type="input" [required]="required" [disabled]="disabled" style="width: 1000px;height: 200px;" placeholder="Project 3:">
+
+                      </ngl-input>
+                    </div>
+
+
               <!-- Download Button -->
           </ng-template>
           <div style="background-color: #16325c; padding: 12px;">
