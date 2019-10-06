@@ -1,4 +1,4 @@
-#**bronco-resume-builder**
+# **bronco-resume-builder**
 Web application used to help create resumé's for Cal Poly Pomona students
 to prepare them for applying to certain jobs. Our application will provide
 useful suggestions to better their descriptions of their experience,
