@@ -1,0 +1,19 @@
+<div class="award-container">
+    <mat-card>
+      <mat-card-title>Awards</mat-card-title>
+      <mat-form-field>
+        <input matInput placeholder="Award Title" required [(ngModel)]="enteredTitle">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date" required [(ngModel)]="enteredDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Enter your description here..." [(ngModel)]="enteredDescription"></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onAddAward()">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

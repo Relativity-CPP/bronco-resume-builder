@@ -1,0 +1,20 @@
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.contact-container > * {
+  width: 100%;
+}
+
+.contact-container mat-card {
+  margin-top: 16px;
+  margin: auto;
+}
+
+.contact-info-container mat-card mat-form-field {
+  margin-top: 0px;
+  width: 51%;
+}
+
+

@@ -1,0 +1,28 @@
+<div class="contact-info-container">
+  <mat-card>
+    <mat-card-title>Contact Information</mat-card-title>
+    <mat-form-field>
+      <input matInput placeholder="First Name" required [(ngModel)]="enteredFName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" required [(ngModel)]="enteredLName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Home Address" required [(ngModel)]="enteredAddress">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone Number" required [(ngModel)]="enteredPhoneNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email Address" required [(ngModel)]="enteredEmail">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Social Media Link" required [(ngModel)]="enteredSocialLink">
+    </mat-form-field>
+    <mat-card-actions>
+        <button mat-raised-button
+        color="primary"
+        (click)="onAddContactInfo()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

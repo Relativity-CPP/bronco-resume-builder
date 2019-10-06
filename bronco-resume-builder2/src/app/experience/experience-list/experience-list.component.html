@@ -1,0 +1,12 @@
+<mat-accordion multi="true" *ngIf="experienceList.length > 0">
+    <mat-expansion-panel *ngFor="let experience of experienceList">
+      <mat-expansion-panel-header>
+        {{ experience.jobTitle }}
+      </mat-expansion-panel-header>
+      <p>{{ experience.companyName }}</p>
+      <p >{{ experience.jobStartDate }}</p>
+      <p >{{ experience.jobStartDate }}</p>
+      <p >{{ experience.description }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p class="info text mat-body-1" *ngIf="experienceList.length <= 0">Add some exp</p>

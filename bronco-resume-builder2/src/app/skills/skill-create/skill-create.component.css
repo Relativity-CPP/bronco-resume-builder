@@ -1,0 +1,19 @@
+.skill-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.skill-container > * {
+  width: 100%;
+}
+
+.skill-container mat-card {
+  margin-top: 16px;
+  margin: auto;
+}
+
+.skill-container mat-card mat-form-field {
+  margin-top: 0px;
+  width: 75%;
+  margin: auto;
+}

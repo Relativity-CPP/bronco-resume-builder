@@ -1,0 +1,12 @@
+<mat-accordion multi="true" *ngIf="educationsList.length > 0">
+  <mat-expansion-panel *ngFor="let education of educationsList">
+    <mat-expansion-panel-header>
+      {{ education.schoolName }}
+    </mat-expansion-panel-header>
+    <p>{{ education.major }}</p>
+    <p *ngIf="education.gpa.length > 0">{{education.gpa}}</p>
+    <p>{{ education.schoolStartDate }}</p>
+    <p>{{ education.schoolEndDate }}</p>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info text mat-body-1" *ngIf="educationsList.length <= 0">Add some learnin</p>

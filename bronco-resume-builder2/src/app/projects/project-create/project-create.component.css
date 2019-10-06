@@ -1,0 +1,19 @@
+.project-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.project-container > * {
+  width: 100%;
+}
+
+.project-container mat-card {
+  margin-top: 16px;
+  margin: auto;
+}
+
+.project-container mat-card mat-form-field {
+  margin-top: 0px;
+  width: 75%;
+  margin: auto;
+}

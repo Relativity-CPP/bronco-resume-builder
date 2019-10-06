@@ -1,0 +1,21 @@
+.education-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin: center;
+}
+.education-container > * {
+  width: 100%;
+}
+
+.education-container mat-card {
+  margin-top: 16px;
+  margin: center;
+}
+
+.education-container mat-card mat-form-field {
+  margin-top: 0px;
+  width: 75%;
+}
+
+

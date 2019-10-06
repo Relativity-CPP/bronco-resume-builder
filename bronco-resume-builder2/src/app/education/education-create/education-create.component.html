@@ -1,0 +1,38 @@
+<div class="education-container">
+  <mat-card>
+    <mat-card-title>Education</mat-card-title>
+    <mat-form-field>
+      <input matInput placeholder="School Name" required [(ngModel)]="enteredSchoolName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Degree Type</mat-label>
+      <select matNativeControl required [(ngModel)]="selectedDegreeType">
+        <option value="none">Non-degree seeking</option>
+        <option value="B.A.">B.A.</option>
+        <option value="B.S.">B.S.</option>
+        <option value="A.A.">A.A.</option>
+        <option value="A.S.">A.S.</option>
+        <option value="A.A.S.">A.A.S.</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Major" required [(ngModel)]="enteredMajor">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="GPA out of 4.0" [(ngModel)]="enteredGPA">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Start Date" required [(ngModel)]="enteredStartDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="End Date" required [(ngModel)]="enteredEndDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onAddEducation()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

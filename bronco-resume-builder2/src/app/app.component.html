@@ -1,0 +1,21 @@
+<app-header></app-header>
+<main>
+    <app-contact-info-create (contactInfoCreated)="onContactInfoAdded($event)"></app-contact-info-create>
+    <p>{{contactInfo.firstName}}</p>
+    <p>{{contactInfo.lastName}}</p>
+    <p>{{contactInfo.phoneNumber}}</p>
+    <p>{{contactInfo.emailAddress}}</p>
+    <p>{{contactInfo.homeAddress}}</p>
+    <p>{{contactInfo.socialMediaLink}}</p>
+    <app-objective-create (objectiveStatementCreated)="onObjectiveStatementAdded($event)"></app-objective-create>
+    <p>{{objectiveStatement.statement}}</p>
+    <app-education-create (educationCreated)="onEducationAdded($event)"></app-education-create>
+    <app-education-list [educationsList]="educations"></app-education-list>
+    <app-experience-create (experienceCreated)="onExperienceAdded($event)"></app-experience-create>
+    <app-experience-list [experienceList]="experiences"></app-experience-list>
+    <app-skill-create (skillCreated)="onSkillAdded($event)"></app-skill-create>
+    <app-skill-list [skillList]="skills"></app-skill-list>
+    <app-award-create (awardCreated)="onAwardAdded($event)"></app-award-create>
+    <app-award-list [awardList]="awards"></app-award-list>
+</main>
+
