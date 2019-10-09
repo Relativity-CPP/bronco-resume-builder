@@ -1,0 +1,22 @@
+<div class="skill-container">
+  <form (submit)="onAddSkill(skillForm)" #skillForm="ngForm">
+      <mat-card>
+          <mat-card-title>Skills</mat-card-title>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="description"
+              placeholder="New skill" 
+              ngModel
+              required 
+              #description="ngModel">
+          </mat-form-field>
+          <mat-card-actions>
+            <button 
+              mat-raised-button 
+              color="primary" 
+              type="submit">Save</button>
+          </mat-card-actions>
+        </mat-card>
+  </form>
+</div>

@@ -1,0 +1,73 @@
+<div class="contact-info-container">
+  <form (submit)="onAddContactInfo(contactInfoForm)" #contactInfoForm="ngForm">
+      <mat-card>
+          <mat-card-title>Contact Information</mat-card-title>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="firstName"
+              placeholder="First Name"  
+              ngModel
+              required
+              #firstName="ngModel">
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="lastName"
+              placeholder="Last Name" 
+              ngModel
+              required
+              #lastName="ngModel">
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="homeAddress"
+              placeholder="Home Address" 
+              ngModel
+              required 
+              #homeAddress="ngModel">          
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="phoneNumber"
+              placeholder="Phone Number" 
+              ngModel
+              required 
+              #phoneNumber="ngModel">           
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="emailAddress"
+              placeholder="Email Address" 
+              ngModel
+              required 
+              #emailAddress="ngModel">            
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              matInput 
+              name="socialMediaLink"
+              placeholder="Social Media Link" 
+              ngModel
+              #socialMediaLink>            
+          </mat-form-field>
+          <mat-card-actions>
+            <button 
+              mat-raised-button
+              color="primary"
+              type="submit">Save</button>
+          </mat-card-actions>
+        </mat-card>
+  </form>
+
+  <p>First Name: {{ contactInfo.firstName }}</p>
+  <p>Last Name: {{ contactInfo.lastName }}</p>
+  <p>Home Address: {{ contactInfo.homeAddress }}</p>
+  <p>Phone Number: {{ contactInfo.phoneNumber }}</p>
+  <p>Email Address: {{ contactInfo.emailAddress }}</p>
+  <p>Social Media Link: {{ contactInfo.socialMediaLink }}</p>
+</div>

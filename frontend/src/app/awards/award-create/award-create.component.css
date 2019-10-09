@@ -1,0 +1,19 @@
+.award-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.award-container > * {
+  width: 100%;
+}
+
+.award-container mat-card {
+  margin-top: 16px;
+  margin: auto;
+}
+
+.award-container mat-card mat-form-field {
+  margin-top: 0px;
+  width: 75%;
+  margin: auto;
+}

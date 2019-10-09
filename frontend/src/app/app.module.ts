@@ -1,50 +1,68 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { MatToolbarModule } from '@angular/material';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ListComponent } from './components/list/list.component';
-import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './component/edit/edit.component';
-import {NGL_ICON_CONFIG, NglIconConfig, NglModule} from 'ng-lightning';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { DemoInputBasic } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatListModule,
+} from '@angular/material';
 
-const routes: Routes = [
-{ path: 'create', component: CreateComponent},
-{ path: 'edit/:id', component: EditComponent},
-{ path: 'list', component: ListComponent},
-{ path: '', redirectTo: 'list', pathMatch: 'full'}
-];
+import { AppComponent } from './app.component';
+import { ContactInfoCreateComponent} from './contact-info/contact-info-create/contact-info-create.component';
+import { EducationCreateComponent } from './education/education-create/education-create.component';
+import { EducationListComponent } from './education/education-list/education-list.component';
+import { AwardCreateComponent } from './awards/award-create/award-create.component';
+import { AwardListComponent } from './awards/award-list/award-list.component';
+import { ExperienceCreateComponent } from './experience/exerpience-create/experience-create.component';
+import { ExperienceListComponent } from './experience/experience-list/experience-list.component';
+import { ObjectiveCreateComponent } from './objective/objective-create/objective-create.component';
+import { ProjectCreateComponent } from './projects/project-create/project-create.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { SkillCreateComponent } from './skills/skill-create/skill-create.component';
+import { SkillListComponent } from './skills/skill-list/skill-list.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CreateComponent,
-    EditComponent,
-    DemoInputBasic
+    ContactInfoCreateComponent,
+    EducationCreateComponent,
+    EducationListComponent,
+    AwardCreateComponent,
+    AwardListComponent,
+    ExperienceCreateComponent,
+    ExperienceListComponent,
+    ObjectiveCreateComponent,
+    ProjectCreateComponent,
+    ProjectListComponent,
+    SkillCreateComponent,
+    SkillListComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NoopAnimationsModule,
-    RouterModule.forRoot(routes),
-    MatToolbarModule,
-    NglModule,
+    BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    NoopAnimationsModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
   ],
-  providers: [
-  { provide: NGL_ICON_CONFIG, useValue: { svgPath: '/my/path' } as NglIconConfig },
-  ],
-  bootstrap: [
-              AppComponent,
-              DemoInputBasic
-  ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

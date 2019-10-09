@@ -1,0 +1,6 @@
+<mat-list role="list" *ngIf="skillList.length > 0">
+    <mat-list-item *ngFor="let skill of skillList" role="listitem">
+      {{ skill.description }}
+    </mat-list-item>
+</mat-list>
+<p class="info text mat-body-1" *ngIf="skillList.length <= 0">Add some skills</p>
