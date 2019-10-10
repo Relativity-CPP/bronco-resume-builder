@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Education } from 'src/app/education/education.model';
+import { Education } from '../education.model';
 import { EducationService } from '../education.service';
 
 @Component ({

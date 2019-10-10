@@ -5,19 +5,20 @@ import { Education } from './education.model';
 
 @Injectable({providedIn: 'root'})
 export class EducationService {
-    private education: Education[] = [];
-    private educationUpdated = new Subject<Education[]>();
+    private educationList: Education[] = [];
+    private educationListUpdated = new Subject<Education[]>();
 
     getEducation() {
-        return [...this.education];
+        return [...this.educationList];
     }
 
     addEducation(education: Education) {
-        this.education.push(education);
-        this.educationUpdated.next([...this.education]);
+        this.educationList.push(education);
+        this.educationListUpdated.next([...this.educationList]);
+        alert('adding shit');
     }
 
     getEducationUpdateListener() {
-        return this.educationUpdated.asObservable();
+        return this.educationListUpdated.asObservable();
     }
 }

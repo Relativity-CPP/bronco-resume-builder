@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Experience } from 'src/app/experience/experience.model';
-import { ExperienceService } from 'src/app/experience/experience.service';
+import { Experience } from '../experience.model';
+import { ExperienceService } from '../experience.service';
 
 @Component ({
   selector: 'app-experience-list',

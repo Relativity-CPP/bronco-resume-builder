@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Experience } from 'src/app/experience/experience.model';
+import { Experience } from '../experience.model';
 import { ExperienceService } from '../experience.service';
 
 @Component ({

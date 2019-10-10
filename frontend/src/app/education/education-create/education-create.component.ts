@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Education } from 'src/app/education/education.model';
+import { Education } from '../education.model';
 import { EducationService } from '../education.service';
 
 @Component ({
@@ -24,7 +24,7 @@ export class EducationCreateComponent {
       schoolStartDate: form.value.schoolStartDate,
       schoolEndDate: form.value.schoolEndDate,
       major: form.value.major,
-      gpa: form.value.GPA,
+      gpa: form.value.GPA || '',
     };
     this.educationService.addEducation(education);
     form.resetForm();
