@@ -3,24 +3,26 @@
       <mat-card>
           <mat-card-title>Education</mat-card-title>
           <mat-form-field>
-            <input 
-              matInput 
+            <input
+              matInput
               name="schoolName"
-              placeholder="School Name" 
+              placeholder="School Name"
               ngModel
               required
               #schoolName="ngModel">
+              <mat-error *ngIf="schoolName.invalid">Please enter a valid date.</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Degree Type</mat-label>
-            <select 
-              matNativeControl 
+            <select
+              matNativeControl
               name="degreeType"
               ngModel
               required
               #degreeType="ngModel">
               <option value="none">Non-degree seeking</option>
               <option value="B.A.">B.A.</option>
+              <option value="B.F.A.">B.F.A.</option>
               <option value="B.S.">B.S.</option>
               <option value="A.A.">A.A.</option>
               <option value="A.S.">A.S.</option>
@@ -29,8 +31,8 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Major</mat-label>
-            <select 
-              matNativeControl 
+            <select
+              matNativeControl
               name="major"
               ngModel
               required
@@ -89,41 +91,41 @@
             </select>
           </mat-form-field>
           <mat-form-field>
-            <input 
-              matInput 
+            <input
+              matInput
               name="GPA"
-              placeholder="GPA out of 4.0" 
+              placeholder="GPA out of 4.0"
               ngModel
               #GPA="ngModel">
           </mat-form-field>
           <mat-form-field>
-            <input 
-              matInput 
+            <input
+              matInput
               name="schoolStartDate"
-              [matDatepicker]="picker1" 
-              placeholder="Start Date" 
+              [matDatepicker]="picker1"
+              placeholder="Start Date"
               ngModel
-              required 
+              required
               #schoolStartDate="ngModel">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <input 
-              matInput 
+            <input
+              matInput
               name="schoolEndDate"
-              [matDatepicker]="picker2" 
+              [matDatepicker]="picker2"
               ngModel
               required
-              placeholder="End Date" 
+              placeholder="End Date"
               #schoolEndDate="ngModel">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
           <mat-card-actions>
-            <button 
-              mat-raised-button 
-              color="primary" 
+            <button
+              mat-raised-button
+              color="primary"
               type="submit">Save</button>
           </mat-card-actions>
         </mat-card>
