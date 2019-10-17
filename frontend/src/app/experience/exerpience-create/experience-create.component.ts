@@ -18,11 +18,13 @@ export class ExperienceCreateComponent {
     if (form.invalid) {
       return;
     }
+    const expStartDate = this.experienceService.transformDate(form.value.jobStartDate);
+    const expEndDate = this.experienceService.transformDate(form.value.jobEndDate);
     const experience: Experience = {
       companyName: form.value.companyName,
       jobTitle: form.value.jobTitle,
-      jobStartDate: form.value.jobStartDate,
-      jobEndDate: form.value.jobEndDate,
+      jobStartDate: expStartDate,
+      jobEndDate: expEndDate,
       description: form.value.description
     };
     this.experienceService.addExperience(experience);

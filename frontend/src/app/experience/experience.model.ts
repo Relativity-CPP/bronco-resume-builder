@@ -1,7 +1,7 @@
 export interface Experience {
   companyName: string;
   jobTitle: string;
-  jobStartDate: Date;
-  jobEndDate: Date;
+  jobStartDate: string;
+  jobEndDate: string;
   description: string;
 }

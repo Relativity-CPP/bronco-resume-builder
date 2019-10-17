@@ -11,17 +11,18 @@ import { ProjectService } from '../project.service';
 })
 
 export class ProjectCreateComponent {
-
   constructor(public projectService: ProjectService) {}
 
   onAddProject(form: NgForm) {
     if (form.invalid) {
       return;
     }
+    const formattedStartDate = this.projectService.transformDate(form.value.startDate);
+    const formattedEndDate = this.projectService.transformDate(form.value.endDate);
     const project: Project = {
       title: form.value.title,
-      startDate: form.value.startDate,
-      endDate: form.value.endDate,
+      startDate: formattedStartDate,
+      endDate: formattedEndDate,
       description: form.value.description
     };
     this.projectService.addProject(project);

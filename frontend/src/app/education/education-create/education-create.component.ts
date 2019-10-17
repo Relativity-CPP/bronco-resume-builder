@@ -18,11 +18,13 @@ export class EducationCreateComponent {
     if (form.invalid) {
       return;
     }
+    const startDate = this.educationService.transformDate(form.value.schoolStartDate);
+    const endDate = this.educationService.transformDate(form.value.schoolEndDate);
     const education: Education = {
       schoolName: form.value.schoolName,
       degreeType: form.value.degreeType,
-      schoolStartDate: form.value.schoolStartDate,
-      schoolEndDate: form.value.schoolEndDate,
+      schoolStartDate: startDate,
+      schoolEndDate: endDate,
       major: form.value.major,
       gpa: form.value.GPA || '',
     };
