@@ -1,0 +1,19 @@
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin: center;
+}
+.experience-container > * {
+  width: 100%;
+}
+
+.experience-container mat-card {
+  margin-top: 16px;
+  margin: center;
+}
+
+.experience-container mat-card mat-form-field {
+  margin-top: 0px;
+  width: 75%;
+}

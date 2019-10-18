@@ -1,0 +1,54 @@
+<div class="project-container">
+  <form (submit)="onAddProject(projectForm)" #projectForm="ngForm">
+    <mat-card>
+      <mat-card-title>Projects</mat-card-title>
+      <mat-form-field>
+        <input
+          matInput
+          name="title"
+          placeholder="Project Title"
+          ngModel
+          required
+          #title="ngModel">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          name="startDate"
+          [matDatepicker]="picker1"
+          placeholder="Start Date"
+          ngModel
+          required
+          #startDate="ngModel">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          name="endDate"
+          [matDatepicker]="picker2"
+          placeholder="End Date"
+          ngModel
+          required
+          #endDate="ngModel">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          name="description"
+          placeholder="Describe your duties/accommplishments here..."
+          ngModel
+          #description="ngModel"></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

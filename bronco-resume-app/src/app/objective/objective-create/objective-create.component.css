@@ -1,0 +1,21 @@
+.objective-statement-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.objective-statement-container > * {
+  width: 100%;
+}
+
+.objective-statement-containermat-card {
+  margin-top: 16px;
+  margin: auto;
+  width: 15%;
+}
+
+.objective-statement-container mat-card mat-form-field {
+  width: 100%;
+  height: 1;
+}
+
+

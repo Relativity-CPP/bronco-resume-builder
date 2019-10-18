@@ -1,0 +1,133 @@
+<div class="education-container">
+  <form (submit)="onAddEducation(educationForm)" #educationForm="ngForm">
+      <mat-card>
+          <mat-card-title>Education</mat-card-title>
+          <mat-form-field>
+            <input
+              matInput
+              name="schoolName"
+              placeholder="School Name"
+              ngModel
+              required
+              #schoolName="ngModel">
+              <mat-error *ngIf="schoolName.invalid">Please enter a valid date.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Degree Type</mat-label>
+            <select
+              matNativeControl
+              name="degreeType"
+              ngModel
+              required
+              #degreeType="ngModel">
+              <option value="none">Non-degree seeking</option>
+              <option value="B.A.">B.A.</option>
+              <option value="B.F.A.">B.F.A.</option>
+              <option value="B.S.">B.S.</option>
+              <option value="A.A.">A.A.</option>
+              <option value="A.S.">A.S.</option>
+              <option value="A.A.S.">A.A.S.</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Major</mat-label>
+            <select
+              matNativeControl
+              name="major"
+              ngModel
+              required
+              #major="ngModel">
+              <option value="Aerospace Engineering">Aerospace Engineering</option>
+              <option value="Agribusiness and Food Industry Management">Agribusiness and Food Industry Management</option>
+              <option value="Agricultural Science">Agricultural Science</option>
+              <option value="Animal Health Science">Animal Health Science</option>
+              <option value="Animal Science">Animal Science</option>
+              <option value="Anthropology">Anthropology</option>
+              <option value="Apparel Merchandising and Management">Apparel Merchandising and Management</option>
+              <option value="Architecture">Architecture</option>
+              <option value="Art">Art</option>
+              <option value="Biology">Biology</option>
+              <option value="Biotechnology">Biotechnology</option>
+              <option value="Business Administration">Business Administration</option>
+              <option value="Chemical Engineering">Chemical Engineering</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Communication">Communication</option>
+              <option value="Computer Engineering">Computer Engineering</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Construction Engineering Technology">Construction Engineering Technology</option>
+              <option value="Economics">Economics</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Electronics and Computer Engineering Technology">Electronics and Computer Engineering Technology</option>
+              <option value="Engineering Technology">Engineering Technology</option>
+              <option value="English">English</option>
+              <option value="Environmental Biology">Environmental Biology</option>
+              <option value="Food Science and Technology">Food Science and Technology</option>
+              <option value="Gender, Ethinicity, and Multicultural Studies">Gender, Ethinicity, and Multicultural Studies</option>
+              <option value="Geography">Geography</option>
+              <option value="Geology">Geology</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="History">History</option>
+              <option value="Hospitality Management">Hospitality Management</option>
+              <option value="Industrial Engineering">Industrial Engineering</option>
+              <option value="Kinesiology">Kinesiology</option>
+              <option value="Landscape Architecture">Landscape Architecture</option>
+              <option value="Liberal Studies">Liberal Studies</option>
+              <option value="Manufacturing Engineering">Manufacturing Engineering</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Music">Music</option>
+              <option value="Philosophy">Philosophy</option>
+              <option value="Physics">Physics</option>
+              <option value="Plant Science">Plant Science</option>
+              <option value="Political Science">Political Science</option>
+              <option value="Psychology">Psychology</option>
+              <option value="Science, Technology, and Society">Science, Technology, and Society</option>
+              <option value="Social Sciences">Social Studies</option>
+              <option value="Sociology">Sociology</option>
+              <option value="Spanish">Spanish</option>
+              <option value="Theatre">Theatre</option>
+              <option value="Urban and Regional Planning">Urban and Regional Planning</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              name="GPA"
+              placeholder="GPA out of 4.0"
+              ngModel
+              #GPA="ngModel">
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              name="schoolStartDate"
+              [matDatepicker]="picker1"
+              placeholder="Start Date"
+              ngModel
+              required
+              #schoolStartDate="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              matInput
+              name="schoolEndDate"
+              [matDatepicker]="picker2"
+              ngModel
+              required
+              placeholder="End Date"
+              #schoolEndDate="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit">Save</button>
+          </mat-card-actions>
+        </mat-card>
+  </form>
+</div>

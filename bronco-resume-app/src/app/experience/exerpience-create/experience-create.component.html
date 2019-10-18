@@ -1,0 +1,63 @@
+<div class="experience-container">
+  <form (submit)="onAddExperience(experienceForm)" #experienceForm="ngForm">
+    <mat-card>
+      <mat-card-title>Experience</mat-card-title>
+      <mat-form-field>
+        <input
+          matInput
+          name="companyName"
+          placeholder="Company Name"
+          ngModel
+          required
+          #companyName="ngModel">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          name="jobTitle"
+          placeholder="Job Title"
+          ngModel
+          required
+          #jobTitle="ngModel">
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          name="jobStartDate"
+          [matDatepicker]="picker1"
+          placeholder="Start Date"
+          ngModel
+          required
+          #jobStartDate="ngModel">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          name="jobEndDate"
+          [matDatepicker]="picker2"
+          placeholder="End Date"
+          ngModel
+          required
+          #jobEndDate="ngModel">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          name="description"
+          placeholder="Describe your duties/accommplishments here..."
+          ngModel
+          #description="ngModel"></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
