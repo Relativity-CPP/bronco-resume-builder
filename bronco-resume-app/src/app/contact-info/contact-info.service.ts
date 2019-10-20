@@ -46,6 +46,6 @@ export class ContactInfoService {
     }
 
     getContactInfoUpdateListener() {
-        return this.contactInfoUpdated.asObservable();
+      return this.contactInfoUpdated.asObservable();
     }
 }

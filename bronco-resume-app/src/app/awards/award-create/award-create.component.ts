@@ -17,9 +17,10 @@ export class AwardCreateComponent {
     if (form.invalid) {
       return;
     }
+    const dateEarned = this.awardsService.transformDate(form.value.date);
     const award: Award = {
       title: form.value.title,
-      date: form.value.date,
+      date: dateEarned,
       description: form.value.description
     };
     this.awardsService.addAward(award);

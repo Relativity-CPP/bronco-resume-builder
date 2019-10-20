@@ -1,5 +1,5 @@
 export interface Award {
   title: string;
-  date: Date;
+  date: string;
   description: string;
 }
