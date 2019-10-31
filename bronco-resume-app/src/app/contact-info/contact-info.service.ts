@@ -23,6 +23,7 @@ export class ContactInfoService {
     getContactInfo() {
       this.http.get<{message: string, contactInfo: ContactInfo}>('http://localhost:3000/api/contact-info')
         .subscribe((contactInfoData) => {
+          console.log(contactInfoData.message);
           this.contactInfo = contactInfoData.contactInfo;
           this.contactInfoUpdated.next(Object.create(this.contactInfo));
         });

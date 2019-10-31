@@ -4,6 +4,7 @@ const bodyParser = require ('body-parser');
 const mongoose = require('mongoose');
 
 const ContactInfo = require('./models/contact-info');
+const ObjectiveStatement = require('./models/objective');
 
 const app = express();
 
@@ -91,15 +92,16 @@ app.post('/api/experience', (req, res, next) => {
   });
 });
 app.post('/api/objective', (req, res, next) => {
-  const objective = new Objective({
+  const objective = new ObjectiveStatement({
     statement: req.body.statement
   });
   objective.save();
   console.log(objective);
   res.status(201).json({
-    message: 'objective added successfully.',
+    message: 'Objective added successfully.',
   });
 });
+
 //post method for projects
 app.post('/api/projects', (req, res, next) => {
   const projects = new Projects({
@@ -138,6 +140,17 @@ app.get('/api/contact-info', (req, res, next) => {
   res.status(200).json({
     message: 'Contact info fetched successfully!',
     contactInfo: contactInfo
+  });
+});
+
+app.get('/api/objective', (req, res, next) => {
+  const objectiveStatement = {
+    id: 'test123',
+    statement: 'I wanna be awesome'
+  };
+  res.status(200).json({
+    message: 'Objective fetched successfully!',
+    objectiveStatement: objectiveStatement
   });
 });
 

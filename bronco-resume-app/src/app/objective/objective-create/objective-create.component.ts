@@ -19,17 +19,17 @@ export class ObjectiveCreateComponent implements OnInit, OnDestroy {
 
   onAddObjectiveStatement(form: NgForm) {
     if (form.invalid) {
-      alert('error');
       return;
     }
     const objectiveStatement: ObjectiveStatement = {
+      id: null,
       statement: form.value.statement,
     };
     this.objectiveStatementService.addObjectiveStatement(objectiveStatement);
   }
 
   ngOnInit() {
-    this.objectiveStatement = this.objectiveStatementService.getObjectiveStatement();
+    this.objectiveStatementService.getObjectiveStatement();
     this.objectiveStatementSub = this.objectiveStatementService.getObjectiveStatementUpdateListener()
       .subscribe((objectiveStatement: ObjectiveStatement) => {
         this.objectiveStatement = objectiveStatement;
