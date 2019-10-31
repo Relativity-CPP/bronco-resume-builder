@@ -21,7 +21,6 @@ export class EducationService {
     addEducation(education: Education) {
         this.educationList.push(education);
         this.educationListUpdated.next([...this.educationList]);
-        alert('adding shit');
     }
 
     getEducationUpdateListener() {

@@ -32,6 +32,19 @@ app.use((req, res, next) => {
   next();
 });
 
+app.post('/api/awards', (req, res, next) => {
+  const awards = new Awards({
+    title: req.body.title,
+    date: req.body.date,
+    description: req.body.description
+  });
+  awards.save();
+  console.log(awards);
+  res.status(201).json({
+    message: 'Awards added successfully.',
+  });
+});
+
 app.post('/api/contact-info', (req, res, next) => {
   const contactInfo = new ContactInfo({
     firstName: req.body.firstName,
@@ -47,7 +60,71 @@ app.post('/api/contact-info', (req, res, next) => {
     message: 'Contact info added successfully.',
   });
 });
-
+//post method for education
+app.post('/api/education', (req, res, next) => {
+  const education = new Education({
+    schoolName: req.body.schoolName,
+    degreeType: req.body.degreeType,
+    major: req.body.major,
+    schoolStartDate: req.body.schoolStartDate,
+    schoolEndDate: req.body.schoolEndDate,
+    gpa: req.body.gpa
+  });
+  education.save();
+  console.log(education);
+  res.status(201).json({
+    message: 'education added successfully.',
+  });
+});
+app.post('/api/experience', (req, res, next) => {
+  const experience = new Experience({
+    companyName: req.body.companyName,
+    jobTitle: req.body.jobTitle,
+    jobStartDate:req.body.jobStartDate,
+    jobEndDate: req.body.jobEndDate,
+    description: req.body.description,
+  });
+  experience.save();
+  console.log(experience);
+  res.status(201).json({
+    message: 'experience added successfully.',
+  });
+});
+app.post('/api/objective', (req, res, next) => {
+  const objective = new Objective({
+    statement: req.body.statement
+  });
+  objective.save();
+  console.log(objective);
+  res.status(201).json({
+    message: 'objective added successfully.',
+  });
+});
+//post method for projects
+app.post('/api/projects', (req, res, next) => {
+  const projects = new Projects({
+    title: req.body.title,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
+    description: req.body.description
+  });
+  projects.save();
+  console.log(projects);
+  res.status(201).json({
+    message: 'projects added successfully.',
+  });
+});
+//post method for skills
+app.post('/api/skills', (req, res, next) => {
+  const skills = new Skills({
+    description: req.body.description
+  });
+  skills.save();
+  console.log(skills);
+  res.status(201).json({
+    message: 'skills added successfully.',
+  });
+});
 app.get('/api/contact-info', (req, res, next) => {
   const contactInfo = {
     id: 'test123',
