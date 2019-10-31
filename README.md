@@ -10,3 +10,4 @@ Website will soon be found in cpp-relativity.com, but only locally at the moment
 To see the template web page, download the new frontend folder, 
 ensure angular cli is installed, navigate to the frontend folder, 
 run ng serve --open
+npm run start:server
