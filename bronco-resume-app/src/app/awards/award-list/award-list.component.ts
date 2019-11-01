@@ -17,13 +17,16 @@ export class AwardListComponent implements OnInit, OnDestroy {
   constructor(public awardsService: AwardsService) {}
 
   ngOnInit() {
-    this.awardList = this.awardsService.getAwards();
+    this.awardsService.getAwards();
     this.awardsSub = this.awardsService.getAwardUpdateListener()
       .subscribe((awards: Award[]) => {
         this.awardList = awards;
       });
   }
 
+  onDelete(awardId: string) {
+    this.awardsService.deleteAward(awardId);
+  }
   ngOnDestroy() {
     this.awardsSub.unsubscribe();
   }

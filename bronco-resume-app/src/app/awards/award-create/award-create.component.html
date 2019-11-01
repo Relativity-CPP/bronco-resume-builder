@@ -3,21 +3,21 @@
     <mat-card>
       <mat-card-title>Awards</mat-card-title>
       <mat-form-field>
-        <input 
-          matInput 
+        <input
+          matInput
           name="title"
-          placeholder="Award Title" 
+          placeholder="Award Title"
           ngModel
           required
           #title="ngModel">
           <mat-error *ngIf="title.invalid">Please enter an award title.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input 
-          matInput 
+        <input
+          matInput
           name="date"
-          [matDatepicker]="picker" 
-          placeholder="Date" 
+          [matDatepicker]="picker"
+          placeholder="Date"
           ngModel
           required
           #date="ngModel">
@@ -25,19 +25,19 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <textarea 
-          matInput 
+        <textarea
+          matInput
           name="description"
-          maxlength="15"
-          placeholder="Enter your description here..." 
+          maxlength="50"
+          placeholder="Enter your description here..."
           ngModel
           #desc="ngModel"></textarea>
           <mat-error *ngIf="desc.invalid">Please shorten your description.</mat-error>
       </mat-form-field>
       <mat-card-actions>
-        <button 
-          mat-raised-button 
-          color="primary" 
+        <button
+          mat-raised-button
+          color="primary"
           type="submit">Save</button>
       </mat-card-actions>
     </mat-card>

@@ -19,6 +19,7 @@ export class AwardCreateComponent {
     }
     const dateEarned = this.awardsService.transformDate(form.value.date);
     const award: Award = {
+      id: '',
       title: form.value.title,
       date: dateEarned,
       description: form.value.description

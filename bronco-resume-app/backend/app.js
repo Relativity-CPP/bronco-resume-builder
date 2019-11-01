@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const ContactInfo = require('./models/contact-info');
 const ObjectiveStatement = require('./models/objective');
+const Award = require('./models/awards');
 
 const app = express();
 
@@ -13,9 +14,9 @@ mongoose.connect('mongodb+srv://aaronL:doXbB996gyUniohb@cluster0-kxg8w.mongodb.n
   .then(() => {
     console.log('Connected to database!');
   })
-    .catch(() => {
-      console.log('Connection failed!');
-    });
+  .catch(() => {
+     console.log('Connection failed!');
+  });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,15 +35,16 @@ app.use((req, res, next) => {
 });
 
 app.post('/api/awards', (req, res, next) => {
-  const awards = new Awards({
+  const award = new Award({
     title: req.body.title,
     date: req.body.date,
     description: req.body.description
   });
-  awards.save();
-  console.log(awards);
-  res.status(201).json({
-    message: 'Awards added successfully.',
+  award.save().then(createdAward => {
+    res.status(201).json({
+      message: 'Award added successfully.',
+      awardId: createdAward._id
+    });
   });
 });
 
@@ -152,6 +154,16 @@ app.get('/api/objective', (req, res, next) => {
     message: 'Objective fetched successfully!',
     objectiveStatement: objectiveStatement
   });
+});
+
+app.get("/api/awards", (req, res, next) => {
+  Award.find()
+  .then(documents => {
+    res.status(200).json({
+      message: 'Awards fetched successfully!',
+      awards: documents
+    })
+  })
 });
 
 module.exports = app;
