@@ -1,6 +1,12 @@
-<mat-list role="list" *ngIf="skillList.length > 0">
-    <mat-list-item *ngFor="let skill of skillList" role="listitem">
+<mat-accordion multi="true" *ngIf="skillList.length > 0">
+  <mat-expansion-panel *ngFor="let skill of skillList">
+    <mat-expansion-panel-header>
       {{ skill.description }}
-    </mat-list-item>
-</mat-list>
+    </mat-expansion-panel-header>
+    <mat-action-row>
+      <button mat-button color="primary">Edit</button>
+      <button mat-button color="warn" (click) = "onDelete(skill.id)">Delete</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
 <p class="info text mat-body-1" *ngIf="skillList.length <= 0">Add Skills</p>

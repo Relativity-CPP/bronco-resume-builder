@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Skill } from '../skill.model';
-import { SkillsService } from '../skill.service';
+import { SkillService } from '../skill.service';
 
 @Component ({
   selector: 'app-skill-create',
@@ -11,16 +11,17 @@ import { SkillsService } from '../skill.service';
 })
 export class SkillCreateComponent {
 
-  constructor(public skillsService: SkillsService) {}
+  constructor(public skillService: SkillService) {}
 
   onAddSkill(form: NgForm) {
     if (form.invalid) {
       return;
     }
     const skill: Skill = {
+      id: '',
       description: form.value.description,
     };
-    this.skillsService.addSkill(skill);
+    this.skillService.addSkill(skill);
     form.resetForm();
   }
 }

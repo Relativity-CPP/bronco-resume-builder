@@ -9,7 +9,7 @@ const Award = require('./models/awards');
 const Education = require('./models/education');
 const Experience = require('./models/experience');
 const Project = require ('./models/project');
-const Skill = require('./models/skills');
+const Skill = require('./models/skill');
 
 const app = express();
 
@@ -129,7 +129,7 @@ app.post('/api/skills', (req, res, next) => {
   const skill = new Skill({
     description: req.body.description
   });
-  skills.save().then(createdSkill => {
+  skill.save().then(createdSkill => {
     res.status(201).json({
       message: 'Skill added successfully.',
       skillId: createdSkill._id
@@ -188,7 +188,7 @@ app.get("/api/projects", (req, res, next) => {
   Project.find()
   .then(documents => {
     res.status(200).json({
-      message: 'Project fetched successfully!',
+      message: 'Projects fetched successfully!',
       project: documents
     })
   })
@@ -197,8 +197,8 @@ app.get("/api/skills", (req, res, next) => {
   Skill.find()
   .then(documents => {
     res.status(200).json({
-      message: 'Skill fetched successfully!',
-      experience: documents
+      message: 'Skills fetched successfully!',
+      skill: documents
     })
   })
 });
@@ -229,7 +229,7 @@ app.delete("/api/projects/:id", (req, res, next) => {
  });
 });
 app.delete("/api/skills/:id", (req, res, next) => {
-  Experience.deleteOne({ _id: req.params.id }).then(result => {
+  Skill.deleteOne({ _id: req.params.id }).then(result => {
    console.log(result);
    res.status(200).json({ message: "Skill deleted!" });
  });

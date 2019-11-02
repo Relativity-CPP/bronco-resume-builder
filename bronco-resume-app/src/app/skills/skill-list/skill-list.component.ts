@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Skill } from '../skill.model';
-import { SkillsService } from '../skill.service';
+import { SkillService } from '../skill.service';
 
 @Component ({
   selector: 'app-skill-list',
@@ -12,18 +12,21 @@ import { SkillsService } from '../skill.service';
 
 export class SkillListComponent implements OnInit, OnDestroy {
   skillList: Skill[] = [];
-  private skillsSub: Subscription;
+  private skillSub: Subscription;
 
-  constructor(public skillsService: SkillsService) {}
+  constructor(public skillService: SkillService) {}
 
   ngOnInit() {
-    this.skillList = this.skillsService.getSkills();
-    this.skillsSub = this.skillsService.getSkillUpdateListener()
+    this.skillService.getSkill();
+    this.skillSub = this.skillService.getSkillUpdateListener()
       .subscribe((skills: Skill[]) => {
         this.skillList = skills;
       });
   }
+  onDelete(skillId: string) {
+    this.skillService.deleteSkill(skillId);
+  }
   ngOnDestroy() {
-    this.skillsSub.unsubscribe();
+    this.skillSub.unsubscribe();
   }
 }

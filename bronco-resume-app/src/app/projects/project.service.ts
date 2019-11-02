@@ -1,11 +1,11 @@
-import {Inject, Injectable, LOCALE_ID} from '@angular/core';
+import { Inject, Injectable, LOCALE_ID} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Project } from './project.model';
 
-import {DatePipe, formatDate} from '@angular/common';
+import { formatDate } from '@angular/common';
 
 @Injectable({providedIn: 'root'})
 export class ProjectService {

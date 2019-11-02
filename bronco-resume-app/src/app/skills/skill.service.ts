@@ -1,23 +1,55 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Skill } from './skill.model';
 
 @Injectable({providedIn: 'root'})
-export class SkillsService {
+export class SkillService {
     private skillList: Skill[] = [];
-    private skillsUpdated = new Subject<Skill[]>();
+    private skillListUpdated = new Subject<Skill[]>();
 
-    getSkills() {
-        return [...this.skillList];
-    }
+  constructor( private http: HttpClient) {}
 
-    addSkill(skill: Skill) {
+  getSkill() {
+    this.http
+      .get<{ message: string; skill: any }>(
+        'http://localhost:3000/api/skills'
+      )
+      .pipe(map((skillData) => {
+        return skillData.skill.map(skill => {
+          return {
+            description: skill.description,
+            id: skill._id
+          };
+        });
+      }))
+      .subscribe(transformedSkills => {
+        this.skillList = transformedSkills;
+        this.skillListUpdated.next([...this.skillList]);
+    });
+  }
+  addSkill(skill: Skill) {
+    this.http
+      .post<{ message: string, skillId: string }>('http://localhost:3000/api/skills', skill)
+      .subscribe(responseData => {
+        const id = responseData.skillId;
+        skill.id = id;
         this.skillList.push(skill);
-        this.skillsUpdated.next([...this.skillList]);
-    }
-
-    getSkillUpdateListener() {
-        return this.skillsUpdated.asObservable();
-    }
+        this.skillListUpdated.next([...this.skillList]);
+        console.log(responseData.message);
+    });
+  }
+  deleteSkill(skillId: string) {
+    this.http.delete('http://localhost:3000/api/skills/' + skillId)
+      .subscribe(() => {
+        const updatedSkillList = this.skillList.filter(skill => skill.id !== skillId);
+        this.skillList = updatedSkillList;
+        this.skillListUpdated.next([...this.skillList]);
+    });
+  }
+  getSkillUpdateListener() {
+    return this.skillListUpdated.asObservable();
+  }
 }
