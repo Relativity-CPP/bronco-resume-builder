@@ -21,6 +21,7 @@ export class EducationCreateComponent {
     const startDate = this.educationService.transformDate(form.value.schoolStartDate);
     const endDate = this.educationService.transformDate(form.value.schoolEndDate);
     const education: Education = {
+      id: '',
       schoolName: form.value.schoolName,
       degreeType: form.value.degreeType,
       schoolStartDate: startDate,

@@ -1,4 +1,5 @@
 export interface Education {
+  id: string;
   schoolName: string;
   degreeType: string;
   major: string;

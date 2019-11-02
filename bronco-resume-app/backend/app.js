@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const ContactInfo = require('./models/contact-info');
 const ObjectiveStatement = require('./models/objective');
 const Award = require('./models/awards');
+const Education = require('./models/education');
 
 const app = express();
 
@@ -57,10 +58,11 @@ app.post('/api/contact-info', (req, res, next) => {
     emailAddress: req.body.emailAddress,
     socialMediaLink: req.body.socialMediaLink
   });
-  contactInfo.save();
-  console.log(contactInfo);
-  res.status(201).json({
-    message: 'Contact info added successfully.',
+  contactInfo.save().then(createdContactInfo => {
+    res.status(201).json({
+      message: 'Contact Info added successfully.',
+      contactInfoId: createdContactInfo._id
+    });
   });
 });
 //post method for education
@@ -73,10 +75,11 @@ app.post('/api/education', (req, res, next) => {
     schoolEndDate: req.body.schoolEndDate,
     gpa: req.body.gpa
   });
-  education.save();
-  console.log(education);
-  res.status(201).json({
-    message: 'education added successfully.',
+  education.save().then(createdEducation => {
+    res.status(201).json({
+      message: 'Education added successfully.',
+      contactInfoId: createdContactInfo._id
+    });
   });
 });
 app.post('/api/experience', (req, res, next) => {
@@ -130,19 +133,13 @@ app.post('/api/skills', (req, res, next) => {
   });
 });
 app.get('/api/contact-info', (req, res, next) => {
-  const contactInfo = {
-    id: 'test123',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    homeAddress: '123 Oak Street',
-    phoneNumber: '(909) 911-9111',
-    emailAddress: 'hotsingles@gmail.com',
-    socialMediaLink: 'veryprofessional@linkedin.com',
-  };
-  res.status(200).json({
-    message: 'Contact info fetched successfully!',
-    contactInfo: contactInfo
-  });
+  ContactInfo.findById("5dbcb8c170ebbe6a13c25a40")
+  .then(document => {
+    res.status(200).json({
+      message: 'ContactInfo fetched successfully!',
+      contactInfo: document
+    })
+  })
 });
 
 app.get('/api/objective', (req, res, next) => {
@@ -164,6 +161,28 @@ app.get("/api/awards", (req, res, next) => {
       awards: documents
     })
   })
+});
+app.get("/api/education", (req, res, next) => {
+  Education.find()
+  .then(documents => {
+    res.status(200).json({
+      message: 'Education fetched successfully!',
+      education: documents
+    })
+  })
+});
+
+app.delete("/api/awards/:id", (req, res, next) => {
+   Award.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Award deleted!" });
+  });
+});
+app.delete("/api/education/:id", (req, res, next) => {
+  Education.deleteOne({ _id: req.params.id }).then(result => {
+   console.log(result);
+   res.status(200).json({ message: "Education deleted!" });
+ });
 });
 
 module.exports = app;

@@ -50,7 +50,7 @@ export class AwardsService {
     });
   }
   deleteAward(awardId: string) {
-    this.http.delete('http://localhost:3000/api/posts/' + awardId)
+    this.http.delete('http://localhost:3000/api/awards/' + awardId)
       .subscribe(() => {
         const updatedAwards = this.awards.filter(award => award.id !== awardId);
         this.awards = updatedAwards;

@@ -17,12 +17,17 @@ export class EducationListComponent implements OnInit, OnDestroy{
   constructor(public educationService: EducationService) {}
 
   ngOnInit() {
-    this.educationList = this.educationService.getEducation();
+    this.educationService.getEducation();
     this.educationSub = this.educationService.getEducationUpdateListener()
       .subscribe((education: Education[]) => {
         this.educationList = education;
       });
   }
+
+  onDelete(educationId: string) {
+    this.educationService.deleteEducation(educationId);
+  }
+
   ngOnDestroy() {
     this.educationSub.unsubscribe();
   }

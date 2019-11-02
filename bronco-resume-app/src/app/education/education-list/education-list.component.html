@@ -8,6 +8,10 @@
     <p *ngIf="education.gpa.length > 0">{{education.gpa}}</p>
     <p>{{ education.schoolStartDate }}</p>
     <p>{{ education.schoolEndDate }}</p>
+    <mat-action-row>
+      <button mat-button color="primary">Edit</button>
+      <button mat-button color="warn" (click) = "onDelete(education.id)">Delete</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 <p class="info text mat-body-1" *ngIf="educationList.length <= 0">Add Education History</p>

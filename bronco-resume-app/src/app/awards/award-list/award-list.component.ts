@@ -27,6 +27,7 @@ export class AwardListComponent implements OnInit, OnDestroy {
   onDelete(awardId: string) {
     this.awardsService.deleteAward(awardId);
   }
+
   ngOnDestroy() {
     this.awardsSub.unsubscribe();
   }
