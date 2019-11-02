@@ -7,6 +7,9 @@ const ContactInfo = require('./models/contact-info');
 const ObjectiveStatement = require('./models/objective');
 const Award = require('./models/awards');
 const Education = require('./models/education');
+const Experience = require('./models/experience');
+const Project = require ('./models/project');
+const Skill = require('./models/skills');
 
 const app = express();
 
@@ -35,6 +38,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+//HTTP post apis
 app.post('/api/awards', (req, res, next) => {
   const award = new Award({
     title: req.body.title,
@@ -48,7 +53,6 @@ app.post('/api/awards', (req, res, next) => {
     });
   });
 });
-
 app.post('/api/contact-info', (req, res, next) => {
   const contactInfo = new ContactInfo({
     firstName: req.body.firstName,
@@ -65,7 +69,6 @@ app.post('/api/contact-info', (req, res, next) => {
     });
   });
 });
-//post method for education
 app.post('/api/education', (req, res, next) => {
   const education = new Education({
     schoolName: req.body.schoolName,
@@ -78,7 +81,7 @@ app.post('/api/education', (req, res, next) => {
   education.save().then(createdEducation => {
     res.status(201).json({
       message: 'Education added successfully.',
-      contactInfoId: createdContactInfo._id
+      educationId: createdEducation._id
     });
   });
 });
@@ -90,48 +93,51 @@ app.post('/api/experience', (req, res, next) => {
     jobEndDate: req.body.jobEndDate,
     description: req.body.description,
   });
-  experience.save();
-  console.log(experience);
-  res.status(201).json({
-    message: 'experience added successfully.',
+  experience.save().then(createdExperience => {
+    res.status(201).json({
+      message: 'Experience added successfully.',
+      experienceId: createdExperience._id
+    });
   });
 });
 app.post('/api/objective', (req, res, next) => {
   const objective = new ObjectiveStatement({
     statement: req.body.statement
   });
-  objective.save();
-  console.log(objective);
-  res.status(201).json({
-    message: 'Objective added successfully.',
+  objective.save().then(createdObjective => {
+    res.status(201).json({
+      message: 'Objective added successfully.',
+      objectiveId: createdObjective._id
+    });
   });
 });
-
-//post method for projects
 app.post('/api/projects', (req, res, next) => {
-  const projects = new Projects({
+  const project = new Project({
     title: req.body.title,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
     description: req.body.description
   });
-  projects.save();
-  console.log(projects);
-  res.status(201).json({
-    message: 'projects added successfully.',
+  project.save().then(createdProject => {
+    res.status(201).json({
+      message: 'Project added successfully.',
+      projectId: createdProject._id
+    });
   });
 });
-//post method for skills
 app.post('/api/skills', (req, res, next) => {
-  const skills = new Skills({
+  const skill = new Skill({
     description: req.body.description
   });
-  skills.save();
-  console.log(skills);
-  res.status(201).json({
-    message: 'skills added successfully.',
+  skills.save().then(createdSkill => {
+    res.status(201).json({
+      message: 'Skill added successfully.',
+      skillId: createdSkill._id
+    });
   });
 });
+
+// HTTP get apis
 app.get('/api/contact-info', (req, res, next) => {
   ContactInfo.findById("5dbcb8c170ebbe6a13c25a40")
   .then(document => {
@@ -141,7 +147,6 @@ app.get('/api/contact-info', (req, res, next) => {
     })
   })
 });
-
 app.get('/api/objective', (req, res, next) => {
   const objectiveStatement = {
     id: 'test123',
@@ -152,7 +157,6 @@ app.get('/api/objective', (req, res, next) => {
     objectiveStatement: objectiveStatement
   });
 });
-
 app.get("/api/awards", (req, res, next) => {
   Award.find()
   .then(documents => {
@@ -171,7 +175,35 @@ app.get("/api/education", (req, res, next) => {
     })
   })
 });
+app.get("/api/experience", (req, res, next) => {
+  Experience.find()
+  .then(documents => {
+    res.status(200).json({
+      message: 'Experience fetched successfully!',
+      experience: documents
+    })
+  })
+});
+app.get("/api/projects", (req, res, next) => {
+  Project.find()
+  .then(documents => {
+    res.status(200).json({
+      message: 'Project fetched successfully!',
+      project: documents
+    })
+  })
+});
+app.get("/api/skills", (req, res, next) => {
+  Skill.find()
+  .then(documents => {
+    res.status(200).json({
+      message: 'Skill fetched successfully!',
+      experience: documents
+    })
+  })
+});
 
+//HTTP delete apis
 app.delete("/api/awards/:id", (req, res, next) => {
    Award.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
@@ -184,5 +216,22 @@ app.delete("/api/education/:id", (req, res, next) => {
    res.status(200).json({ message: "Education deleted!" });
  });
 });
-
+app.delete("/api/experience/:id", (req, res, next) => {
+  Experience.deleteOne({ _id: req.params.id }).then(result => {
+   console.log(result);
+   res.status(200).json({ message: "Experience deleted!" });
+ });
+});
+app.delete("/api/projects/:id", (req, res, next) => {
+  Skill.deleteOne({ _id: req.params.id }).then(result => {
+   console.log(result);
+   res.status(200).json({ message: "Skill deleted!" });
+ });
+});
+app.delete("/api/skills/:id", (req, res, next) => {
+  Experience.deleteOne({ _id: req.params.id }).then(result => {
+   console.log(result);
+   res.status(200).json({ message: "Skill deleted!" });
+ });
+});
 module.exports = app;

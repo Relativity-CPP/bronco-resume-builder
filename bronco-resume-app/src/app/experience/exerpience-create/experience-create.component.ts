@@ -21,6 +21,7 @@ export class ExperienceCreateComponent {
     const expStartDate = this.experienceService.transformDate(form.value.jobStartDate);
     const expEndDate = this.experienceService.transformDate(form.value.jobEndDate);
     const experience: Experience = {
+      id: '',
       companyName: form.value.companyName,
       jobTitle: form.value.jobTitle,
       jobStartDate: expStartDate,

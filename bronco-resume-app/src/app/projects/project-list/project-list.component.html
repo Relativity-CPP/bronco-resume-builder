@@ -6,6 +6,10 @@
       <p>{{ project.startDate }}</p>
       <p>{{ project.endDate }}</p>
       <p>{{ project.description }}</p>
+      <mat-action-row>
+        <button mat-button color="primary">Edit</button>
+        <button mat-button color="warn" (click) = "onDelete(project.id)">Delete</button>
+      </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
   <p class="info text mat-body-1" *ngIf="projectList.length <= 0">Add Projects</p>

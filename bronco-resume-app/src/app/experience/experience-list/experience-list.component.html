@@ -7,6 +7,10 @@
       <p >{{ experience.jobStartDate }}</p>
       <p >{{ experience.jobStartDate }}</p>
       <p >{{ experience.description }}</p>
+      <mat-action-row>
+        <button mat-button color="primary">Edit</button>
+        <button mat-button color="warn" (click) = "onDelete(experience.id)">Delete</button>
+      </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
   <p class="info text mat-body-1" *ngIf="experienceList.length <= 0">Add Experience</p>

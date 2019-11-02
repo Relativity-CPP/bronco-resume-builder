@@ -27,7 +27,7 @@ export class EducationCreateComponent {
       schoolStartDate: startDate,
       schoolEndDate: endDate,
       major: form.value.major,
-      gpa: form.value.GPA || '',
+      gpa: form.value.GPA,
     };
     this.educationService.addEducation(education);
     form.resetForm();

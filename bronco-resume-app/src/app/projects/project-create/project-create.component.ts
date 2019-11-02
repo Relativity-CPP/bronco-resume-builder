@@ -20,6 +20,7 @@ export class ProjectCreateComponent {
     const formattedStartDate = this.projectService.transformDate(form.value.startDate);
     const formattedEndDate = this.projectService.transformDate(form.value.endDate);
     const project: Project = {
+      id: '',
       title: form.value.title,
       startDate: formattedStartDate,
       endDate: formattedEndDate,

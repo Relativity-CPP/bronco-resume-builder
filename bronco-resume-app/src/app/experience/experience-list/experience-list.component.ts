@@ -17,13 +17,15 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
   constructor(public experienceService: ExperienceService) {}
 
   ngOnInit() {
-    this.experienceList = this.experienceService.getExperience();
+    this.experienceService.getExperience();
     this.experienceSub = this.experienceService.getExperienceUpdateListener()
       .subscribe((experience: Experience[]) => {
         this.experienceList = experience;
       });
   }
-
+  onDelete(experienceId: string) {
+    this.experienceService.deleteExperience(experienceId);
+  }
   ngOnDestroy() {
     this.experienceSub.unsubscribe();
   }
