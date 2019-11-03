@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatListModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -30,6 +31,9 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
 import { SkillCreateComponent } from './skills/skill-create/skill-create.component';
 import { SkillListComponent } from './skills/skill-list/skill-list.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent} from './auth/login/login.component';
+import { SignupComponent} from './auth/signup/signup.component';
+import {AppRoutingModule} from './app-routing.module';
 
 
 @NgModule({
@@ -48,8 +52,11 @@ import { HeaderComponent } from './header/header.component';
     SkillCreateComponent,
     SkillListComponent,
     HeaderComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
