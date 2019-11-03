@@ -11,6 +11,8 @@ const Experience = require('./models/experience');
 const Project = require ('./models/project');
 const Skill = require('./models/skill');
 
+const UserRoutes = require('./routes/user');
+
 const app = express();
 
 // connect to mongoDB
@@ -234,4 +236,5 @@ app.delete("/api/skills/:id", (req, res, next) => {
    res.status(200).json({ message: "Skill deleted!" });
  });
 });
+app.use('/api.posts', UserRoutes);
 module.exports = app;

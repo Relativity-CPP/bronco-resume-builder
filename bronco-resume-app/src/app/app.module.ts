@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -33,7 +34,7 @@ import { SkillListComponent } from './skills/skill-list/skill-list.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent} from './auth/login/login.component';
 import { SignupComponent} from './auth/signup/signup.component';
-import {AppRoutingModule} from './app-routing.module';
+
 
 
 @NgModule({
