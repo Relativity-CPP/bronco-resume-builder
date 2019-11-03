@@ -14,7 +14,7 @@ const Skill = require('./models/skill');
 const app = express();
 
 // connect to mongoDB
-mongoose.connect('mongodb+srv://aaronL:doXbB996gyUniohb@cluster0-kxg8w.mongodb.net/bronco-resume-info?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://aaronL:doXbB996gyUniohb@cluster0-kxg8w.mongodb.net/bronco-resume-info')
   .then(() => {
     console.log('Connected to database!');
   })
