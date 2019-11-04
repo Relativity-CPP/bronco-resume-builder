@@ -204,7 +204,15 @@ app.get("/api/skills", (req, res, next) => {
     })
   })
 });
-
+// app.get("/api/user", (req, res, next) => {
+//   UserRoutes.find()
+//     .then(documents => {
+//       res.status(200).json({
+//         message: 'User fetched successfully!',
+//         user: documents
+//       })
+//     })
+// });
 //HTTP delete apis
 app.delete("/api/awards/:id", (req, res, next) => {
    Award.deleteOne({ _id: req.params.id }).then(result => {
@@ -236,5 +244,5 @@ app.delete("/api/skills/:id", (req, res, next) => {
    res.status(200).json({ message: "Skill deleted!" });
  });
 });
-app.use('/api.posts', UserRoutes);
+app.use('/api.user', UserRoutes);
 module.exports = app;
