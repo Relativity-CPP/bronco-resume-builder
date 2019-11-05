@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { ObjectiveStatement } from 'src/app/objective/objectiveStatement.model';
@@ -11,9 +10,7 @@ import { ObjectiveStatementService } from '../objectveStatement.service';
   styleUrls: ['./objective-create.component.css']
 })
 
-export class ObjectiveCreateComponent implements OnInit, OnDestroy {
-  objectiveStatement: ObjectiveStatement;
-  private objectiveStatementSub: Subscription;
+export class ObjectiveCreateComponent {
 
   constructor(public objectiveStatementService: ObjectiveStatementService) {}
 
@@ -26,17 +23,5 @@ export class ObjectiveCreateComponent implements OnInit, OnDestroy {
       statement: form.value.statement,
     };
     this.objectiveStatementService.addObjectiveStatement(objectiveStatement);
-  }
-
-  ngOnInit() {
-    this.objectiveStatementService.getObjectiveStatement();
-    this.objectiveStatementSub = this.objectiveStatementService.getObjectiveStatementUpdateListener()
-      .subscribe((objectiveStatement: ObjectiveStatement) => {
-        this.objectiveStatement = objectiveStatement;
-      });
-  }
-
-  ngOnDestroy() {
-    this.objectiveStatementSub.unsubscribe();
   }
 }

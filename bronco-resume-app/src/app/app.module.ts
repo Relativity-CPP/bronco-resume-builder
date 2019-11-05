@@ -35,6 +35,7 @@ import { SkillListComponent } from './skills/skill-list/skill-list.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent} from './auth/login/login.component';
 import { SignupComponent} from './auth/signup/signup.component';
+import { ObjectiveListComponent } from './objective/objective-list/objective-list.component';
 
 
 
@@ -50,6 +51,7 @@ import { SignupComponent} from './auth/signup/signup.component';
     ExperienceCreateComponent,
     ExperienceListComponent,
     ObjectiveCreateComponent,
+    ObjectiveListComponent,
     ProjectCreateComponent,
     ProjectListComponent,
     SkillCreateComponent,
