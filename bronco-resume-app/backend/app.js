@@ -141,7 +141,7 @@ app.post('/api/skills', (req, res, next) => {
 
 // HTTP get apis
 app.get('/api/contact-info', (req, res, next) => {
-  ContactInfo.findById("5dbcb8c170ebbe6a13c25a40")
+  ContactInfo.findOne()
   .then(document => {
     res.status(200).json({
       message: 'ContactInfo fetched successfully!',

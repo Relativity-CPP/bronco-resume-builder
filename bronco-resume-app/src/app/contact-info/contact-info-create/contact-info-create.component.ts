@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { ContactInfo } from 'src/app/contact-info/contact-info.model';
@@ -11,9 +10,7 @@ import { ContactInfoService } from '../contact-info.service';
   styleUrls: ['./contact-info-create.component.css']
 })
 
-export class ContactInfoCreateComponent implements OnInit, OnDestroy {
-  contactInfo: ContactInfo;
-  private contactInfoSub: Subscription;
+export class ContactInfoCreateComponent {
 
   constructor(public contactInfoService: ContactInfoService) {}
 
@@ -31,17 +28,5 @@ export class ContactInfoCreateComponent implements OnInit, OnDestroy {
       socialMediaLink: form.value.socialMediaLink
     };
     this.contactInfoService.addContactInfo(contactInfo);
-  }
-
-  ngOnInit() {
-    this.contactInfoService.getContactInfo();
-    this.contactInfoSub = this.contactInfoService.getContactInfoUpdateListener()
-      .subscribe((contactInfo: ContactInfo) => {
-        this.contactInfo = contactInfo;
-      });
-  }
-
-  ngOnDestroy() {
-    this.contactInfoSub.unsubscribe();
   }
 }

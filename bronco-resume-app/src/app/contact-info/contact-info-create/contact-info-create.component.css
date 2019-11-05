@@ -1,13 +1,13 @@
-.contact-container {
+.contact-info-container {
   display: flex;
   flex-direction: column;
   margin-top: 16px;
 }
-.contact-container > * {
+.contact-info-container > * {
   width: 100%;
 }
 
-.contact-container mat-card {
+.contact-info-container mat-card {
   margin-top: 16px;
   margin: auto;
 }

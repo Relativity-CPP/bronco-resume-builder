@@ -20,6 +20,7 @@ import {
 
 import { AppComponent } from './app.component';
 import { ContactInfoCreateComponent} from './contact-info/contact-info-create/contact-info-create.component';
+import { ContactInfoListComponent } from './contact-info/contact-info-list/contact-info-list.component';
 import { EducationCreateComponent } from './education/education-create/education-create.component';
 import { EducationListComponent } from './education/education-list/education-list.component';
 import { AwardCreateComponent } from './awards/award-create/award-create.component';
@@ -41,6 +42,7 @@ import { SignupComponent} from './auth/signup/signup.component';
   declarations: [
     AppComponent,
     ContactInfoCreateComponent,
+    ContactInfoListComponent,
     EducationCreateComponent,
     EducationListComponent,
     AwardCreateComponent,
