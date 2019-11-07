@@ -1,11 +1,12 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+
 const User = require('../models/user');
 
 const router = express.Router();
 
-router.post("/signup",(req,res,next) => {
-  bcrypt.hash(req.password,10,)
+router.post('/signup',(req,res,next) => {
+  bcrypt.hash(req.body.password,10)
     .then(hash => {
       const user = new User({
         email: req.body.email,
@@ -18,7 +19,7 @@ router.post("/signup",(req,res,next) => {
             result: result
           });
         })
-        .catch(err =>{
+        .catch(err => {
           res.status(500).json({
             error: err
           });
