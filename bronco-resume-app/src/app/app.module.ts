@@ -28,6 +28,7 @@ import { AwardListComponent } from './awards/award-list/award-list.component';
 import { ExperienceCreateComponent } from './experience/exerpience-create/experience-create.component';
 import { ExperienceListComponent } from './experience/experience-list/experience-list.component';
 import { ObjectiveCreateComponent } from './objective/objective-create/objective-create.component';
+import { ObjectiveListComponent } from './objective/objective-list/objective-list.component';
 import { ProjectCreateComponent } from './projects/project-create/project-create.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { SkillCreateComponent } from './skills/skill-create/skill-create.component';
@@ -35,8 +36,7 @@ import { SkillListComponent } from './skills/skill-list/skill-list.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent} from './auth/login/login.component';
 import { SignupComponent} from './auth/signup/signup.component';
-import { ObjectiveListComponent } from './objective/objective-list/objective-list.component';
-
+import { ResumeInfoComponent } from './resume-info/resume-info/resume-info.component';
 
 
 @NgModule({
@@ -54,6 +54,7 @@ import { ObjectiveListComponent } from './objective/objective-list/objective-lis
     ObjectiveListComponent,
     ProjectCreateComponent,
     ProjectListComponent,
+    ResumeInfoComponent,
     SkillCreateComponent,
     SkillListComponent,
     HeaderComponent,
