@@ -17,4 +17,8 @@
   width: 51%;
 }
 
+.contact-info-container mat-spinner {
+  margin: auto;
+}
+
 

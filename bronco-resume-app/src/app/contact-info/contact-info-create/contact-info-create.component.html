@@ -1,5 +1,6 @@
 <div class="contact-info-container">
-  <form (submit)="onAddContactInfo(contactInfoForm)" #contactInfoForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveContactInfo(contactInfoForm)" #contactInfoForm="ngForm">
       <mat-card>
           <mat-card-title>Contact Information</mat-card-title>
           <mat-form-field>
@@ -8,16 +9,17 @@
               matInput
               name="firstName"
               placeholder="First Name"
-              ngModel
+              [ngModel]="contactInfo?.firstName"
               required
               #firstName="ngModel">
+            <mat-error *ngIf="firstName.invalid">Please enter your first name</mat-error>
           </mat-form-field>
           <mat-form-field>
             <input
               matInput
               name="lastName"
               placeholder="Last Name"
-              ngModel
+              [ngModel]="contactInfo?.lastName"
               required
               #lastName="ngModel">
           </mat-form-field>
@@ -26,7 +28,7 @@
               matInput
               name="homeAddress"
               placeholder="Home Address"
-              ngModel
+              [ngModel]="contactInfo?.homeAddress"
               required
               #homeAddress="ngModel">
           </mat-form-field>
@@ -35,7 +37,7 @@
               matInput
               name="phoneNumber"
               placeholder="Phone Number"
-              ngModel
+              [ngModel]="contactInfo?.phoneNumber"
               required
               #phoneNumber="ngModel">
           </mat-form-field>
@@ -44,7 +46,7 @@
               matInput
               name="emailAddress"
               placeholder="Email Address"
-              ngModel
+              [ngModel]="contactInfo?.emailAddress"
               required
               #emailAddress="ngModel">
           </mat-form-field>
@@ -53,7 +55,7 @@
               matInput
               name="socialMediaLink"
               placeholder="Social Media Link"
-              ngModel
+              [ngModel]="contactInfo?.socialMediaLink"
               #socialMediaLink>
           </mat-form-field>
           <mat-card-actions>

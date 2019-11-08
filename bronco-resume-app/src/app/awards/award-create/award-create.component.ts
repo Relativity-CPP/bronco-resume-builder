@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Award } from '../award.model';
 import { AwardsService } from '../awards.service';
+import { ContactInfo } from 'src/app/contact-info/contact-info.model';
 
 @Component ({
   selector: 'app-award-create',
@@ -12,7 +13,6 @@ import { AwardsService } from '../awards.service';
 export class AwardCreateComponent {
 
   constructor(public awardsService: AwardsService) {}
-
   onAddAward(form: NgForm) {
     if (form.invalid) {
       return;

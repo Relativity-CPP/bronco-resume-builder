@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require ('body-parser');
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcrypt');
 const ContactInfo = require('./models/contact-info');
 const ObjectiveStatement = require('./models/objective');
 const Award = require('./models/awards');
@@ -10,8 +10,8 @@ const Education = require('./models/education');
 const Experience = require('./models/experience');
 const Project = require ('./models/project');
 const Skill = require('./models/skill');
+const User = require('./models/user');
 
-const UserRoutes = require('./routes/user');
 const app = express();
 // const bcrypt = require("bcrypt");
 //
@@ -59,7 +59,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   next();
 });
@@ -162,7 +162,26 @@ app.post('/api/skills', (req, res, next) => {
     });
   });
 });
-
+app.post('/api/user/signup', (req, res, next) => {
+  bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+      const user = new User({
+        email: req.body.email,
+        password: hash
+      });
+      user.save().then(result => {
+        res.status(201).json({
+          message: 'User added successfully.',
+          result: result
+        });
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: err
+        });
+      });
+    });
+});
 // HTTP get apis
 app.get('/api/contact-info', (req, res, next) => {
   ContactInfo.findOne()
@@ -269,5 +288,5 @@ app.delete("/api/skills/:id", (req, res, next) => {
    res.status(200).json({ message: "Skill deleted!" });
  });
 });
-app.use('/api.user', UserRoutes);
+
 module.exports = app;

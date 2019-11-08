@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { ContactInfo } from './contact-info.model';
 
@@ -18,7 +18,7 @@ export class ContactInfoService {
     };
     private contactInfoUpdated = new Subject<ContactInfo>();
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     getContactInfo() {
     this.http.get<{message: string, contactInfo: ContactInfo}>('http://localhost:3000/api/contact-info')
@@ -38,10 +38,13 @@ export class ContactInfoService {
             emailAddress: contactInfo.emailAddress,
             socialMediaLink: contactInfo.socialMediaLink
         };
-        this.http.post<{message: string}>('http://localhost:3000/api/contact-info', contactInfo)
+        this.http.post<{message: string; contactId: string}>('http://localhost:3000/api/contact-info', contactInfo)
           .subscribe((responseData) => {
               console.log(responseData.message);
+              const id = responseData.contactId;
+              contactInfo.id = id;
               this.contactInfoUpdated.next(Object.create(this.contactInfo));
+              this.router.navigate(['/']);
           });
     }
 

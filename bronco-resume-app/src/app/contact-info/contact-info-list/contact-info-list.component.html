@@ -1,8 +1,14 @@
 <div class="contact-info-list-container">
-  <p>First Name: {{ contactInfo?.firstName}}</p>
-  <p>Last Name: {{ contactInfo?.lastName }}</p>
-  <p>Home Address: {{ contactInfo?.homeAddress }}</p>
-  <p>Phone Number: {{ contactInfo?.phoneNumber }}</p>
-  <p>Email Address: {{ contactInfo?.emailAddress }}</p>
-  <p>Social Media Link: {{ contactInfo?.socialMediaLink }}</p>
+  <div *ngIf="contactInfo!=null">
+    <p>First Name: {{ contactInfo?.firstName}}</p>
+    <p>Last Name: {{ contactInfo?.lastName }}</p>
+    <p>Home Address: {{ contactInfo?.homeAddress }}</p>
+    <p>Phone Number: {{ contactInfo?.phoneNumber }}</p>
+    <p>Email Address: {{ contactInfo?.emailAddress }}</p>
+    <p>Social Media Link: {{ contactInfo?.socialMediaLink }}</p>
+    <button mat-button color="primary" [routerLink]="['/editContact', contactInfo.id]">Edit</button>
+  </div>
+  <div>
+    <button mat-button color="primary" [routerLink]="['/createContact']">Add</button>
+  </div>
 </div>

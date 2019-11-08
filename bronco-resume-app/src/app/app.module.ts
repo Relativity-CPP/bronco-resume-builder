@@ -77,6 +77,7 @@ import { ResumeInfoComponent } from './resume-info/resume-info/resume-info.compo
     MatNativeDateModule,
     MatListModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
