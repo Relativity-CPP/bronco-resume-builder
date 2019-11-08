@@ -15,22 +15,6 @@ import {ObjectiveStatementService} from './objective/objectveStatement.service';
 import {ProjectService} from './projects/project.service';
 import {SkillService} from './skills/skill.service';
 
-
-
-
-// //const awardsService: AwardsService = resumeInfoComponent.awardsService;
-// const contactInfoService: ContactInfoService;
-// const educationService: EducationService;
-// const experienceService: ExperienceService;
-// const objectiveStatementService: ObjectiveStatementService;
-// const projectService: ProjectService;
-// const skillService: SkillService;
-//
-// const resumeInfoComponent = new ResumeInfoComponent(this.awards, contactInfoS, educationService,
-//   experienceService, objectiveStatementService, projectService, skillService );
-// const awardsService: AwardsService = resumeInfoComponent.awardsService;
-
-
 const FIRSTNAMEs = 'j';
 const LASTNAME  = 'LN' ;
 const PHONE_NUMBER = '07534563401';
