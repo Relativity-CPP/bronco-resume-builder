@@ -7,7 +7,7 @@ import { ContactInfoCreateComponent } from './contact-info/contact-info-create/c
 
 const routes: Routes = [
   {path: '', component: SignupComponent},
-  {path: 'editContact/:contactId', component: ContactInfoCreateComponent},
+  {path: 'edit/contact/:contactId', component: ContactInfoCreateComponent},
   {path: 'createContact', component: ContactInfoCreateComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent}

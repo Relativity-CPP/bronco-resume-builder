@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { ContactInfo } from './contact-info.model';
@@ -21,13 +22,15 @@ export class ContactInfoService {
     constructor(private http: HttpClient, private router: Router) {}
 
     getContactInfo() {
-    this.http.get<{message: string, contactInfo: ContactInfo}>('http://localhost:3000/api/contact-info')
+    this.http
+      .get<{message: string, contactInfo: ContactInfo}>(
+        'http://localhost:3000/api/contact-info'
+      )
       .subscribe((contactInfoData) => {
-        console.log(contactInfoData.message);
         this.contactInfo = contactInfoData.contactInfo;
         this.contactInfoUpdated.next(Object.create(this.contactInfo));
       });
-  }
+    }
     addContactInfo(contactInfo: ContactInfo) {
         this.contactInfo = {
             id: null,
@@ -47,11 +50,15 @@ export class ContactInfoService {
               this.router.navigate(['/']);
           });
     }
-
+    updateContactInfo(id: string, contact: ContactInfo) {
+      console.log(contact);
+      this.http.put('http://localhost:3000/api/contact-info/' + id, contact)
+        .subscribe(response => console.log(response));
+    }
     getContactInfoUpdateListener() {
       return this.contactInfoUpdated.asObservable();
     }
-  getContactInfoClone() {
-    return {...this.contactInfo};
-  }
+    getContactInfoClone() {
+      return {...this.contactInfo};
+    }
 }

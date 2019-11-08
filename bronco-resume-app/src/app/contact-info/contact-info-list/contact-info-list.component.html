@@ -6,7 +6,7 @@
     <p>Phone Number: {{ contactInfo?.phoneNumber }}</p>
     <p>Email Address: {{ contactInfo?.emailAddress }}</p>
     <p>Social Media Link: {{ contactInfo?.socialMediaLink }}</p>
-    <button mat-button color="primary" [routerLink]="['/editContact', contactInfo.id]">Edit</button>
+    <a mat-button color="primary" [routerLink]="['/edit/contact/', contactInfo._id]">Edit</a>
   </div>
   <div>
     <button mat-button color="primary" [routerLink]="['/createContact']">Add</button>

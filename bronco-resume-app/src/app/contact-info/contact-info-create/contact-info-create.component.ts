@@ -13,8 +13,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 export class ContactInfoCreateComponent implements OnInit {
 
-  private mode = 'create';
   contactInfo: ContactInfo;
+  private mode = 'create';
   private contactId: string;
   isLoading = false;
 
@@ -25,29 +25,48 @@ export class ContactInfoCreateComponent implements OnInit {
       if (paramMap.has('contactId')) {
         this.mode = 'edit';
         this.contactId = paramMap.get('contactId');
+        console.log(this.contactId);
         this.isLoading = true;
         this.contactInfo = this.contactInfoService.getContactInfoClone();
+        console.log(this.contactInfo);
       } else {
         this.mode = 'create';
         this.contactId = null;
       }
     });
+    console.log(this.mode);
   }
 
   onSaveContactInfo(form: NgForm) {
     if (form.invalid) {
       return;
     }
+    if (this.mode === 'create') {
+      const contactInfo: ContactInfo = {
+        id: null,
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        homeAddress: form.value.homeAddress,
+        phoneNumber: form.value.phoneNumber,
+        emailAddress: form.value.emailAddress,
+        socialMediaLink: form.value.socialMediaLink
+      };
+      this.contactInfoService.addContactInfo(contactInfo);
+    } else {
+      const contactInfo: ContactInfo = {
+        id: this.contactId,
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        homeAddress: form.value.homeAddress,
+        phoneNumber: form.value.phoneNumber,
+        emailAddress: form.value.emailAddress,
+        socialMediaLink: form.value.socialMediaLink
+      };
+      console.log(contactInfo);
+      this.contactInfoService.updateContactInfo(this.contactId, contactInfo);
+    }
+
     this.isLoading = true;
-    const contactInfo: ContactInfo = {
-      id: null,
-      firstName: form.value.firstName,
-      lastName: form.value.lastName,
-      homeAddress: form.value.homeAddress,
-      phoneNumber: form.value.phoneNumber,
-      emailAddress: form.value.emailAddress,
-      socialMediaLink: form.value.socialMediaLink
-    };
-    this.contactInfoService.addContactInfo(contactInfo);
+
   }
 }
