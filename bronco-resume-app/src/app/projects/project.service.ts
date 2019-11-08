@@ -39,7 +39,8 @@ export class ProjectService {
   }
   addProject(project: Project) {
     this.http
-      .post<{ message: string, projectId: string }>('http://localhost:3000/api/projects', project)
+      .post<{ message: string, projectId: string }>(
+        'http://localhost:3000/api/projects', project)
       .subscribe(responseData => {
         const id = responseData.projectId;
         project.id = id;
