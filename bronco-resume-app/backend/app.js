@@ -12,8 +12,32 @@ const Project = require ('./models/project');
 const Skill = require('./models/skill');
 
 const UserRoutes = require('./routes/user');
-
 const app = express();
+// const bcrypt = require("bcrypt");
+//
+// const User = require('./models/user');
+//
+// app.post('/signup',(req,res,next) => {
+//   bcrypt.hash(req.body.password,10)
+//     .then(hash => {
+//       const user = new User({
+//         email: req.body.email,
+//         password: hash
+//       });
+//       user.save()
+//         .then(result => {
+//           res.status(201).json({
+//             message: 'User created!',
+//             result: result
+//           });
+//         })
+//         .catch(err => {
+//           res.status(500).json({
+//             error: err
+//           });
+//         });
+//     });
+// });
 
 // connect to mongoDB
 mongoose.connect('mongodb+srv://aaronL:doXbB996gyUniohb@cluster0-kxg8w.mongodb.net/bronco-resume-info')
@@ -213,6 +237,7 @@ app.get("/api/skills", (req, res, next) => {
 //       })
 //     })
 // });
+
 //HTTP delete apis
 app.delete("/api/awards/:id", (req, res, next) => {
    Award.deleteOne({ _id: req.params.id }).then(result => {
