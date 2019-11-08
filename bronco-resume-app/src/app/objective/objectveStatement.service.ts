@@ -39,4 +39,7 @@ export class ObjectiveStatementService {
     getObjectiveStatementUpdateListener() {
         return this.objectiveStatementUpdated.asObservable();
     }
+    getObjectiveClone() {
+      return {...this.objectiveStatement};
+    }
 }

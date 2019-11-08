@@ -24,7 +24,7 @@ import { SkillService } from '../../skills/skill.service';
 
 export class ResumeInfoComponent implements OnInit, OnDestroy {
   awardList: Award[] = [];
-  contactInfo: ContactInfo;
+  contactInfo: ContactInfo = null;
   educationList: Education[] = [];
   experienceList: Experience[] = [];
   objectiveStatement: ObjectiveStatement;
@@ -42,6 +42,7 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
                public educationService: EducationService, public experienceService: ExperienceService,
                public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
                public skillService: SkillService ) {}
+
 
   ngOnInit() {
       this.awardsService.getAwards();
@@ -111,4 +112,7 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
     this.projectSub.unsubscribe();
     this.skillSub.unsubscribe();
   }
+  getContactInfoObject() {
+    return {...this.contactInfo};
+}
 }

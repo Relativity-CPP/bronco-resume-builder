@@ -21,14 +21,13 @@ export class ContactInfoService {
     constructor(private http: HttpClient) {}
 
     getContactInfo() {
-      this.http.get<{message: string, contactInfo: ContactInfo}>('http://localhost:3000/api/contact-info')
-        .subscribe((contactInfoData) => {
-          console.log(contactInfoData.message);
-          this.contactInfo = contactInfoData.contactInfo;
-          this.contactInfoUpdated.next(Object.create(this.contactInfo));
-        });
-    }
-
+    this.http.get<{message: string, contactInfo: ContactInfo}>('http://localhost:3000/api/contact-info')
+      .subscribe((contactInfoData) => {
+        console.log(contactInfoData.message);
+        this.contactInfo = contactInfoData.contactInfo;
+        this.contactInfoUpdated.next(Object.create(this.contactInfo));
+      });
+  }
     addContactInfo(contactInfo: ContactInfo) {
         this.contactInfo = {
             id: null,
@@ -49,4 +48,7 @@ export class ContactInfoService {
     getContactInfoUpdateListener() {
       return this.contactInfoUpdated.asObservable();
     }
+  getContactInfoClone() {
+    return {...this.contactInfo};
+  }
 }
