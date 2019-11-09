@@ -25,7 +25,7 @@ import { EducationCreateComponent } from './education/education-create/education
 import { EducationListComponent } from './education/education-list/education-list.component';
 import { AwardCreateComponent } from './awards/award-create/award-create.component';
 import { AwardListComponent } from './awards/award-list/award-list.component';
-import { ExperienceCreateComponent } from './experience/exerpience-create/experience-create.component';
+import { ExperienceCreateComponent } from './experience/experience-create/experience-create.component';
 import { ExperienceListComponent } from './experience/experience-list/experience-list.component';
 import { ObjectiveCreateComponent } from './objective/objective-create/objective-create.component';
 import { ObjectiveListComponent } from './objective/objective-list/objective-list.component';
