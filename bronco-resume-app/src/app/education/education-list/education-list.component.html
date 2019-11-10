@@ -14,4 +14,4 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info text mat-body-1" *ngIf="educationList.length <= 0">Add Education History</p>
+<a mat-button color="primary" [routerLink]="['/create/education']">Add Education</a>

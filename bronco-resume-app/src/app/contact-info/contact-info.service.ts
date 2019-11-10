@@ -54,13 +54,16 @@ export class ContactInfoService {
               const id = responseData.contactId;
               contactInfo.id = id;
               this.contactInfoUpdated.next(Object.create(this.contactInfo));
-              this.router.navigate(['/']);
+              this.router.navigate(['/resume']);
           });
     }
     updateContactInfo(id: string, contact: ContactInfo) {
       console.log(contact);
       this.http.put('http://localhost:3000/api/contact-info/' + id, contact)
-        .subscribe(response => console.log(response));
+        .subscribe((response) => {
+          console.log(response);
+          this.router.navigate(['/resume']);
+        });
     }
     getContactInfoUpdateListener() {
       return this.contactInfoUpdated.asObservable();

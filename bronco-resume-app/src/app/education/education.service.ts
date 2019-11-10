@@ -6,13 +6,14 @@ import { map } from 'rxjs/operators';
 import { Education } from './education.model';
 
 import {DatePipe, formatDate} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class EducationService {
     private educationList: Education[] = [];
     private educationListUpdated = new Subject<Education[]>();
 
-  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient) {}
+  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient, private router: Router) {}
 
   transformDate(date) {
     return formatDate(date, 'MM/dd/yyyy', this.locale);
@@ -49,6 +50,7 @@ export class EducationService {
         this.educationList.push(education);
         this.educationListUpdated.next([...this.educationList]);
         console.log(responseData.message);
+        this.router.navigate(['/resume']);
     });
   }
   deleteEducation(educationId: string) {

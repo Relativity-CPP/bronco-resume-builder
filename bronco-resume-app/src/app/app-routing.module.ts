@@ -5,6 +5,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ResumeInfoComponent } from './resume-info/resume-info/resume-info.component';
 import { ContactInfoCreateComponent } from './contact-info/contact-info-create/contact-info-create.component';
 import { AwardCreateComponent } from './awards/award-create/award-create.component';
+import { EducationCreateComponent } from './education/education-create/education-create.component';
 import { AuthGuard } from './auth/auth.guards';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'edit/award/:awardId', component: AwardCreateComponent, canActivate: [AuthGuard]},
   {path: 'create/contact', component: ContactInfoCreateComponent, canActivate: [AuthGuard]},
   {path: 'create/award', component: AwardCreateComponent, canActivate: [AuthGuard]},
+  {path: 'create/education', component: EducationCreateComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
 
