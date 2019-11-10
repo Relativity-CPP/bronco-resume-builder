@@ -12,4 +12,4 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info text mat-body-1" *ngIf="awardList.length <= 0">Add Awards</p>
+<a mat-button color="primary" [routerLink]="['/create/award']">Add New Award</a>

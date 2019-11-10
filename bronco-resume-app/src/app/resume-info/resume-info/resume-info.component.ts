@@ -15,6 +15,7 @@ import { Project } from '../../projects/project.model';
 import { ProjectService } from '../../projects/project.service';
 import { Skill } from '../../skills/skill.model';
 import { SkillService } from '../../skills/skill.service';
+import { Router } from '@angular/router';
 
 @Component ({
   selector: 'app-resume-info',
@@ -41,7 +42,7 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
   constructor( public awardsService: AwardsService, public contactInfoService: ContactInfoService,
                public educationService: EducationService, public experienceService: ExperienceService,
                public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
-               public skillService: SkillService ) {}
+               public skillService: SkillService, private router: Router) {}
 
 
   ngOnInit() {
@@ -88,8 +89,8 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
       });
   }
 
-  onDeleteAward(awardId: string) {
-    this.awardsService.deleteAward(awardId);
+  onAddAward() {
+    this.router.navigate(['/create/award']);
   }
   onDeleteEducation(educationId: string) {
     this.educationService.deleteEducation(educationId);
