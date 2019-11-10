@@ -49,6 +49,10 @@ export class AwardsService {
         console.log(responseData.message);
     });
   }
+  updateAward(id: string, award: Award) {
+    this.http.put('http://localhost:3000/api/awards/' + id, award)
+      .subscribe(response => console.log(response));
+  }
   deleteAward(awardId: string) {
     this.http.delete('http://localhost:3000/api/awards/' + awardId)
       .subscribe(() => {
@@ -59,5 +63,8 @@ export class AwardsService {
   }
   getAwardUpdateListener() {
     return this.awardsUpdated.asObservable();
+  }
+  getAward(id: string) {
+    return {...this.awards.find(award => award.id === id)};
   }
 }

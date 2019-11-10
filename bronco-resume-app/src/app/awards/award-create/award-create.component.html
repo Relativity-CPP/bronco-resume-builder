@@ -1,5 +1,5 @@
 <div class="award-container">
-  <form (submit)="onAddAward(awardForm)" #awardForm="ngForm">
+  <form (submit)="onSaveAward(awardForm)" #awardForm="ngForm">
     <mat-card>
       <mat-card-title>Awards</mat-card-title>
       <mat-form-field>
@@ -7,7 +7,7 @@
           matInput
           name="title"
           placeholder="Award Title"
-          ngModel
+          [ngModel]="award.title"
           required
           #title="ngModel">
           <mat-error *ngIf="title.invalid">Please enter an award title.</mat-error>
@@ -18,7 +18,7 @@
           name="date"
           [matDatepicker]="picker"
           placeholder="Date"
-          ngModel
+          [ngModel]="award.date"
           required
           #date="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -30,7 +30,7 @@
           name="description"
           maxlength="50"
           placeholder="Enter your description here..."
-          ngModel
+          [ngModel]="award.description"
           #desc="ngModel"></textarea>
           <mat-error *ngIf="desc.invalid">Please shorten your description.</mat-error>
       </mat-form-field>

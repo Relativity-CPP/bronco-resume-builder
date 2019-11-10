@@ -28,6 +28,19 @@ router.get('', (req, res, next) => {
   })
 });
 
+router.put('/:id', (req, res, next) => {
+  const award = new Award({
+    title: req.body.title,
+    date: req.body.date,
+    description: req.body.description,
+    _id: req.body.id
+  })
+  Award.updateOne({_id: req.params.id}, award)
+    .then(result => {
+      console.log(result);
+      res.status(200).json({message: "Award update successful!"})
+    })
+});
 router.delete('/:id', (req, res, next) => {
   Award.deleteOne({ _id: req.params.id }).then(result => {
    console.log(result);
