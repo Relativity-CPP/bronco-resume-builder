@@ -35,7 +35,6 @@ export class ContactInfoService {
         this.contactInfo.emailAddress = contactInfoData.contactInfo.emailAddress;
         this.contactInfo.socialMediaLink = contactInfoData.contactInfo.socialMediaLink;
         this.contactInfo.id = contactInfoData.contactInfo._id;
-        console.log(this.contactInfo);
         this.contactInfoUpdated.next(Object.create(this.contactInfo));
       });
     }

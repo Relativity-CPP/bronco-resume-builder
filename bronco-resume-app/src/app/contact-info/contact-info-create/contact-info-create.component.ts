@@ -62,11 +62,8 @@ export class ContactInfoCreateComponent implements OnInit {
         emailAddress: form.value.emailAddress,
         socialMediaLink: form.value.socialMediaLink
       };
-      console.log(contactInfo);
       this.contactInfoService.updateContactInfo(this.contactId, contactInfo);
     }
-
     this.isLoading = true;
-
   }
 }

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Education } from '../education.model';
 import { EducationService } from '../education.service';
+import { Router } from '@angular/router';
 
 @Component ({
   selector: 'app-education-create',
@@ -12,6 +13,7 @@ import { EducationService } from '../education.service';
 
 export class EducationCreateComponent {
 
+  private router: Router;
   constructor(public educationService: EducationService) {}
 
   onAddEducation(form: NgForm) {
