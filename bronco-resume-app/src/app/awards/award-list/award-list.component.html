@@ -1,9 +1,10 @@
-<mat-accordion multi="true" *ngIf="awardList.length > 0">
+<mat-spinner *ngIf='isLoading'></mat-spinner>
+<mat-accordion multi="true" *ngIf="awardList.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let award of awardList">
     <mat-expansion-panel-header>
       {{ award.title }}
     </mat-expansion-panel-header>
-    <p>{{ award.date }}</p>
+    <p>{{ award.date.substring(8, 10)}}/{{award.date.substring(0,5)}}</p>
     <p>{{ award.description }}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit/award', award.id]">Edit</a>

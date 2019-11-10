@@ -12,22 +12,22 @@ import { AwardsService } from '../awards.service';
 
 export class AwardListComponent implements OnInit, OnDestroy {
   awardList: Award[] = [];
+  isLoading = false;
   private awardsSub: Subscription;
-
   constructor(public awardsService: AwardsService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.awardsService.getAwards();
     this.awardsSub = this.awardsService.getAwardUpdateListener()
       .subscribe((awards: Award[]) => {
+        this.isLoading = false;
         this.awardList = awards;
       });
   }
-
   onDelete(awardId: string) {
     this.awardsService.deleteAward(awardId);
   }
-
   ngOnDestroy() {
     this.awardsSub.unsubscribe();
   }

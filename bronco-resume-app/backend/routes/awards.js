@@ -27,7 +27,21 @@ router.get('', (req, res, next) => {
     })
   })
 });
-
+router.get('/:id', (req, res, next) => {
+  Award.findById(req.params.id).then(award => {
+    if (award) {
+      res.status(200).json(award);
+    } else {
+      res.status(404).json({message: 'Award not found!'});
+    }
+  })
+  .then(documents => {
+    res.status(200).json({
+      message: 'Awards fetched successfully!',
+      awards: documents
+    })
+  })
+});
 router.put('/:id', (req, res, next) => {
   const award = new Award({
     title: req.body.title,

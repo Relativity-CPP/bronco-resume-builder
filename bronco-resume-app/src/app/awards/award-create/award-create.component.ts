@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 
 import { Award } from '../award.model';
 import { AwardsService } from '../awards.service';
-import { ContactInfo } from 'src/app/contact-info/contact-info.model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component ({
@@ -15,6 +14,7 @@ export class AwardCreateComponent implements OnInit {
   private mode = 'create';
   private awardId: string;
   award: Award;
+  isLoading = false;
   constructor(public awardsService: AwardsService, public route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -22,7 +22,16 @@ export class AwardCreateComponent implements OnInit {
       if (paramMap.has('awardId')) {
         this.mode = 'edit';
         this.awardId = paramMap.get('awardId');
-        this.award = this.awardsService.getAward(this.awardId);
+        this.isLoading = true;
+        this.awardsService.getAward(this.awardId).subscribe(awardData => {
+          this.isLoading = false;
+          this.award = {
+            id: awardData._id,
+            title: awardData.title,
+            date: awardData.date,
+            description: awardData.description
+          };
+        });
       } else {
         this.mode = 'create';
         this.awardId = null;
@@ -34,12 +43,12 @@ export class AwardCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     if (this.mode === 'create') {
-      const dateEarned = this.awardsService.transformDate(form.value.date);
       const award: Award = {
         id: '',
         title: form.value.title,
-        date: dateEarned,
+        date: form.value.date,
         description: form.value.description
       };
       this.awardsService.addAward(award);

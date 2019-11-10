@@ -17,3 +17,7 @@
   width: 75%;
   margin: auto;
 }
+
+.award-container mat-spinner {
+  margin: auto;
+}

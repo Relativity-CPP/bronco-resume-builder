@@ -6,13 +6,14 @@ import { map } from 'rxjs/operators';
 import { Award } from './award.model';
 
 import {DatePipe, formatDate} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class AwardsService {
     private awards: Award[] = [];
     private awardsUpdated = new Subject<Award[]>();
 
-  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient) {}
+  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient, private router: Router) {}
 
   transformDate(date) {
     return formatDate(date, 'MM/dd/yyyy', this.locale);
@@ -46,12 +47,18 @@ export class AwardsService {
         award.id = id;
         this.awards.push(award);
         this.awardsUpdated.next([...this.awards]);
-        console.log(responseData.message);
+        this.router.navigate(['/resume'])
     });
   }
   updateAward(id: string, award: Award) {
     this.http.put('http://localhost:3000/api/awards/' + id, award)
-      .subscribe(response => console.log(response));
+      .subscribe(response => {
+        const updatedAwards = [...this.awards];
+        const oldAwardIndex = updatedAwards.findIndex(a => a.id === award.id);
+        updatedAwards[oldAwardIndex] = award;
+        this.awardsUpdated.next([...this.awards]);
+        this.router.navigate(['/resume'])
+      });
   }
   deleteAward(awardId: string) {
     this.http.delete('http://localhost:3000/api/awards/' + awardId)
@@ -65,6 +72,7 @@ export class AwardsService {
     return this.awardsUpdated.asObservable();
   }
   getAward(id: string) {
-    return {...this.awards.find(award => award.id === id)};
+    return this.http.get<{message: string, title: string, date: string, description: string, _id: string}>(
+      'http://localhost:3000/api/awards/' + id);
   }
 }

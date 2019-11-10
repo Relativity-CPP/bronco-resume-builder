@@ -1,5 +1,6 @@
 <div class="award-container">
-  <form (submit)="onSaveAward(awardForm)" #awardForm="ngForm">
+  <mat-spinner *ngIf='isLoading'></mat-spinner>
+  <form (submit)="onSaveAward(awardForm)" #awardForm="ngForm" *ngIf='!isLoading'>
     <mat-card>
       <mat-card-title>Awards</mat-card-title>
       <mat-form-field>
