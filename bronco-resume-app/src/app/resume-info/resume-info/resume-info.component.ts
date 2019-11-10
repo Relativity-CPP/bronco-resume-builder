@@ -112,7 +112,4 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
     this.projectSub.unsubscribe();
     this.skillSub.unsubscribe();
   }
-  getContactInfoObject() {
-    return {...this.contactInfo};
-}
 }

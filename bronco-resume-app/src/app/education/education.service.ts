@@ -62,4 +62,8 @@ export class EducationService {
   getEducationUpdateListener() {
     return this.educationListUpdated.asObservable();
   }
+  // startChange
+  getEducationListClone() {
+    return {...this.educationList};
+  }
 }

@@ -26,7 +26,7 @@ export class AppComponent {
   public download(): void {
     const documentCreator = new DocumentCreator(this.awardsService, this.contactInfoService, this.educationService,
       this.experienceService, this.objectiveStatementService, this.projectService, this.skillService); // pass in in order
-    const doc = documentCreator.create([experiences, education, skills, achievements]);
+    const doc = documentCreator.create();
 
     const packer = new Packer();
     packer.toBlob(doc).then(blob => {

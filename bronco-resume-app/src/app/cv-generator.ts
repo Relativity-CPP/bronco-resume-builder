@@ -15,38 +15,42 @@ import {ObjectiveStatementService} from './objective/objectveStatement.service';
 import {ProjectService} from './projects/project.service';
 import {SkillService} from './skills/skill.service';
 
-const FIRSTNAMEs = 'j';
-const LASTNAME  = 'LN' ;
-const PHONE_NUMBER = '07534563401';
-const PROFILE_URL = 'https://www.linkedin.com/in/dolan1';
-const EMAIL = 'docx@docx.com';
-const ADDRESS = '123 sesame st' ;
-
 export class DocumentCreator {
    constructor( public awardsService: AwardsService, public contactInfoService: ContactInfoService,
                 public educationService: EducationService, public experienceService: ExperienceService,
                 public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
                 public skillService: SkillService ) {}
-  // const awardList: Award[] = [];
+
+ awardList: Award[] = [];
  contactInfo: ContactInfo;
-// const educationList: Education[] = [];
-// const experienceList: Experience[] = [];
+ educationList: Education[] = [];
+ experienceList: Experience[] = [];
  objectiveStatement: ObjectiveStatement;
-// const projectList: Project[] = [];
-// const skillList: Skill[] = [];
-create(data) {
-    const experiences = data[0];
-    const educations = data[1];
-    const skills = data[2];
-    const achievements = data[3];
+ projectList: Project[] = [];
+ skillList: Skill[] = [];
+create() {
     const document = new Document();
+    // setting local objects equal to those in the database
     this.contactInfo = this.contactInfoService.getContactInfoClone();
     this.objectiveStatement = this.objectiveStatementService.getObjectiveClone();
+    this.educationList = this.educationService.getEducationListClone();
     //
     document.addParagraph(new Paragraph(this.contactInfo.firstName + ' ' + this.contactInfo.lastName).title());
     document.addParagraph(this.createContactInfo(this.contactInfo.phoneNumber, this.contactInfo.socialMediaLink,
       this.contactInfo.emailAddress, this.contactInfo.homeAddress));
     document.addParagraph(this.createObjectiveStatement(this.objectiveStatement.statement));
+    document.addParagraph(this.createHeading('Education'));
+    // for loop to display education
+    for (let i of Object.keys(this.educationList) ) {
+      document.addParagraph(
+        this.createSchoolHeader(this.educationList[i].schoolName,
+          this.educationList[i].schoolStartDate + ' - ' + this.educationList[i].schoolEndDate)
+      );
+      document.addParagraph(this.createRoleText(this.educationList[i].major + ' - ' +
+        this.educationList[i].degreeType + ' Graduated with ' +
+      this.educationList[i].gpa + ' G.P.A'));
+    }
+    // end education for loop
     return document;
   }
   private createContactInfo(phoneNumber: string, profileUrl: string, email: string, address: string) {
@@ -65,5 +69,34 @@ create(data) {
   paragraph.addRun(objectiveStatementLine);
   return paragraph;
   }
+
+  createHeading(text) {
+    return new Paragraph(text)
+      .heading1().thematicBreak();
+  }
+  createSubHeading(text) {
+  return new Paragraph(text).heading2();
+  }
+
+  createSchoolHeader(schoolname, datetext) {
+  const paragraph = new Paragraph()
+    .maxRightTabStop();
+  const school = new TextRun
+  (schoolname).bold();
+  const date = new TextRun(datetext).tab().bold();
+  paragraph.addRun(school);
+  paragraph.addRun(date);
+  return paragraph;
+  }
+  createRoleText(roleText) {
+    const paragraph = new Paragraph();
+    const role = new TextRun(roleText).italic();
+
+    paragraph.addRun(role);
+
+    return paragraph;
+  }
+
+  // move the download function to the resume-info as a new component
 }
 
