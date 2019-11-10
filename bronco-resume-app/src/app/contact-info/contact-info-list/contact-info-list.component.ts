@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { ContactInfo } from '../contact-info.model';
 import { ContactInfoService } from '../contact-info.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component ({
   selector: 'app-contact-info-list',
@@ -12,9 +13,11 @@ import { ContactInfoService } from '../contact-info.service';
 
 export class ContactInfoListComponent implements OnInit, OnDestroy {
   contactInfo: ContactInfo;
+  userIsAuthenticated = false;
   private contactInfoSub: Subscription;
+  private authStatusSub: Subscription;
 
-  constructor(public contactInfoService: ContactInfoService) {}
+  constructor(public contactInfoService: ContactInfoService, private authService: AuthService) {}
 
   ngOnInit() {
     this.contactInfoService.getContactInfo();
@@ -22,9 +25,15 @@ export class ContactInfoListComponent implements OnInit, OnDestroy {
       .subscribe((contactInfo: ContactInfo) => {
         this.contactInfo = contactInfo;
       });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe( isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   ngOnDestroy() {
     this.contactInfoSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

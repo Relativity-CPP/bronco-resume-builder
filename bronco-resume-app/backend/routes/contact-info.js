@@ -1,10 +1,11 @@
 const express = require('express');
-
+const checkAuth = require('../middleware/check-auth');
 const router = express.Router();
 
 const ContactInfo = require('../models/contact-info');
 
-router.post('', (req, res, next) => {
+router.post('',
+  checkAuth, (req, res, next) => {
   const contactInfo = new ContactInfo({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -21,7 +22,8 @@ router.post('', (req, res, next) => {
   });
 });
 
-router.get('', (req, res, next) => {
+router.get('',
+  checkAuth, (req, res, next) => {
   ContactInfo.findOne()
   .then(document => {
     res.status(200).json({
@@ -31,7 +33,8 @@ router.get('', (req, res, next) => {
   })
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id',
+  checkAuth, (req, res, next) => {
   const contact = new ContactInfo({
     firstName: req.body.firstName,
     lastName: req.body.lastName,

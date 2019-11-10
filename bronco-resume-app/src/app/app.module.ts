@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {
   MatFormFieldModule,
@@ -37,6 +37,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent} from './auth/login/login.component';
 import { SignupComponent} from './auth/signup/signup.component';
 import { ResumeInfoComponent } from './resume-info/resume-info/resume-info.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 
 @NgModule({
@@ -79,7 +80,7 @@ import { ResumeInfoComponent } from './resume-info/resume-info/resume-info.compo
     HttpClientModule,
     MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

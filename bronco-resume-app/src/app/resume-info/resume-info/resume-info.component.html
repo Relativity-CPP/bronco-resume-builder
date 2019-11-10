@@ -3,89 +3,17 @@
   <app-contact-info-list></app-contact-info-list>
   <p></p>
   <h1>Objective Statement</h1>
-  <p> {{ objectiveStatement?.statement }}</p>
+  <app-objective-list></app-objective-list>
   <p></p>
   <h1>Education</h1>
-  <mat-accordion multi="true" *ngIf="educationList.length > 0">
-    <mat-expansion-panel *ngFor="let education of educationList">
-      <mat-expansion-panel-header>
-        {{ education.schoolName }}
-      </mat-expansion-panel-header>
-      <p>{{ education.degreeType }}</p>
-      <p>{{ education.major }}</p>
-      <p *ngIf="education.gpa.length > 0">{{education.gpa}}</p>
-      <p>{{ education.schoolStartDate }}</p>
-      <p>{{ education.schoolEndDate }}</p>
-      <mat-action-row>
-        <button mat-button color="primary">Edit</button>
-        <button mat-button color="warn" (click)="onDeleteEducation(education.id)">Delete</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <p class="info text mat-body-1" *ngIf="educationList.length <= 0">Add Education History</p>
-  <p></p>
-  <h1>Experience</h1>
-  <mat-accordion multi="true" *ngIf="experienceList.length > 0">
-    <mat-expansion-panel *ngFor="let experience of experienceList">
-      <mat-expansion-panel-header>
-        {{ experience.jobTitle }}
-      </mat-expansion-panel-header>
-      <p>{{ experience.companyName }}</p>
-      <p>{{ experience.jobStartDate }}</p>
-      <p>{{ experience.jobStartDate }}</p>
-      <p>{{ experience.description }}</p>
-      <mat-action-row>
-        <button mat-button color="primary">Edit</button>
-        <button mat-button color="warn" (click)="onDeleteExperience(experience.id)">Delete</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <p class="info text mat-body-1" *ngIf="experienceList.length <= 0">Add Experience</p>
+  <app-education-list></app-education-list>
   <p></p>
   <h1>Skills</h1>
-  <mat-accordion multi="true" *ngIf="skillList.length > 0">
-    <mat-expansion-panel *ngFor="let skill of skillList">
-      <mat-expansion-panel-header>
-        {{ skill.description }}
-      </mat-expansion-panel-header>
-      <mat-action-row>
-        <button mat-button color="primary">Edit</button>
-        <button mat-button color="warn" (click)="onDeleteSkill(skill.id)">Delete</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <p class="info text mat-body-1" *ngIf="skillList.length <= 0">Add Skills</p>
+  <app-skill-list></app-skill-list>
   <p></p>
   <h1>Projects</h1>
-  <mat-accordion multi="true" *ngIf="projectList.length > 0">
-    <mat-expansion-panel *ngFor="let project of projectList">
-      <mat-expansion-panel-header>
-        {{ project.title }}
-      </mat-expansion-panel-header>
-      <p>{{ project.startDate }}</p>
-      <p>{{ project.endDate }}</p>
-      <p>{{ project.description }}</p>
-      <mat-action-row>
-        <button mat-button color="primary">Edit</button>
-        <button mat-button color="warn" (click)="onDeleteProject(project.id)">Delete</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
+  <app-project-list></app-project-list>
   <p></p>
   <h1>Awards</h1>
-  <p class="info text mat-body-1" *ngIf="projectList.length <= 0">Add Projects</p>
-  <mat-accordion multi="true" *ngIf="awardList.length > 0">
-      <mat-expansion-panel *ngFor="let award of awardList">
-        <mat-expansion-panel-header>
-          {{ award.title }}
-        </mat-expansion-panel-header>
-        <p>{{ award.date }}</p>
-        <p>{{ award.description }}</p>
-        <mat-action-row>
-          <button mat-button color="primary">Edit</button>
-          <button mat-button color="warn" (click)="onDelete(award.id)">Delete</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <p class="info text mat-body-1" *ngIf="awardList.length <= 0">Add Awards</p>
+  <app-award-list></app-award-list>
 </div>

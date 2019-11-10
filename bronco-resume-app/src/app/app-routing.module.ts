@@ -6,10 +6,11 @@ import { ResumeInfoComponent } from './resume-info/resume-info/resume-info.compo
 import { ContactInfoCreateComponent } from './contact-info/contact-info-create/contact-info-create.component';
 
 const routes: Routes = [
-  {path: '', component: SignupComponent},
+  {path: '', component: LoginComponent},
+  {path: 'resume', component: ResumeInfoComponent},
   {path: 'edit/contact/:contactId', component: ContactInfoCreateComponent},
-  {path: 'createContact', component: ContactInfoCreateComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'create/contact', component: ContactInfoCreateComponent},
+  {path: 'contact', component: LoginComponent},
   {path: 'signup', component: SignupComponent}
 ];
 
