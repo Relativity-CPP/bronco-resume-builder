@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Packer } from 'docx';
 import { saveAs } from 'file-saver/FileSaver';
 import {DocumentCreator} from './cv-generator';
@@ -11,6 +11,8 @@ import {ObjectiveStatementService} from './objective/objectveStatement.service';
 import {ProjectService} from './projects/project.service';
 import {SkillService} from './skills/skill.service';
 
+import { AuthService } from './auth/auth.service';
+
 
 
 @Component({
@@ -18,11 +20,11 @@ import {SkillService} from './skills/skill.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor( public awardsService: AwardsService, public contactInfoService: ContactInfoService,
                public educationService: EducationService, public experienceService: ExperienceService,
                public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
-               public skillService: SkillService ) {}
+               public skillService: SkillService, private authService: AuthService ) {}
   public download(): void {
     const documentCreator = new DocumentCreator(this.awardsService, this.contactInfoService, this.educationService,
       this.experienceService, this.objectiveStatementService, this.projectService, this.skillService); // pass in in order
@@ -34,5 +36,9 @@ export class AppComponent {
       saveAs(blob, 'myresume.docx');
       console.log('Document created successfully');
     });
+  }
+
+  ngOnInit() {
+    this.authService.autoAuthUser();
   }
 }

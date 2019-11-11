@@ -4,8 +4,8 @@
     <mat-expansion-panel-header>
       {{ award.title }}
     </mat-expansion-panel-header>
-    <p>{{ award.date.substring(5, 7)}}/{{award.date.substring(0,4)}}</p>
-    <p>{{ award.description }}</p>
+    <p>Date: {{ award.date.substring(5, 7)}}/{{award.date.substring(0,4)}}</p>
+    <p>Description: {{ award.description }}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit/award', award.id]">Edit</a>
       <button mat-button color="warn" (click)="onDelete(award.id)">Delete</button>

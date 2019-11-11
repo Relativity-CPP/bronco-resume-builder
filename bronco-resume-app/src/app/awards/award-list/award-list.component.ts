@@ -24,6 +24,7 @@ export class AwardListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.awardList = awards;
       });
+
   }
   onDelete(awardId: string) {
     this.awardsService.deleteAward(awardId);

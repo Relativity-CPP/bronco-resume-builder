@@ -8,11 +8,12 @@
 }
 
 .contact-info-list-container mat-card {
-  margin-top: 16px;
+  margin-top: 1rem;
   margin: auto;
 }
 
-.contact-info-list-container mat-card mat-form-field {
+.contact-info-list-container mat-card mat-action-row {
   margin-top: 0px;
-  width: 51%;
+  display: block;
+  margin: auto;
 }

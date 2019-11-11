@@ -17,13 +17,11 @@ export class ProjectCreateComponent {
     if (form.invalid) {
       return;
     }
-    const formattedStartDate = this.projectService.transformDate(form.value.startDate);
-    const formattedEndDate = this.projectService.transformDate(form.value.endDate);
     const project: Project = {
       id: '',
       title: form.value.title,
-      startDate: formattedStartDate,
-      endDate: formattedEndDate,
+      startDate: form.value.startDate,
+      endDate: form.value.endDate,
       description: form.value.description
     };
     this.projectService.addProject(project);

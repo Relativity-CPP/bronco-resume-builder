@@ -16,6 +16,7 @@ import { ProjectService } from '../../projects/project.service';
 import { Skill } from '../../skills/skill.model';
 import { SkillService } from '../../skills/skill.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component ({
   selector: 'app-resume-info',
@@ -31,6 +32,7 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
   objectiveStatement: ObjectiveStatement;
   projectList: Project[] = [];
   skillList: Skill[] = [];
+  userIsAuthenticated = false;
   private skillSub: Subscription;
   private projectSub: Subscription;
   private objectiveStatementSub: Subscription;
@@ -89,21 +91,6 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
       });
   }
 
-  onAddAward() {
-    this.router.navigate(['/create/award']);
-  }
-  onDeleteEducation(educationId: string) {
-    this.educationService.deleteEducation(educationId);
-  }
-  onDeleteExperience(experienceId: string) {
-    this.experienceService.deleteExperience(experienceId);
-  }
-  onDeleteProject(projectId: string) {
-    this.projectService.deleteProject(projectId);
-  }
-  onDeleteSkill(skillId: string) {
-    this.skillService.deleteSkill(skillId);
-  }
   ngOnDestroy() {
     this.awardsSub.unsubscribe();
     this.contactInfoSub.unsubscribe();

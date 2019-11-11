@@ -1,11 +1,10 @@
-import { Inject, Injectable, LOCALE_ID} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Project } from './project.model';
 
-import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
@@ -13,11 +12,8 @@ export class ProjectService {
     private projectList: Project[] = [];
     private projectListUpdated = new Subject<Project[]>();
 
-  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  transformDate(date) {
-    return formatDate(date, 'MM/dd/yyyy', this.locale);
-  }
   getProject() {
     this.http
       .get<{ message: string; project: any }>(
@@ -28,6 +24,7 @@ export class ProjectService {
           return {
             title: project.title,
             startDate: project.startDate,
+            description: project.description,
             endDate: project.endDate,
             id: project._id
           };
