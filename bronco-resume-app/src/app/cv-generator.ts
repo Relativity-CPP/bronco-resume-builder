@@ -65,7 +65,11 @@ create() {
          this.experienceList[i].jobEndDate.substring(0, 10))
       );
       document.addParagraph(this.createRoleText(this.experienceList[i].jobTitle));
-      document.addParagraph(this.createBullet(this.experienceList[i].description));
+      const bulletPoints = this.splitParagraphIntoBullets(this.experienceList[i].description);
+      bulletPoints.forEach((bulletPoint) => {
+        document.addParagraph(this.createBullet (bulletPoint));
+      });
+      // document.addParagraph(this.createBullet(this.experienceList[i].description));
     }
     // Skills Section
     document.addParagraph(this.createHeading('Skills'));
@@ -76,7 +80,11 @@ create() {
     document.addParagraph(this.createSchoolHeader(this.projectList[i].title,
       this.projectList[i].startDate.substring(0, 10) + ' - ' + this.projectList[i].endDate.substring(0, 10))
     );
-    document.addParagraph(this.createBullet(this.projectList[i].description));
+    const bulletPoints = this.splitParagraphIntoBullets(this.projectList[i].description);
+    bulletPoints.forEach((bulletPoint) => {
+        document.addParagraph(this.createBullet (bulletPoint));
+      });
+    // document.addParagraph(this.createBullet(this.projectList[i].description));
   }
     // Awards
     document.addParagraph(this.createHeading('Awards'));
@@ -84,7 +92,11 @@ create() {
     document.addParagraph(this.createSchoolHeader(this.awardList[i].title,
       this.awardList[i].date.substring(0, 10))
     );
-    document.addParagraph(this.createBullet(this.awardList[i].description));
+    const bulletPoints = this.splitParagraphIntoBullets(this.awardList[i].description);
+    bulletPoints.forEach((bulletPoint) => {
+        document.addParagraph(this.createBullet (bulletPoint));
+    });
+    // document.addParagraph(this.createBullet(this.awardList[i].description));
   }
     // end education for loop
     return document;
@@ -148,16 +160,24 @@ create() {
   skillHeader() {
     const paragraph = new Paragraph();
     const comma = new TextRun(', ');
+    let j = 0;
     for (let i of Object.keys(this.skillList)) {
       const skill = new TextRun(this.skillList[i].description);
       paragraph.addRun(skill);
+      j = j + 1;
+      // tslint:disable-next-line:triple-equals
+      if (Object.keys(this.skillList).length == j) {
+        break;
+      }
       paragraph.addRun(comma);
     }
     const end = new TextRun('.');
     paragraph.addRun(end);
     return paragraph;
   }
-
+  splitParagraphIntoBullets(text) {
+    return text.split('\n');
+  }
   // move the download function to the resume-info as a new component
 }
 

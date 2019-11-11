@@ -21,3 +21,6 @@
 .award-container mat-spinner {
   margin: auto;
 }
+textarea {
+  height: 150px;
+}

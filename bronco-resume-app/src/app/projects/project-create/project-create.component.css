@@ -17,3 +17,6 @@
   width: 75%;
   margin: auto;
 }
+textarea {
+ height: 150px;
+}
