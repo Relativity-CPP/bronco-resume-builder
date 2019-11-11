@@ -50,15 +50,15 @@ create() {
         this.createSchoolHeader(this.educationList[i].schoolName,
           this.educationList[i].schoolStartDate + ' - ' + this.educationList[i].schoolEndDate)
       );
-      document.addParagraph(this.createRoleText(this.educationList[i].major + ' - ' +
-        this.educationList[i].degreeType + ' Graduated with ' +
-      this.educationList[i].gpa + ' G.P.A'));
+      document.addParagraph(this.createHeader(this.educationList[i].major + ' - ' +
+        this.educationList[i].degreeType,
+      'GPA: ' + this.educationList[i].gpa));
     }
     document.addParagraph(this.createHeading('Experience'));
     for (let i of Object.keys(this.experienceList) ) {
       document.addParagraph(
        this.createSchoolHeader(this.experienceList[i].companyName,
-        this.experienceList[i].jobStartDate + '-' + this.experienceList[i].jobEndDate)
+        this.experienceList[i].jobStartDate + ' - ' + this.experienceList[i].jobEndDate)
       );
       document.addParagraph(this.createRoleText(this.experienceList[i].jobTitle));
       document.addParagraph(this.createBullet(this.experienceList[i].description));
@@ -70,7 +70,7 @@ create() {
   document.addParagraph(this.createHeading('Projects'));
     for (let i of Object.keys(this.projectList) ) {
     document.addParagraph(this.createSchoolHeader(this.projectList[i].title,
-      this.projectList[i].startDate + '-' + this.projectList[i].endDate)
+      this.projectList[i].startDate + ' - ' + this.projectList[i].endDate)
     );
     document.addParagraph(this.createBullet(this.projectList[i].description));
   }
@@ -117,6 +117,14 @@ create() {
   const date = new TextRun(datetext).tab().bold();
   paragraph.addRun(school);
   paragraph.addRun(date);
+  return paragraph;
+  }
+  createHeader(first, last) {
+  const paragraph = new Paragraph().maxRightTabStop();
+  const a = new TextRun(first);
+  const b = new TextRun(last).tab();
+  paragraph.addRun(a);
+  paragraph.addRun(b);
   return paragraph;
   }
 
