@@ -30,7 +30,8 @@ export class AwardsService {
             title: award.title,
             date: award.date,
             description: award.description,
-            id: award._id
+            id: award._id,
+            creator: award.creator
           };
         });
       }))

@@ -1,14 +1,16 @@
 const express = require('express');
-
+const checkAuth = require('../middleware/check-auth');
 const router = express.Router();
 
 const Award = require('../models/award');
 
-router.post('', (req, res, next) => {
+router.post('',
+checkAuth, (req, res, next) => {
   const award = new Award({
     title: req.body.title,
     date: req.body.date,
-    description: req.body.description
+    description: req.body.description,
+    creator: req.userData.userId
   });
   award.save().then(createdAward => {
     res.status(201).json({
@@ -18,8 +20,9 @@ router.post('', (req, res, next) => {
   });
 });
 
-router.get('', (req, res, next) => {
-  Award.find()
+router.get('',
+  checkAuth, (req, res, next) => {
+  Award.find({creator: req.userData.userId})
   .then(documents => {
     res.status(200).json({
       message: 'Awards fetched successfully!',
@@ -27,7 +30,9 @@ router.get('', (req, res, next) => {
     })
   })
 });
-router.get('/:id', (req, res, next) => {
+
+router.get('/:id',
+  checkAuth, (req, res, next) => {
   Award.findById(req.params.id).then(award => {
     if (award) {
       res.status(200).json(award);
@@ -42,21 +47,23 @@ router.get('/:id', (req, res, next) => {
     })
   })
 });
-router.put('/:id', (req, res, next) => {
+router.put('/:id',
+  checkAuth, (req, res, next) => {
   const award = new Award({
     title: req.body.title,
     date: req.body.date,
     description: req.body.description,
     _id: req.body.id
   })
-  Award.updateOne({_id: req.params.id}, award)
+  Award.updateOne({_id: req.params.id, creator: req.userData.userId}, award)
     .then(result => {
       console.log(result);
       res.status(200).json({message: "Award update successful!"})
     })
 });
-router.delete('/:id', (req, res, next) => {
-  Award.deleteOne({ _id: req.params.id }).then(result => {
+router.delete('/:id',
+  checkAuth, (req, res, next) => {
+  Award.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
    console.log(result);
    res.status(200).json({ message: "Award deleted!" });
   });
