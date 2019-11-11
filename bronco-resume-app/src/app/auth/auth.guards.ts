@@ -23,10 +23,8 @@ export class AuthGuard implements CanActivate {
     import('@angular/router').UrlTree> {
     const isAuth = this.authService.getIsAuth();
     if (!isAuth) {
-      console.log('here');
       this.router.navigate(['/login']);
     }
-    console.log('here');
     return isAuth;
   }
 }
