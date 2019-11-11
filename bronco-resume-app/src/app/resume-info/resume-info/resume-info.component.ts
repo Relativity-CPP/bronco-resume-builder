@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-
+import { saveAs } from 'file-saver/FileSaver';
 import { Award } from '../../awards/award.model';
 import { AwardsService } from '../../awards/awards.service';
 import { ContactInfo } from '../../contact-info/contact-info.model';
@@ -17,6 +17,8 @@ import { Skill } from '../../skills/skill.model';
 import { SkillService } from '../../skills/skill.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import {DocumentCreator} from '../../cv-generator';
+import {Packer} from 'docx';
 
 @Component ({
   selector: 'app-resume-info',
@@ -41,11 +43,23 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
   private contactInfoSub: Subscription;
   private awardsSub: Subscription;
 
+
   constructor( public awardsService: AwardsService, public contactInfoService: ContactInfoService,
                public educationService: EducationService, public experienceService: ExperienceService,
                public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
-               public skillService: SkillService, private router: Router) {}
+               public skillService: SkillService, private authService: AuthService ) {}
+  public download(): void {
+    const documentCreator = new DocumentCreator(this.awardsService, this.contactInfoService, this.educationService,
+      this.experienceService, this.objectiveStatementService, this.projectService, this.skillService); // pass in in order
+    const doc = documentCreator.create();
 
+    const packer = new Packer();
+    packer.toBlob(doc).then(blob => {
+      console.log(blob);
+      saveAs(blob, 'myresume.docx');
+      console.log('Document created successfully');
+    });
+  }
 
   ngOnInit() {
       this.awardsService.getAwards();

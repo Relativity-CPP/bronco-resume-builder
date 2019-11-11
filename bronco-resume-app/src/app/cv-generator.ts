@@ -49,8 +49,8 @@ create() {
     for (let i of Object.keys(this.educationList) ) {
       document.addParagraph(
         this.createSchoolHeader(this.educationList[i].schoolName,
-          this.educationList[i].schoolStartDate.substring(0,10)
-          + ' - ' + this.educationList[i].schoolEndDate.substring(0,10))
+          this.educationList[i].schoolStartDate.substring(0, 10)
+          + ' - ' + this.educationList[i].schoolEndDate.substring(0, 10))
       );
       document.addParagraph(this.createHeader(this.educationList[i].major + ' - ' +
         this.educationList[i].degreeType,
@@ -61,8 +61,8 @@ create() {
     for (let i of Object.keys(this.experienceList) ) {
       document.addParagraph(
        this.createSchoolHeader(this.experienceList[i].companyName,
-        this.experienceList[i].jobStartDate.substring(0,10) + ' - ' +
-         this.experienceList[i].jobEndDate.substring(0,10))
+        this.experienceList[i].jobStartDate.substring(0, 10) + ' - ' +
+         this.experienceList[i].jobEndDate.substring(0, 10))
       );
       document.addParagraph(this.createRoleText(this.experienceList[i].jobTitle));
       document.addParagraph(this.createBullet(this.experienceList[i].description));
@@ -74,7 +74,7 @@ create() {
     document.addParagraph(this.createHeading('Projects'));
     for (let i of Object.keys(this.projectList) ) {
     document.addParagraph(this.createSchoolHeader(this.projectList[i].title,
-      this.projectList[i].startDate.substring(0,10) + ' - ' + this.projectList[i].endDate.substring(0,10))
+      this.projectList[i].startDate.substring(0, 10) + ' - ' + this.projectList[i].endDate.substring(0, 10))
     );
     document.addParagraph(this.createBullet(this.projectList[i].description));
   }
@@ -82,7 +82,7 @@ create() {
     document.addParagraph(this.createHeading('Awards'));
     for (let i of Object.keys(this.awardList) ) {
     document.addParagraph(this.createSchoolHeader(this.awardList[i].title,
-      this.awardList[i].date.substring(0,10))
+      this.awardList[i].date.substring(0, 10))
     );
     document.addParagraph(this.createBullet(this.awardList[i].description));
   }

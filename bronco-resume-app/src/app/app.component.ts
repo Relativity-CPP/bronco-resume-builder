@@ -25,18 +25,18 @@ export class AppComponent implements OnInit {
                public educationService: EducationService, public experienceService: ExperienceService,
                public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
                public skillService: SkillService, private authService: AuthService ) {}
-  public download(): void {
-    const documentCreator = new DocumentCreator(this.awardsService, this.contactInfoService, this.educationService,
-      this.experienceService, this.objectiveStatementService, this.projectService, this.skillService); // pass in in order
-    const doc = documentCreator.create();
-
-    const packer = new Packer();
-    packer.toBlob(doc).then(blob => {
-      console.log(blob);
-      saveAs(blob, 'myresume.docx');
-      console.log('Document created successfully');
-    });
-  }
+// public download(): void {
+//   const documentCreator = new DocumentCreator(this.awardsService, this.contactInfoService, this.educationService,
+//     this.experienceService, this.objectiveStatementService, this.projectService, this.skillService); // pass in in order
+// const doc = documentCreator.create();
+//
+// const packer = new Packer();
+// packer.toBlob(doc).then(blob => {
+//   console.log(blob);
+//   saveAs(blob, 'myresume.docx');
+//   console.log('Document created successfully');
+// });
+// }
 
   ngOnInit() {
     this.authService.autoAuthUser();
