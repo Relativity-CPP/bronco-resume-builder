@@ -10,7 +10,6 @@ export class AuthService {
   private isAuthenticated = false;
   private token: string;
   private tokenTimer: NodeJS.Timer;
-  private newEmail: boolean;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -25,16 +24,12 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
   createUser(email: string, password: string) {
-    this.newEmail = true;
     const authData: AuthData = {email: email, password: password};
-    this.http.post<{success: boolean}>('http://localhost:3000/api/user/signup', authData)
+    this.http.post<{message: string, result: string, success: boolean}>('http://localhost:3000/api/user/signup', authData)
       .subscribe(response => {
-        this.newEmail = response.success;
+        this.router.navigate(['/login']);
       });
-    if (this.newEmail){
-      this.router.navigate(['/login']);
-    }
-    return this.newEmail;
+    return false;
   }
   login(email: string, password: string) {
     const authData: AuthData = {email: email, password: password};
