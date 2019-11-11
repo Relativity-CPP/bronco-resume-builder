@@ -9,5 +9,6 @@
       <mat-error *ngIf = "passwordInput.invalid"> Please enter a valid password.</mat-error>
     </mat-form-field>
     <button mat-raised-button color = "primary" type = "submit">Sign Up</button>
+    <p *ngIf='accountExists'>Account already exists! Try a different email</p>
   </form>
 </mat-card>

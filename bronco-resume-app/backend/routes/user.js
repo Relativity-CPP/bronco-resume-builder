@@ -13,14 +13,16 @@ router.post('/signup', (req, res, next) => {
         password: hash
       });
       user.save().then(result => {
-        res.status(201).json({
+        return res.status(201).json({
           message: 'User added successfully.',
-          result: result
+          result: result,
+          success: true
         });
       })
       .catch(err => {
-        res.status(500).json({
-          error: err
+        return res.status(500).json({
+          error: err,
+          success : false
         });
       });
     });

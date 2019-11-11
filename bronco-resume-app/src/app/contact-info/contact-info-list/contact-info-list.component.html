@@ -1,6 +1,6 @@
 <div class="contact-info-list-container">
-  <mat-card>
-    <div *ngIf='userIsAuthenticated && contactInfo!= null'>
+  <div *ngIf='userIsAuthenticated && contactInfo'>
+    <div>
       <p>First Name: {{ contactInfo?.firstName}}</p>
       <p>Last Name: {{ contactInfo?.lastName }}</p>
       <p>Home Address: {{ contactInfo?.homeAddress }}</p>
@@ -10,7 +10,7 @@
     </div>
       <mat-action-row>
           <a *ngIf='contactInfo!=null' mat-button color="primary" [routerLink]="['/edit/contact/', contactInfo.id]">Edit</a>
-          <a *ngIf='contactInfo===null' mat-button color="primary" [routerLink]="['/create/contact']">Add Contact Information</a>
         </mat-action-row>
-    </mat-card>
+      </div>
+    <a *ngIf='!contactInfo' mat-button color="primary" [routerLink]="['/create/contact']">Add Contact Information</a>
 </div>

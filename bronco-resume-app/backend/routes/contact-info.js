@@ -12,7 +12,8 @@ router.post('',
     homeAddress: req.body.homeAddress,
     phoneNumber: req.body.phoneNumber,
     emailAddress: req.body.emailAddress,
-    socialMediaLink: req.body.socialMediaLink
+    socialMediaLink: req.body.socialMediaLink,
+    creator: req.userData.userId
   });
   contactInfo.save().then(createdContactInfo => {
     res.status(201).json({
@@ -24,8 +25,9 @@ router.post('',
 
 router.get('',
   checkAuth, (req, res, next) => {
-  ContactInfo.findOne()
+  ContactInfo.find({creator: req.userData.userId})
   .then(document => {
+    console.log('this');
     res.status(200).json({
       message: 'ContactInfo fetched successfully!',
       contactInfo: document
@@ -44,11 +46,13 @@ router.put('/:id',
     socialMediaLink: req.body.socialMediaLink,
     _id: req.body.id
   })
-  console.log(contact);
-  ContactInfo.updateOne({_id: req.params.id}, contact)
+  ContactInfo.updateOne({_id: req.params.id, creator: req.userData.userId}, contact)
   .then( result => {
-    console.log(result);
-    res.status(200).json({message: 'Update successful!'})
+    if (result.nModified > 0) {
+      res.status(200).json({message: 'Update successful!'})
+    } else {
+      res.status(401).json({message: 'Not authorized!'})
+    }
   })
 });
 

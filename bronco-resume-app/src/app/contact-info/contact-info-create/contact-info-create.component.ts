@@ -13,7 +13,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 export class ContactInfoCreateComponent implements OnInit {
 
-  contactInfo: ContactInfo;
+  contactInfo: ContactInfo = null;
   private mode = 'create';
   private contactId: string;
   isLoading = false;
