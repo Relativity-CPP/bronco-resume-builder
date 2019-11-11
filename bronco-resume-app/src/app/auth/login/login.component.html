@@ -1,5 +1,6 @@
 <mat-card>
   <form (submit) = "onLogin(loginForm)" #loginForm = "ngForm" >
+    <mat-card-title>Login</mat-card-title>
     <mat-form-field>
       <input matInput name = "email" ngModel type = "email" placeholder = "E-Mail" #emailInput = "ngModel" required email>
       <mat-error *ngIf = "emailInput.invalid">Please enter a valid email.</mat-error>

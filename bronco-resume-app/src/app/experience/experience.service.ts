@@ -63,4 +63,7 @@ export class ExperienceService {
   getExperienceUpdateListener() {
     return this.experienceListUpdated.asObservable();
   }
+  getExperienceListClone() {
+    return {...this.experienceList};
+  }
 }

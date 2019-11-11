@@ -54,4 +54,7 @@ export class SkillService {
   getSkillUpdateListener() {
     return this.skillListUpdated.asObservable();
   }
+  getSkillListClone() {
+    return {...this.skillList};
+  }
 }

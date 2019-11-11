@@ -76,4 +76,7 @@ export class AwardsService {
     return this.http.get<{message: string, title: string, date: string, description: string, _id: string}>(
       'http://localhost:3000/api/awards/' + id);
   }
+  getAwardsListClone() {
+    return {...this.awards};
+  }
 }

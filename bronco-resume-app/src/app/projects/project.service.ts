@@ -59,4 +59,7 @@ export class ProjectService {
   getProjectUpdateListener() {
     return this.projectListUpdated.asObservable();
   }
+  getProjectListClone() {
+    return {...this.projectList};
+  }
 }
