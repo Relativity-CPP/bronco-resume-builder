@@ -33,7 +33,8 @@ export class SkillService {
   }
   addSkill(skill: Skill) {
     this.http
-      .post<{ message: string, skillId: string }>('http://localhost:3000/api/skills', skill)
+      .post<{ message: string, skillId: string }>(
+        'http://localhost:3000/api/skills', skill)
       .subscribe(responseData => {
         const id = responseData.skillId;
         skill.id = id;

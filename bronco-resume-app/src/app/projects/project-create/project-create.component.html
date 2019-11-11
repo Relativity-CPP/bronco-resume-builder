@@ -1,5 +1,5 @@
 <div class="project-container">
-  <form (submit)="onAddProject(projectForm)" #projectForm="ngForm">
+  <form (submit)="onSaveProject(projectForm)" #projectForm="ngForm" *ngIf='!isLoading'>
     <mat-card>
       <mat-card-title>Projects</mat-card-title>
       <mat-form-field>
@@ -7,7 +7,7 @@
           matInput
           name="title"
           placeholder="Project Title"
-          ngModel
+          [ngModel]="project?.title"
           required
           #title="ngModel">
       </mat-form-field>
@@ -17,7 +17,7 @@
           name="startDate"
           [matDatepicker]="picker1"
           placeholder="Start Date"
-          ngModel
+          [ngModel]="project?.startDate"
           required
           #startDate="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -29,7 +29,7 @@
           name="endDate"
           [matDatepicker]="picker2"
           placeholder="End Date"
-          ngModel
+          [ngModel]="project?.endDate"
           required
           #endDate="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -40,7 +40,7 @@
           matInput
           name="description"
           placeholder="Describe your duties/accommplishments here..."
-          ngModel
+          [ngModel]="project?.description"
           #description="ngModel"></textarea>
       </mat-form-field>
       <mat-card-actions>

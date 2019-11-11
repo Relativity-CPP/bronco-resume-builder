@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Award } from '../award.model';
 import { AwardsService } from '../awards.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component ({
   selector: 'app-award-list',
@@ -12,9 +13,12 @@ import { AwardsService } from '../awards.service';
 
 export class AwardListComponent implements OnInit, OnDestroy {
   awardList: Award[] = [];
+  userIsAuthenticated = false;
   isLoading = false;
   private awardsSub: Subscription;
-  constructor(public awardsService: AwardsService) {}
+  private authStatusSub: Subscription;
+
+  constructor(public awardsService: AwardsService, private authService: AuthService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -24,12 +28,17 @@ export class AwardListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.awardList = awards;
       });
-
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe( isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
   onDelete(awardId: string) {
     this.awardsService.deleteAward(awardId);
   }
   ngOnDestroy() {
     this.awardsSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

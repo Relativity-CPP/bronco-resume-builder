@@ -1,5 +1,5 @@
 <div class="experience-container">
-  <form (submit)="onAddExperience(experienceForm)" #experienceForm="ngForm">
+  <form (submit)="onSaveExperience(experienceForm)" #experienceForm="ngForm" *ngIf='!isLoading'>
     <mat-card>
       <mat-card-title>Experience</mat-card-title>
       <mat-form-field>
@@ -7,7 +7,7 @@
           matInput
           name="companyName"
           placeholder="Company Name"
-          ngModel
+          [ngModel]="experience?.companyName"
           required
           #companyName="ngModel">
       </mat-form-field>
@@ -16,7 +16,7 @@
           matInput
           name="jobTitle"
           placeholder="Job Title"
-          ngModel
+          [ngModel]="experience?.jobTitle"
           required
           #jobTitle="ngModel">
       </mat-form-field>
@@ -26,7 +26,7 @@
           name="jobStartDate"
           [matDatepicker]="picker1"
           placeholder="Start Date"
-          ngModel
+          [ngModel]="experience?.jobStartDate"
           required
           #jobStartDate="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -38,7 +38,7 @@
           name="jobEndDate"
           [matDatepicker]="picker2"
           placeholder="End Date"
-          ngModel
+          [ngModel]="experience?.jobEndDate"
           required
           #jobEndDate="ngModel">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -49,7 +49,7 @@
           matInput
           name="description"
           placeholder="Describe your duties/accommplishments here..."
-          ngModel
+          [ngModel]="experience?.description"
           #description="ngModel"></textarea>
       </mat-form-field>
       <mat-card-actions>

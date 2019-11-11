@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Experience } from '../experience.model';
 import { ExperienceService } from '../experience.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component ({
   selector: 'app-experience-create',
@@ -10,25 +11,63 @@ import { ExperienceService } from '../experience.service';
   styleUrls: ['./experience-create.component.css']
 })
 
-export class ExperienceCreateComponent {
+export class ExperienceCreateComponent implements OnInit {
+  private mode = 'create';
+  private experienceId: string;
+  experience: Experience;
+  isLoading = false;
 
-  constructor(public experienceService: ExperienceService) {}
+  constructor(public experienceService: ExperienceService, public route: ActivatedRoute) {}
 
-  onAddExperience(form: NgForm) {
+  ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('experienceId')) {
+        this.mode = 'edit';
+        this.experienceId = paramMap.get('experienceId');
+        this.isLoading = true;
+        this.experienceService.getOneExperience(this.experienceId).subscribe(experienceData => {
+          this.isLoading = false;
+          this.experience = {
+            id: experienceData._id,
+            companyName: experienceData.companyName,
+            jobTitle: experienceData.jobTitle,
+            jobStartDate: experienceData.jobStartDate,
+            jobEndDate: experienceData.jobEndDate,
+            description: experienceData.description
+          };
+        });
+      } else {
+        this.mode = 'create';
+        this.experienceId = null;
+      }
+    });
+  }
+  onSaveExperience(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    const expStartDate = this.experienceService.transformDate(form.value.jobStartDate);
-    const expEndDate = this.experienceService.transformDate(form.value.jobEndDate);
-    const experience: Experience = {
-      id: '',
-      companyName: form.value.companyName,
-      jobTitle: form.value.jobTitle,
-      jobStartDate: expStartDate,
-      jobEndDate: expEndDate,
-      description: form.value.description
-    };
-    this.experienceService.addExperience(experience);
+    this.isLoading = true;
+    if (this.mode === 'create') {
+      const experience: Experience = {
+        id: '',
+        companyName: form.value.companyName,
+        jobTitle: form.value.jobTitle,
+        jobStartDate: form.value.jobStartDate,
+        jobEndDate: form.value.jobEndDate,
+        description: form.value.description
+      };
+      this.experienceService.addExperience(experience);
+    } else {
+      const experience: Experience = {
+        id: this.experienceId,
+        companyName: form.value.companyName,
+        jobTitle: form.value.jobTitle,
+        jobStartDate: form.value.jobStartDate,
+        jobEndDate: form.value.jobEndDate,
+        description: form.value.description
+      };
+      this.experienceService.addExperience(experience);
+    }
     form.resetForm();
   }
 }

@@ -11,7 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./education-create.component.css']
 })
 
-export class EducationCreateComponent implements OnInit{
+export class EducationCreateComponent implements OnInit {
   private mode = 'create';
   private educationId: string;
   education: Education;

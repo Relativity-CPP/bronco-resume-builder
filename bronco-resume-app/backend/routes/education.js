@@ -71,8 +71,7 @@ router.put('/:id',
 router.delete('/:id',
   checkAuth, (req, res, next) => {
   Education.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
-   console.log(result);
-   res.status(200).json({ message: "Education deleted!" });
+  res.status(200).json({ message: "Education deleted!" });
  });
 });
 

@@ -1,16 +1,17 @@
-<mat-accordion multi="true" *ngIf="experienceList.length > 0">
+<mat-spinner *ngIf='isLoading'></mat-spinner>
+<mat-accordion multi="true" *ngIf="experienceList.length > 0 && !isLoading && userIsAuthenticated">
   <mat-expansion-panel *ngFor="let experience of experienceList">
     <mat-expansion-panel-header>
       {{ experience.jobTitle }}
     </mat-expansion-panel-header>
-    <p>{{ experience.companyName }}</p>
-    <p>{{ experience.jobStartDate }}</p>
-    <p>{{ experience.jobStartDate }}</p>
-    <p>{{ experience.description }}</p>
+    <p>Company:    {{ experience.companyName }}</p>
+    <p>Start Date: {{ experience.jobStartDate }}</p>
+    <p>End Date:   {{ experience.jobStartDate }}</p>
+    <p>About:      {{ experience.description }}</p>
     <mat-action-row>
-      <button mat-button color="primary">Edit</button>
+      <a mat-button color="primary" [routerLink]="['/edit/experience', experience.id]">Edit</a>
       <button mat-button color="warn" (click)="onDelete(experience.id)">Delete</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<a mat-button color="primary" [routerLink]="['/create/experience']">Add Education</a>
+<a mat-button color="primary" [routerLink]="['/create/experience']">Add Experience</a>

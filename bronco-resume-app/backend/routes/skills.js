@@ -1,12 +1,14 @@
 const express = require('express');
-
+const checkAuth = require('../middleware/check-auth');
 const router = express.Router();
 
 const Skill = require('../models/skill');
 
-router.post('', (req, res, next) => {
+router.post('',
+  checkAuth, (req, res, next) => {
   const skill = new Skill({
-    description: req.body.description
+    description: req.body.description,
+    creator: req.userData.userId
   });
   skill.save().then(createdSkill => {
     res.status(201).json({
@@ -16,8 +18,9 @@ router.post('', (req, res, next) => {
   });
 });
 
-router.get('', (req, res, next) => {
-  Skill.find()
+router.get('',
+  checkAuth, (req, res, next) => {
+  Skill.find({creator: req.userData.userId})
   .then(documents => {
     res.status(200).json({
       message: 'Skills fetched successfully!',

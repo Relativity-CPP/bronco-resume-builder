@@ -1,11 +1,10 @@
-import {Inject, Injectable, LOCALE_ID} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Experience } from './experience.model';
 
-import {DatePipe, formatDate} from '@angular/common';
 import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
@@ -13,11 +12,8 @@ export class ExperienceService {
   private experienceList: Experience[] = [];
   private experienceListUpdated = new Subject<Experience[]>();
 
-  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  transformDate(date) {
-    return formatDate(date, 'MM/dd/yyyy', this.locale);
-  }
   getExperience() {
     this.http
       .get<{ message: string; experience: any }>(
@@ -31,7 +27,8 @@ export class ExperienceService {
             jobStartDate: experience.jobStartDate,
             jobEndDate: experience.jobEndDate,
             description: experience.description,
-            id: experience._id
+            id: experience._id,
+            creator: experience.creator
           };
         });
       }))
@@ -42,7 +39,8 @@ export class ExperienceService {
   }
   addExperience(experience: Experience) {
     this.http
-      .post<{ message: string, experienceId: string }>('http://localhost:3000/api/experience', experience)
+      .post<{ message: string, experienceId: string }>(
+        'http://localhost:3000/api/experience', experience)
       .subscribe(responseData => {
         const id = responseData.experienceId;
         experience.id = id;
@@ -52,6 +50,16 @@ export class ExperienceService {
         this.router.navigate(['/resume']);
     });
   }
+  updateEducation(id: string, experience: Experience) {
+    this.http.put('http://localhost:3000/api/experience/' + id, experience)
+      .subscribe(response => {
+        const updatedExperiences = [...this.experienceList];
+        const oldExperienceIndex = updatedExperiences.findIndex(a => a.id === experience.id);
+        updatedExperiences[oldExperienceIndex] = experience;
+        this.experienceListUpdated.next([...this.experienceList]);
+        this.router.navigate(['/resume']);
+      });
+  }
   deleteExperience(experienceId: string) {
     this.http.delete('http://localhost:3000/api/experience/' + experienceId)
       .subscribe(() => {
@@ -59,6 +67,11 @@ export class ExperienceService {
         this.experienceList = updatedExperienceList;
         this.experienceListUpdated.next([...this.experienceList]);
     });
+  }
+  getOneExperience(id: string) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<{message: string, companyName: string, jobTitle: string, jobStartDate: string, jobEndDate: string, description: string, _id: string}>(
+      'http://localhost:3000/api/education/' + id);
   }
   getExperienceUpdateListener() {
     return this.experienceListUpdated.asObservable();

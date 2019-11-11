@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class ObjectiveListComponent implements OnInit, OnDestroy {
   objectiveStatement: ObjectiveStatement;
   userIsAuthenticated = false;
+  isLoading = false;
   private objectiveStatementSub: Subscription;
   private authStatusSub: Subscription;
 
