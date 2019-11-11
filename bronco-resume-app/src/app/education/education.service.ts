@@ -18,6 +18,7 @@ export class EducationService {
   transformDate(date) {
     return formatDate(date, 'MM/dd/yyyy', this.locale);
   }
+
   getEducation() {
     this.http
       .get<{ message: string; education: any }>(
@@ -32,7 +33,8 @@ export class EducationService {
             schoolStartDate: education.schoolStartDate,
             schoolEndDate: education.schoolEndDate,
             gpa: education.gpa,
-            id: education._id
+            id: education._id,
+            creator: education.creator
           };
         });
       }))
@@ -49,9 +51,18 @@ export class EducationService {
         education.id = id;
         this.educationList.push(education);
         this.educationListUpdated.next([...this.educationList]);
-        console.log(responseData.message);
         this.router.navigate(['/resume']);
     });
+  }
+  updateEducation(id: string, education: Education) {
+    this.http.put('http://localhost:3000/api/education/' + id, education)
+      .subscribe(response => {
+        const updatedEducations = [...this.educationList];
+        const oldEducationIndex = updatedEducations.findIndex(a => a.id === education.id);
+        updatedEducations[oldEducationIndex] = education;
+        this.educationListUpdated.next([...this.educationList]);
+        this.router.navigate(['/resume']);
+      });
   }
   deleteEducation(educationId: string) {
     this.http.delete('http://localhost:3000/api/education/' + educationId)
@@ -63,6 +74,11 @@ export class EducationService {
   }
   getEducationUpdateListener() {
     return this.educationListUpdated.asObservable();
+  }
+  getOneEducation(id: string) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<{message: string, schoolName: string, degreeType: string, major: string, schoolStartDate: string, schoolEndDate: string, gpa: string, _id: string}>(
+      'http://localhost:3000/api/education/' + id);
   }
   // startChange
   getEducationListClone() {

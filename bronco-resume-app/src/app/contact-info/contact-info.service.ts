@@ -17,7 +17,7 @@ export class ContactInfoService {
     this.http
       .get<{message: string, contactInfo: any}>(
         'http://localhost:3000/api/contact-info'
-      )
+        )
       .pipe(map((contactInfoData) => {
         return contactInfoData.contactInfo.map(contact => {
           return {
@@ -33,9 +33,10 @@ export class ContactInfoService {
       });
     }))
     .subscribe((transformedContactInfo) => {
-      this.contactInfo = transformedContactInfo[0];
-      console.log(this.contactInfo);
-      this.contactInfoUpdated.next(Object.create(this.contactInfo));
+      if (transformedContactInfo.length > 0) {
+        this.contactInfo = transformedContactInfo[0];
+        this.contactInfoUpdated.next(Object.create(this.contactInfo));
+      }
     });
   }
   addContactInfo(contactInfo: ContactInfo) {
@@ -50,7 +51,7 @@ export class ContactInfoService {
     };
     this.http.post<{message: string; contactId: string}>('http://localhost:3000/api/contact-info', contactInfo)
       .subscribe((responseData) => {
-        console.log(responseData.message);
+        console.log(responseData);
         const id = responseData.contactId;
         contactInfo.id = id;
         this.contactInfoUpdated.next(Object.create(this.contactInfo));
@@ -61,7 +62,7 @@ export class ContactInfoService {
     this.http.put('http://localhost:3000/api/contact-info/' + id, contact)
       .subscribe((response) => {
         console.log(response);
-      this.router.navigate(['/resume']);
+        this.router.navigate(['/resume']);
     });
   }
   getContactInfoUpdateListener() {

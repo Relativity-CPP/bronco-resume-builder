@@ -18,6 +18,10 @@ const routes: Routes = [
   {path: 'resume', component: ResumeInfoComponent, canActivate: [AuthGuard]},
   {path: 'edit/contact/:contactId', component: ContactInfoCreateComponent, canActivate: [AuthGuard]},
   {path: 'edit/award/:awardId', component: AwardCreateComponent, canActivate: [AuthGuard]},
+  {path: 'edit/education/:educationId', component: EducationCreateComponent, canActivate: [AuthGuard]},
+  {path: 'edit/objective/:objectiveId', component: ObjectiveCreateComponent, canActivate: [AuthGuard]},
+
+
   {path: 'create/contact', component: ContactInfoCreateComponent, canActivate: [AuthGuard]},
   {path: 'create/award', component: AwardCreateComponent, canActivate: [AuthGuard]},
   {path: 'create/education', component: EducationCreateComponent, canActivate: [AuthGuard]},

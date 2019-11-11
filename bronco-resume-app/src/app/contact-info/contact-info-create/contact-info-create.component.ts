@@ -34,7 +34,6 @@ export class ContactInfoCreateComponent implements OnInit {
         this.contactId = null;
       }
     });
-    console.log(this.mode);
   }
 
   onSaveContactInfo(form: NgForm) {

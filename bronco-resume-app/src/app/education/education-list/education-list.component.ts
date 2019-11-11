@@ -12,14 +12,17 @@ import { EducationService } from '../education.service';
 
 export class EducationListComponent implements OnInit, OnDestroy{
   educationList: Education[] = [];
+  isLoading = false;
   private educationSub: Subscription;
 
   constructor(public educationService: EducationService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.educationService.getEducation();
     this.educationSub = this.educationService.getEducationUpdateListener()
       .subscribe((education: Education[]) => {
+        this.isLoading = false;
         this.educationList = education;
       });
   }
