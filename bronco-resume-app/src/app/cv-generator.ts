@@ -38,11 +38,12 @@ create() {
     this.skillList = this.skillService.getSkillListClone();
     this.projectList = this.projectService.getProjectListClone();
     this.awardList = this.awardsService.getAwardsListClone();
-    //
+    // Contact Info
     document.addParagraph(new Paragraph(this.contactInfo.firstName + ' ' + this.contactInfo.lastName).title());
     document.addParagraph(this.createContactInfo(this.contactInfo.phoneNumber, this.contactInfo.socialMediaLink,
       this.contactInfo.emailAddress, this.contactInfo.homeAddress));
     document.addParagraph(this.createObjectiveStatement(this.objectiveStatement.statement));
+    // Education History
     document.addParagraph(this.createHeading('Education'));
     // for loop to display education
     for (let i of Object.keys(this.educationList) ) {
@@ -54,6 +55,7 @@ create() {
         this.educationList[i].degreeType,
       'GPA: ' + this.educationList[i].gpa));
     }
+    // Experience History
     document.addParagraph(this.createHeading('Experience'));
     for (let i of Object.keys(this.experienceList) ) {
       document.addParagraph(
@@ -63,18 +65,19 @@ create() {
       document.addParagraph(this.createRoleText(this.experienceList[i].jobTitle));
       document.addParagraph(this.createBullet(this.experienceList[i].description));
     }
-  document.addParagraph(this.createHeading('Skills'));
-  //   for (let i of Object.keys(this.skillList) ) {
-  //   document.addParagraph(this.createSkillHeader(this.skillList[i].description));
-  // }
-  document.addParagraph(this.createHeading('Projects'));
+    // Skills Section
+    document.addParagraph(this.createHeading('Skills'));
+    document.addParagraph(this.skillHeader());
+    // Project Section
+    document.addParagraph(this.createHeading('Projects'));
     for (let i of Object.keys(this.projectList) ) {
     document.addParagraph(this.createSchoolHeader(this.projectList[i].title,
       this.projectList[i].startDate + ' - ' + this.projectList[i].endDate)
     );
     document.addParagraph(this.createBullet(this.projectList[i].description));
   }
-  document.addParagraph(this.createHeading('Awards'));
+    // Awards
+    document.addParagraph(this.createHeading('Awards'));
     for (let i of Object.keys(this.awardList) ) {
     document.addParagraph(this.createSchoolHeader(this.awardList[i].title,
       this.awardList[i].date)
@@ -139,19 +142,20 @@ create() {
   createBullet(text) {
     return new Paragraph(text).bullet();
   }
-  // createSkillList (skills) {
-  //   const paragraph = new Paragraph();
-  //   const skillConcat = skills.map((this.skillList) => this.skillList.description).join(', ') + '.';
-  //   paragraph.addRun(new TextRun(skillConcat));
-  //   return paragraph;
-  // }
-  //attempted my own thing here
-  // createSkillHeader(skills) {
-  //   const paragraph = new Paragraph()
-  //   const skill = new TextRun(skills);
-  //   paragraph.addRun(skill + ', ');
-  //   return paragraph;
-  // }
+
+  skillHeader() {
+    const paragraph = new Paragraph();
+    const comma = new TextRun(', ');
+    for (let i of Object.keys(this.skillList)) {
+      const skill = new TextRun(this.skillList[i].description);
+      paragraph.addRun(skill);
+      paragraph.addRun(comma);
+    }
+    const end = new TextRun('.');
+    paragraph.addRun(end);
+    return paragraph;
+  }
+
   // move the download function to the resume-info as a new component
 }
 
