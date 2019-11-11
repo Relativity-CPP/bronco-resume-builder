@@ -48,7 +48,7 @@ export class ProjectService {
         this.router.navigate(['/resume']);
     });
   }
-  updateEducation(id: string, project: Project) {
+  updateProject(id: string, project: Project) {
     this.http.put('http://localhost:3000/api/projects/' + id, project)
       .subscribe(response => {
         const updatedProjects = [...this.projectList];

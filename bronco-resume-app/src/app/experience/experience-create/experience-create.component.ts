@@ -66,7 +66,7 @@ export class ExperienceCreateComponent implements OnInit {
         jobEndDate: form.value.jobEndDate,
         description: form.value.description
       };
-      this.experienceService.addExperience(experience);
+      this.experienceService.updateExperience(this.experienceId, experience);
     }
     form.resetForm();
   }

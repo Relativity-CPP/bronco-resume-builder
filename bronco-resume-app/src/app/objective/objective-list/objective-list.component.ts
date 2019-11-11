@@ -24,6 +24,7 @@ export class ObjectiveListComponent implements OnInit, OnDestroy {
     this.objectiveStatementService.getObjectiveStatement();
     this.objectiveStatementSub = this.objectiveStatementService.getObjectiveStatementUpdateListener()
       .subscribe((objectiveStatement: ObjectiveStatement) => {
+        this.isLoading = false;
         this.objectiveStatement = objectiveStatement;
       });
     this.userIsAuthenticated = this.authService.getIsAuth();

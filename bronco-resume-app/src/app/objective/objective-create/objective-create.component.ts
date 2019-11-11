@@ -48,7 +48,7 @@ export class ObjectiveCreateComponent implements OnInit {
         id: this.objectiveId,
         statement: form.value.statement
       };
-      this.objectiveStatementService.addObjectiveStatement(objective);
+      this.objectiveStatementService.updateObjective(this.objectiveId, objective);
     }
     this.isLoading = true;
   }

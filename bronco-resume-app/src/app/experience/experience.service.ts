@@ -50,7 +50,7 @@ export class ExperienceService {
         this.router.navigate(['/resume']);
     });
   }
-  updateEducation(id: string, experience: Experience) {
+  updateExperience(id: string, experience: Experience) {
     this.http.put('http://localhost:3000/api/experience/' + id, experience)
       .subscribe(response => {
         const updatedExperiences = [...this.experienceList];
@@ -71,7 +71,7 @@ export class ExperienceService {
   getOneExperience(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{message: string, companyName: string, jobTitle: string, jobStartDate: string, jobEndDate: string, description: string, _id: string}>(
-      'http://localhost:3000/api/education/' + id);
+      'http://localhost:3000/api/experience/' + id);
   }
   getExperienceUpdateListener() {
     return this.experienceListUpdated.asObservable();

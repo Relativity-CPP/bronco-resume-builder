@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class ContactInfoListComponent implements OnInit, OnDestroy {
   contactInfo: ContactInfo;
   userIsAuthenticated = false;
+  isLoading = false;
   private contactInfoSub: Subscription;
   private authStatusSub: Subscription;
 
@@ -23,6 +24,7 @@ export class ContactInfoListComponent implements OnInit, OnDestroy {
     this.contactInfoService.getContactInfo();
     this.contactInfoSub = this.contactInfoService.getContactInfoUpdateListener()
       .subscribe((contactInfo: ContactInfo) => {
+        this.isLoading = false;
         this.contactInfo = contactInfo;
       });
     this.userIsAuthenticated = this.authService.getIsAuth();

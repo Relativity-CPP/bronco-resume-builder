@@ -64,7 +64,7 @@ export class ProjectCreateComponent implements OnInit {
         endDate: form.value.endDate,
         description: form.value.description
       };
-      this.projectService.addProject(project);
+      this.projectService.updateProject(this.projectId, project);
     }
     form.resetForm();
   }
