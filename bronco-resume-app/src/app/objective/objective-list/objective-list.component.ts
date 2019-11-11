@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { ObjectiveStatement } from 'src/app/objective/objectiveStatement.model';
 import { ObjectiveStatementService } from '../objectveStatement.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component ({
   selector: 'app-objective-list',
@@ -12,9 +13,11 @@ import { ObjectiveStatementService } from '../objectveStatement.service';
 
 export class ObjectiveListComponent implements OnInit, OnDestroy {
   objectiveStatement: ObjectiveStatement;
+  userIsAuthenticated = false;
   private objectiveStatementSub: Subscription;
+  private authStatusSub: Subscription;
 
-  constructor(public objectiveStatementService: ObjectiveStatementService) {}
+  constructor(public objectiveStatementService: ObjectiveStatementService, private authService: AuthService) {}
 
   ngOnInit() {
     this.objectiveStatementService.getObjectiveStatement();
@@ -22,9 +25,15 @@ export class ObjectiveListComponent implements OnInit, OnDestroy {
       .subscribe((objectiveStatement: ObjectiveStatement) => {
         this.objectiveStatement = objectiveStatement;
       });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe( isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   ngOnDestroy() {
     this.objectiveStatementSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

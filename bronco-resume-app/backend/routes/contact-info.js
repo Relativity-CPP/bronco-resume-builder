@@ -27,7 +27,6 @@ router.get('',
   checkAuth, (req, res, next) => {
   ContactInfo.find({creator: req.userData.userId})
   .then(document => {
-    console.log('this');
     res.status(200).json({
       message: 'ContactInfo fetched successfully!',
       contactInfo: document
