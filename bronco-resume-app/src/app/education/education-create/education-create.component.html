@@ -1,5 +1,6 @@
 <div class="education-container">
-  <form (submit)="onAddEducation(educationForm)" #educationForm="ngForm">
+    <mat-spinner *ngIf='isLoading'></mat-spinner>
+    <form (submit)="onSaveEducation(educationForm)" #educationForm="ngForm" *ngIf='!isLoading'>
       <mat-card>
           <mat-card-title>Education</mat-card-title>
           <mat-form-field>
@@ -7,7 +8,7 @@
               matInput
               name="schoolName"
               placeholder="School Name"
-              ngModel
+              [ngModel]="education?.schoolName"
               required
               #schoolName="ngModel">
               <mat-error *ngIf="schoolName.invalid">Please enter a valid date.</mat-error>
@@ -17,7 +18,7 @@
             <select
               matNativeControl
               name="degreeType"
-              ngModel
+              [ngModel]="education?.degreeType"
               required
               #degreeType="ngModel">
               <option value="none">Non-degree seeking</option>
@@ -34,7 +35,7 @@
             <select
               matNativeControl
               name="major"
-              ngModel
+              [ngModel]="education?.major"
               required
               #major="ngModel">
               <option value="Aerospace Engineering">Aerospace Engineering</option>
@@ -95,7 +96,7 @@
               matInput
               name="GPA"
               placeholder="GPA out of 4.0"
-              ngModel
+              [ngModel]="education?.gpa"
               #GPA="ngModel">
           </mat-form-field>
           <mat-form-field>
@@ -104,7 +105,7 @@
               name="schoolStartDate"
               [matDatepicker]="picker1"
               placeholder="Start Date"
-              ngModel
+              [ngModel]="education?.schoolStartDate"
               required
               #schoolStartDate="ngModel">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -115,7 +116,7 @@
               matInput
               name="schoolEndDate"
               [matDatepicker]="picker2"
-              ngModel
+              [ngModel]="education?.schoolEndDate"
               required
               placeholder="End Date"
               #schoolEndDate="ngModel">

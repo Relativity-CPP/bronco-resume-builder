@@ -53,7 +53,6 @@ export class AwardCreateComponent implements OnInit {
       };
       this.awardsService.addAward(award);
     } else {
-      console.log('in the right section');
       const award: Award = {
         id: this.awardId,
         title: form.value.title,

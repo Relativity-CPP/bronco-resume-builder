@@ -42,11 +42,12 @@ router.get('/:id',
   })
   .then(documents => {
     res.status(200).json({
-      message: 'Awards fetched successfully!',
+      message: 'Award fetched successfully!',
       awards: documents
     })
   })
 });
+
 router.put('/:id',
   checkAuth, (req, res, next) => {
   const award = new Award({
@@ -54,17 +55,16 @@ router.put('/:id',
     date: req.body.date,
     description: req.body.description,
     _id: req.body.id
-  })
+  });
   Award.updateOne({_id: req.params.id, creator: req.userData.userId}, award)
     .then(result => {
-      console.log(result);
       res.status(200).json({message: "Award update successful!"})
     })
 });
+
 router.delete('/:id',
   checkAuth, (req, res, next) => {
   Award.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
-   console.log(result);
    res.status(200).json({ message: "Award deleted!" });
   });
 });
