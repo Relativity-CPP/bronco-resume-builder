@@ -6,13 +6,14 @@ import { map } from 'rxjs/operators';
 import { Experience } from './experience.model';
 
 import {DatePipe, formatDate} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class ExperienceService {
-    private experienceList: Experience[] = [];
-    private experienceListUpdated = new Subject<Experience[]>();
+  private experienceList: Experience[] = [];
+  private experienceListUpdated = new Subject<Experience[]>();
 
-  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient) {}
+  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient, private router: Router) {}
 
   transformDate(date) {
     return formatDate(date, 'MM/dd/yyyy', this.locale);
@@ -48,6 +49,7 @@ export class ExperienceService {
         this.experienceList.push(experience);
         this.experienceListUpdated.next([...this.experienceList]);
         console.log(responseData.message);
+        this.router.navigate(['/resume']);
     });
   }
   deleteExperience(experienceId: string) {

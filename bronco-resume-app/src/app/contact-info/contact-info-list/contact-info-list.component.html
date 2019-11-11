@@ -1,17 +1,16 @@
 <div class="contact-info-list-container">
-  <div *ngIf='userIsAuthenticated && contactInfo!= null'>
-    <p>First Name: {{ contactInfo?.firstName}}</p>
-    <p>Last Name: {{ contactInfo?.lastName }}</p>
-    <p>Home Address: {{ contactInfo?.homeAddress }}</p>
-    <p>Phone Number: {{ contactInfo?.phoneNumber }}</p>
-    <p>Email Address: {{ contactInfo?.emailAddress }}</p>
-    <p>Social Media Link: {{ contactInfo?.socialMediaLink }}</p>
-    <mat-action-row *ngIf='userIsAuthenticated'>
-        <a mat-button color="primary" [routerLink]="['/edit/contact/', contactInfo.id]">Edit</a>
-        <a mat-button color="primary" [routerLink]="['/create/contact']">Add</a>
-    </mat-action-row>
-  </div>
-  <div>
-    <a mat-button color="primary" [routerLink]="['/create/contact']">Add Contact Information</a>
-  </div>
+  <mat-card>
+    <div *ngIf='userIsAuthenticated && contactInfo!= null'>
+      <p>First Name: {{ contactInfo?.firstName}}</p>
+      <p>Last Name: {{ contactInfo?.lastName }}</p>
+      <p>Home Address: {{ contactInfo?.homeAddress }}</p>
+      <p>Phone Number: {{ contactInfo?.phoneNumber }}</p>
+      <p>Email Address: {{ contactInfo?.emailAddress }}</p>
+      <p>Social Media Link: {{ contactInfo?.socialMediaLink }}</p>
+    </div>
+      <mat-action-row>
+          <a *ngIf='contactInfo!=null' mat-button color="primary" [routerLink]="['/edit/contact/', contactInfo.id]">Edit</a>
+          <a *ngIf='contactInfo===null' mat-button color="primary" [routerLink]="['/create/contact']">Add Contact Information</a>
+        </mat-action-row>
+    </mat-card>
 </div>

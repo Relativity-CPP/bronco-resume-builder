@@ -4,13 +4,14 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Skill } from './skill.model';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class SkillService {
     private skillList: Skill[] = [];
     private skillListUpdated = new Subject<Skill[]>();
 
-  constructor( private http: HttpClient) {}
+  constructor( private http: HttpClient, private router: Router ) {}
 
   getSkill() {
     this.http
@@ -39,6 +40,7 @@ export class SkillService {
         this.skillList.push(skill);
         this.skillListUpdated.next([...this.skillList]);
         console.log(responseData.message);
+        this.router.navigate(['/resume']);
     });
   }
   deleteSkill(skillId: string) {

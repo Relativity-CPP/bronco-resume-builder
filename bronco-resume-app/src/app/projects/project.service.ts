@@ -6,13 +6,14 @@ import { map } from 'rxjs/operators';
 import { Project } from './project.model';
 
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class ProjectService {
     private projectList: Project[] = [];
     private projectListUpdated = new Subject<Project[]>();
 
-  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient) {}
+  constructor(@Inject(LOCALE_ID) private locale: string, private http: HttpClient, private router: Router) {}
 
   transformDate(date) {
     return formatDate(date, 'MM/dd/yyyy', this.locale);
@@ -47,6 +48,7 @@ export class ProjectService {
         this.projectList.push(project);
         this.projectListUpdated.next([...this.projectList]);
         console.log(responseData.message);
+        this.router.navigate(['/resume']);
     });
   }
   deleteProject(projectId: string) {

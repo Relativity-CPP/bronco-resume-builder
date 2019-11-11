@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
 import { ObjectiveStatement } from './objectiveStatement.model';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class ObjectiveStatementService {
@@ -13,7 +14,7 @@ export class ObjectiveStatementService {
     };
     private objectiveStatementUpdated = new Subject<ObjectiveStatement>();
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     getObjectiveStatement() {
         this.http.get<{message: string, objectiveStatement: ObjectiveStatement}>('http://localhost:3000/api/objective')
@@ -33,9 +34,9 @@ export class ObjectiveStatementService {
           .subscribe((responseData) => {
             console.log(responseData.message);
             this.objectiveStatementUpdated.next(Object.create(this.objectiveStatement));
+            this.router.navigate(['/resume']);
           });
     }
-
     getObjectiveStatementUpdateListener() {
         return this.objectiveStatementUpdated.asObservable();
     }
