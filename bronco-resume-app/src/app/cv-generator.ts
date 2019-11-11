@@ -64,9 +64,9 @@ create() {
       document.addParagraph(this.createBullet(this.experienceList[i].description));
     }
   document.addParagraph(this.createHeading('Skills'));
-    for (let i of Object.keys(this.skillList) ) {
-    document.addParagraph(this.createSkillHeader(this.skillList[i].description));
-  }
+  //   for (let i of Object.keys(this.skillList) ) {
+  //   document.addParagraph(this.createSkillHeader(this.skillList[i].description));
+  // }
   document.addParagraph(this.createHeading('Projects'));
     for (let i of Object.keys(this.projectList) ) {
     document.addParagraph(this.createSchoolHeader(this.projectList[i].title,
