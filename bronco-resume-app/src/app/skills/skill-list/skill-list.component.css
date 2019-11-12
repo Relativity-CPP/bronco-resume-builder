@@ -6,7 +6,6 @@
 .info-text {
   text-align: center;
 }
-p {
-  display: flex;
-  flex-direction: column;
+mat-card-title {
+  font-size: 12px;
 }
