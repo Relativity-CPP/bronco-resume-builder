@@ -5,6 +5,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -79,6 +80,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatListModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MatGridListModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

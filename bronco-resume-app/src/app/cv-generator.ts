@@ -67,7 +67,9 @@ create() {
       document.addParagraph(this.createRoleText(this.experienceList[i].jobTitle));
       const bulletPoints = this.splitParagraphIntoBullets(this.experienceList[i].description);
       bulletPoints.forEach((bulletPoint) => {
-        document.addParagraph(this.createBullet (bulletPoint));
+        if (bulletPoint.length > 1) {
+          document.addParagraph(this.createBullet (bulletPoint));
+        }
       });
       // document.addParagraph(this.createBullet(this.experienceList[i].description));
     }
@@ -82,7 +84,9 @@ create() {
     );
     const bulletPoints = this.splitParagraphIntoBullets(this.projectList[i].description);
     bulletPoints.forEach((bulletPoint) => {
+      if (bulletPoint.length > 1) {
         document.addParagraph(this.createBullet (bulletPoint));
+      }
       });
     // document.addParagraph(this.createBullet(this.projectList[i].description));
   }
@@ -94,7 +98,9 @@ create() {
     );
     const bulletPoints = this.splitParagraphIntoBullets(this.awardList[i].description);
     bulletPoints.forEach((bulletPoint) => {
+      if (bulletPoint.length > 1) {
         document.addParagraph(this.createBullet (bulletPoint));
+      }
     });
     // document.addParagraph(this.createBullet(this.awardList[i].description));
   }
