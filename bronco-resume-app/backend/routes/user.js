@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -48,7 +48,7 @@ router.post('/login', (req, res, next) => {
       }
       const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
-        'alafi234uweryiumns234568o5457462mnvncurehhkjeiru234234jwehb3423421jhbqgejfhadhjfgjamsdhjgfiuwe',
+        process.env.JWT_KEY,
         {expiresIn: '1h'}
       );
       res.status(200).json({

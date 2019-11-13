@@ -16,16 +16,16 @@ const userRoutes = require('./routes/user');
 const app = express();
 
 // connect to mongoDB
-mongoose.connect('mongodb+srv://aaronL:doXbB996gyUniohb@cluster0-kxg8w.mongodb.net/bronco-resume-info')
+mongoose.connect(
+  "mongodb+srv://aaronL:" +
+  process.env.MONGO_ATLAS_PW +
+  "@cluster0-kxg8w.mongodb.net/bronco-resume-info")
   .then(() => {
     console.log('Connected to database!');
   })
   .catch(() => {
      console.log('Connection failed!');
   });
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -39,6 +39,11 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 
 app.use('/api/awards', awardsRoutes);
 app.use('/api/contact-info', contactInfoRoutes);

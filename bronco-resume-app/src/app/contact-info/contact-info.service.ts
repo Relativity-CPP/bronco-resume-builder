@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 
 import { ContactInfo } from './contact-info.model';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/contact-info';
+
 @Injectable({providedIn: 'root'})
 export class ContactInfoService {
     private contactInfo: ContactInfo = null;
@@ -16,7 +19,7 @@ export class ContactInfoService {
   getContactInfo() {
     this.http
       .get<{message: string, contactInfo: any}>(
-        'http://localhost:3000/api/contact-info'
+        BACKEND_URL
         )
       .pipe(map((contactInfoData) => {
         return contactInfoData.contactInfo.map(contact => {
@@ -49,7 +52,7 @@ export class ContactInfoService {
       emailAddress: contactInfo.emailAddress,
       socialMediaLink: contactInfo.socialMediaLink
     };
-    this.http.post<{message: string; contactId: string}>('http://localhost:3000/api/contact-info', contactInfo)
+    this.http.post<{message: string; contactId: string}>(BACKEND_URL , contactInfo)
       .subscribe((responseData) => {
         console.log(responseData);
         const id = responseData.contactId;
@@ -59,7 +62,7 @@ export class ContactInfoService {
     });
   }
   updateContactInfo(id: string, contact: ContactInfo) {
-    this.http.put('http://localhost:3000/api/contact-info/' + id, contact)
+    this.http.put(BACKEND_URL + '/' + id, contact)
       .subscribe((response) => {
         console.log(response);
         this.router.navigate(['/resume']);

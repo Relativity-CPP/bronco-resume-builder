@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { Project } from './project.model';
 import { Router } from '@angular/router';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/projects';
+
 @Injectable({providedIn: 'root'})
 export class ProjectService {
     private projectList: Project[] = [];
@@ -16,7 +19,7 @@ export class ProjectService {
   getProject() {
     this.http
       .get<{ message: string; project: any }>(
-        'http://localhost:3000/api/projects'
+        BACKEND_URL
       )
       .pipe(map((projectData) => {
         return projectData.project.map(project => {
@@ -38,7 +41,7 @@ export class ProjectService {
   addProject(project: Project) {
     this.http
       .post<{ message: string, projectId: string }>(
-        'http://localhost:3000/api/projects', project)
+        BACKEND_URL, project)
       .subscribe(responseData => {
         const id = responseData.projectId;
         project.id = id;
@@ -49,7 +52,7 @@ export class ProjectService {
     });
   }
   updateProject(id: string, project: Project) {
-    this.http.put('http://localhost:3000/api/projects/' + id, project)
+    this.http.put(BACKEND_URL + '/' + id, project)
       .subscribe(response => {
         const updatedProjects = [...this.projectList];
         const oldProjectIndex = updatedProjects.findIndex(a => a.id === project.id);
@@ -59,7 +62,7 @@ export class ProjectService {
       });
   }
   deleteProject(projectId: string) {
-    this.http.delete('http://localhost:3000/api/projects/' + projectId)
+    this.http.delete(BACKEND_URL + '/' + projectId)
       .subscribe(() => {
         const updatedProjectList = this.projectList.filter(project => project.id !== projectId);
         this.projectList = updatedProjectList;
@@ -69,7 +72,7 @@ export class ProjectService {
   getOneExperience(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{message: string, title: string, startDate: string, endDate: string, description: string, _id: string}>(
-      'http://localhost:3000/api/projects/' + id);
+      BACKEND_URL + '/' + id);
   }
   getProjectUpdateListener() {
     return this.projectListUpdated.asObservable();

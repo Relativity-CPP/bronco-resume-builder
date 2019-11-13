@@ -7,6 +7,9 @@ import { Award } from './award.model';
 
 import { Router } from '@angular/router';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/awards';
+
 @Injectable({providedIn: 'root'})
 export class AwardsService {
     private awards: Award[] = [];
@@ -17,7 +20,7 @@ export class AwardsService {
   getAwards() {
     this.http
       .get<{ message: string; awards: any }>(
-        'http://localhost:3000/api/awards'
+        BACKEND_URL
       )
       .pipe(map((awardData) => {
         return awardData.awards.map(award => {
@@ -37,7 +40,8 @@ export class AwardsService {
   }
   addAward(award: Award) {
     this.http
-      .post<{ message: string, awardId: string }>('http://localhost:3000/api/awards', award)
+      .post<{ message: string, awardId: string }>(
+        BACKEND_URL, award)
       .subscribe(responseData => {
         const id = responseData.awardId;
         award.id = id;
@@ -47,7 +51,7 @@ export class AwardsService {
     });
   }
   updateAward(id: string, award: Award) {
-    this.http.put('http://localhost:3000/api/awards/' + id, award)
+    this.http.put(BACKEND_URL + '/' + id, award)
       .subscribe(response => {
         const updatedAwards = [...this.awards];
         const oldAwardIndex = updatedAwards.findIndex(a => a.id === award.id);
@@ -57,7 +61,7 @@ export class AwardsService {
       });
   }
   deleteAward(awardId: string) {
-    this.http.delete('http://localhost:3000/api/awards/' + awardId)
+    this.http.delete(BACKEND_URL + '/' + awardId)
       .subscribe(() => {
         const updatedAwards = this.awards.filter(award => award.id !== awardId);
         this.awards = updatedAwards;
@@ -69,7 +73,7 @@ export class AwardsService {
   }
   getAward(id: string) {
     return this.http.get<{message: string, title: string, date: string, description: string, _id: string}>(
-      'http://localhost:3000/api/awards/' + id);
+      BACKEND_URL + '/' + id);
   }
   getAwardsListClone() {
     return {...this.awards};

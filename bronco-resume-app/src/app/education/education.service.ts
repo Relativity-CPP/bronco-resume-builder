@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, bindCallback } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Education } from './education.model';
 
 import { Router } from '@angular/router';
+
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/education';
 
 @Injectable({providedIn: 'root'})
 export class EducationService {
@@ -18,7 +21,7 @@ export class EducationService {
   getEducation() {
     this.http
       .get<{ message: string; education: any }>(
-        'http://localhost:3000/api/education'
+        BACKEND_URL
       )
       .pipe(map((educationData) => {
         return educationData.education.map(education => {
@@ -41,7 +44,8 @@ export class EducationService {
   }
   addEducation(education: Education) {
     this.http
-      .post<{ message: string, educationId: string }>('http://localhost:3000/api/education', education)
+      .post<{ message: string, educationId: string }>(
+        BACKEND_URL, education)
       .subscribe(responseData => {
         const id = responseData.educationId;
         education.id = id;
@@ -51,7 +55,8 @@ export class EducationService {
     });
   }
   updateEducation(id: string, education: Education) {
-    this.http.put('http://localhost:3000/api/education/' + id, education)
+    this.http.put(
+      BACKEND_URL + '/' + id, education)
       .subscribe(response => {
         const updatedEducations = [...this.educationList];
         const oldEducationIndex = updatedEducations.findIndex(a => a.id === education.id);
@@ -61,7 +66,8 @@ export class EducationService {
       });
   }
   deleteEducation(educationId: string) {
-    this.http.delete('http://localhost:3000/api/education/' + educationId)
+    this.http.delete(
+      BACKEND_URL + '/' + educationId)
       .subscribe(() => {
         const updatedEducationList = this.educationList.filter(education => education.id !== educationId);
         this.educationList = updatedEducationList;
@@ -74,7 +80,7 @@ export class EducationService {
   getOneEducation(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{message: string, schoolName: string, degreeType: string, major: string, schoolStartDate: string, schoolEndDate: string, gpa: string, _id: string}>(
-      'http://localhost:3000/api/education/' + id);
+      BACKEND_URL + '/' + id);
   }
   // startChange
   getEducationListClone() {

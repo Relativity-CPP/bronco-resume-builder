@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "nodemon server.js"
+    "start:server": "nodemon ./backend/server.js"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^8.2.12",
     "@angular/router": "^8.2.12",
     "angular": "^1.7.8",
-    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "docx": "^4.7.1",
     "express": "latest",

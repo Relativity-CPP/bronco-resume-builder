@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 
 import { ObjectiveStatement } from './objectiveStatement.model';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/objective';
+
 @Injectable({providedIn: 'root'})
 export class ObjectiveStatementService {
     private objectiveStatement: ObjectiveStatement = null;
@@ -17,7 +20,7 @@ export class ObjectiveStatementService {
     getObjectiveStatement() {
         this.http
         .get<{message: string, objectiveStatement: any}>(
-          'http://localhost:3000/api/objective'
+          BACKEND_URL
           )
         .pipe(map((objectiveData) => {
           return objectiveData.objectiveStatement.map(objective => {
@@ -41,7 +44,8 @@ export class ObjectiveStatementService {
             id: null,
             statement: objectiveStatement.statement,
         };
-        this.http.post<{message: string, objectiveId: string}>('http://localhost:3000/api/objective', objectiveStatement)
+        this.http.post<{message: string, objectiveId: string}>(
+          BACKEND_URL, objectiveStatement)
           .subscribe((responseData) => {
             console.log(responseData);
             const id = responseData.objectiveId;
@@ -51,7 +55,7 @@ export class ObjectiveStatementService {
           });
     }
     updateObjective(id: string, objective: ObjectiveStatement) {
-      this.http.put('http://localhost:3000/api/objective/' + id, objective)
+      this.http.put(BACKEND_URL + '/' + id, objective)
         .subscribe((response) => {
           console.log(response);
           this.router.navigate(['/resume']);

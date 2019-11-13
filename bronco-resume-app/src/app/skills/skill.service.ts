@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { Skill } from './skill.model';
 import { Router } from '@angular/router';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/skills';
+
 @Injectable({providedIn: 'root'})
 export class SkillService {
     private skillList: Skill[] = [];
@@ -16,7 +19,7 @@ export class SkillService {
   getSkill() {
     this.http
       .get<{ message: string; skill: any }>(
-        'http://localhost:3000/api/skills'
+        BACKEND_URL
       )
       .pipe(map((skillData) => {
         return skillData.skill.map(skill => {
@@ -34,7 +37,7 @@ export class SkillService {
   addSkill(skill: Skill) {
     this.http
       .post<{ message: string, skillId: string }>(
-        'http://localhost:3000/api/skills', skill)
+        BACKEND_URL, skill)
       .subscribe(responseData => {
         const id = responseData.skillId;
         skill.id = id;
@@ -45,7 +48,7 @@ export class SkillService {
     });
   }
   deleteSkill(skillId: string) {
-    this.http.delete('http://localhost:3000/api/skills/' + skillId)
+    this.http.delete(BACKEND_URL + '/' + skillId)
       .subscribe(() => {
         const updatedSkillList = this.skillList.filter(skill => skill.id !== skillId);
         this.skillList = updatedSkillList;

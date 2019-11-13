@@ -7,6 +7,9 @@ import { Experience } from './experience.model';
 
 import { Router } from '@angular/router';
 
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/experience';
+
 @Injectable({providedIn: 'root'})
 export class ExperienceService {
   private experienceList: Experience[] = [];
@@ -17,7 +20,7 @@ export class ExperienceService {
   getExperience() {
     this.http
       .get<{ message: string; experience: any }>(
-        'http://localhost:3000/api/experience'
+        BACKEND_URL
       )
       .pipe(map((experienceData) => {
         return experienceData.experience.map(experience => {
@@ -40,7 +43,7 @@ export class ExperienceService {
   addExperience(experience: Experience) {
     this.http
       .post<{ message: string, experienceId: string }>(
-        'http://localhost:3000/api/experience', experience)
+        BACKEND_URL, experience)
       .subscribe(responseData => {
         const id = responseData.experienceId;
         experience.id = id;
@@ -51,7 +54,7 @@ export class ExperienceService {
     });
   }
   updateExperience(id: string, experience: Experience) {
-    this.http.put('http://localhost:3000/api/experience/' + id, experience)
+    this.http.put(BACKEND_URL + '/' + id, experience)
       .subscribe(response => {
         const updatedExperiences = [...this.experienceList];
         const oldExperienceIndex = updatedExperiences.findIndex(a => a.id === experience.id);
@@ -61,7 +64,7 @@ export class ExperienceService {
       });
   }
   deleteExperience(experienceId: string) {
-    this.http.delete('http://localhost:3000/api/experience/' + experienceId)
+    this.http.delete(BACKEND_URL + '/' + experienceId)
       .subscribe(() => {
         const updatedExperienceList = this.experienceList.filter(experience => experience.id !== experienceId);
         this.experienceList = updatedExperienceList;
@@ -71,7 +74,7 @@ export class ExperienceService {
   getOneExperience(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{message: string, companyName: string, jobTitle: string, jobStartDate: string, jobEndDate: string, description: string, _id: string}>(
-      'http://localhost:3000/api/experience/' + id);
+      BACKEND_URL + '/' + id);
   }
   getExperienceUpdateListener() {
     return this.experienceListUpdated.asObservable();
