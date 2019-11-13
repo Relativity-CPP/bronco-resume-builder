@@ -28,6 +28,7 @@ export class ContactInfoCreateComponent implements OnInit {
         console.log(this.contactId);
         this.isLoading = true;
         this.contactInfo = this.contactInfoService.getContactInfoClone();
+        this.isLoading = false;
         console.log(this.contactInfo);
       } else {
         this.mode = 'create';

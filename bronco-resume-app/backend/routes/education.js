@@ -63,9 +63,13 @@ router.put('/:id',
     _id: req.body.id
   });
   Education.updateOne({_id: req.params.id, creator: req.userData.userId}, education)
-    .then(result => {
-      res.status(200).json({message: "Education update successful!"})
-    })
+  .then( result => {
+    if (result.n  > 0) {
+      res.status(200).json({message: 'Update successful!'})
+    } else {
+      res.status(401).json({message: 'Not authorized!'})
+    }
+  })
 });
 
 router.delete('/:id',

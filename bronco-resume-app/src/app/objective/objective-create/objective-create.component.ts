@@ -28,6 +28,7 @@ export class ObjectiveCreateComponent implements OnInit {
         console.log(this.objectiveId);
         this.isLoading = true;
         this.objective = this.objectiveStatementService.getObjectiveClone();
+        this.isLoading = false;
         console.log(this.objective);
       } else {
         this.mode = 'create';
