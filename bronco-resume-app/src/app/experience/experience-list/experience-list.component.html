@@ -5,8 +5,8 @@
       {{ experience.jobTitle }}
     </mat-expansion-panel-header>
     <p>Company:    {{ experience.companyName }}</p>
-    <p>Start Date: {{ experience.jobStartDate }}</p>
-    <p>End Date:   {{ experience.jobStartDate }}</p>
+    <p>Start Date: {{ experience.jobStartDate.substring(5,7)}}/{{ experience.jobStartDate.substring(0,4) }}</p>
+    <p>End Date:   {{ experience.jobEndDate.substring(5,7)}}/{{ experience.jobEndDate.substring(0,4) }}
     <p>About:      {{ experience.description }}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit/experience', experience.id]">Edit</a>

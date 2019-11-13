@@ -7,8 +7,8 @@
     <p>Degree: {{ education.degreeType }}</p>
     <p>Major:  {{ education.major }}</p>
     <p *ngIf="education.gpa.length > 0">{{education.gpa}}</p>
-    <p>Start:  {{ education.schoolStartDate.substring(5, 7)}}/{{ education.schoolEndDate.substring(0,4) }}</p>
-    <p>End:    {{ education.schoolEndDate }}</p>
+    <p>Start:  {{ education.schoolStartDate.substring(5, 7)}}/{{ education.schoolStartDate.substring(0,4) }}</p>
+    <p>End:    {{ education.schoolEndDate.substring(5,7)}}/{{ education.schoolEndDate.substring(0,4) }}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit/education', education.id]">Edit</a>
       <button mat-button color="warn" (click)="onDelete(education.id)">Delete</button>

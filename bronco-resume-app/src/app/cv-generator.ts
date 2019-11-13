@@ -46,11 +46,12 @@ create() {
     // Education History
     document.addParagraph(this.createHeading('Education'));
     // for loop to display education
-    for (let i of Object.keys(this.educationList) ) {
+    for (const i of Object.keys(this.educationList) ) {
       document.addParagraph(
-        this.createSchoolHeader(this.educationList[i].schoolName,
-          this.educationList[i].schoolStartDate.substring(0, 10)
-          + ' - ' + this.educationList[i].schoolEndDate.substring(0, 10))
+        this.createSchoolHeader(
+          this.educationList[i].schoolName,
+          this.createPositionDateText(this.educationList[i].schoolStartDate, this.educationList[i].schoolEndDate),
+        ),
       );
       document.addParagraph(this.createHeader(this.educationList[i].major + ' - ' +
         this.educationList[i].degreeType,
@@ -60,9 +61,10 @@ create() {
     document.addParagraph(this.createHeading('Experience'));
     for (let i of Object.keys(this.experienceList) ) {
       document.addParagraph(
-       this.createSchoolHeader(this.experienceList[i].companyName,
-        this.experienceList[i].jobStartDate.substring(0, 10) + ' - ' +
-         this.experienceList[i].jobEndDate.substring(0, 10))
+        this.createSchoolHeader(
+          this.experienceList[i].companyName,
+          this.createPositionDateText(this.experienceList[i].jobStartDate, this.experienceList[i].jobEndDate),
+        ),
       );
       document.addParagraph(this.createRoleText(this.experienceList[i].jobTitle));
       const bulletPoints = this.splitParagraphIntoBullets(this.experienceList[i].description);
@@ -79,11 +81,14 @@ create() {
     // Project Section
     document.addParagraph(this.createHeading('Projects'));
     for (let i of Object.keys(this.projectList) ) {
-    document.addParagraph(this.createSchoolHeader(this.projectList[i].title,
-      this.projectList[i].startDate.substring(0, 10) + ' - ' + this.projectList[i].endDate.substring(0, 10))
-    );
-    const bulletPoints = this.splitParagraphIntoBullets(this.projectList[i].description);
-    bulletPoints.forEach((bulletPoint) => {
+      document.addParagraph(
+        this.createSchoolHeader(
+          this.projectList[i].title,
+          this.createPositionDateText(this.projectList[i].startDate, this.projectList[i].endDate),
+        ),
+      );
+      const bulletPoints = this.splitParagraphIntoBullets(this.projectList[i].description);
+      bulletPoints.forEach((bulletPoint) => {
       if (bulletPoint.length > 1) {
         document.addParagraph(this.createBullet (bulletPoint));
       }
@@ -94,7 +99,8 @@ create() {
     document.addParagraph(this.createHeading('Awards'));
     for (let i of Object.keys(this.awardList) ) {
     document.addParagraph(this.createSchoolHeader(this.awardList[i].title,
-      this.awardList[i].date.substring(0, 10))
+      this.getMonthFromInt(Number(this.awardList[i].date.substring(5, 7)))
+      + '. ' + this.awardList[i].date.substring(0, 4))
     );
     const bulletPoints = this.splitParagraphIntoBullets(this.awardList[i].description);
     bulletPoints.forEach((bulletPoint) => {
@@ -133,10 +139,8 @@ create() {
   }
 
   createSchoolHeader(schoolname, datetext) {
-  const paragraph = new Paragraph()
-    .maxRightTabStop();
-  const school = new TextRun
-  (schoolname).bold();
+  const paragraph = new Paragraph().maxRightTabStop();
+  const school = new TextRun(schoolname).bold();
   const date = new TextRun(datetext).tab().bold();
   paragraph.addRun(school);
   paragraph.addRun(date);
@@ -167,7 +171,7 @@ create() {
     const paragraph = new Paragraph();
     const comma = new TextRun(', ');
     let j = 0;
-    for (let i of Object.keys(this.skillList)) {
+    for (const i of Object.keys(this.skillList)) {
       const skill = new TextRun(this.skillList[i].description);
       paragraph.addRun(skill);
       j = j + 1;
@@ -183,6 +187,39 @@ create() {
   }
   splitParagraphIntoBullets(text) {
     return text.split('\n');
+  }
+  createPositionDateText(startDate, endDate) {
+    const startDateText = this.getMonthFromInt(Number(startDate.substring(5, 7))) + '. ' + startDate.substring(0, 4);
+    const endDateText = `${this.getMonthFromInt(Number(endDate.substring(5, 7)))}. ${endDate.substring(0, 4)}`;
+    return `${startDateText} - ${endDateText}`;
+  }
+  getMonthFromInt(value) {
+    switch (value) {
+      case 1:
+        return 'Jan';
+      case 2:
+        return 'Feb';
+      case 3:
+        return 'Mar';
+      case 4:
+        return 'Apr';
+      case 5:
+        return 'May';
+      case 6:
+        return 'Jun';
+      case 7:
+        return 'Jul';
+      case 8:
+        return 'Aug';
+      case 9:
+        return 'Sep';
+      case 10:
+        return 'Oct';
+      case 11:
+        return 'Nov';
+      case 12:
+        return 'Dec';
+    }
   }
   // move the download function to the resume-info as a new component
 }
