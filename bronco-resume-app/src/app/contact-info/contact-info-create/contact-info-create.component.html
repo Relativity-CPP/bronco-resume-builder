@@ -4,32 +4,61 @@
     <mat-card>
       <mat-card-title>Contact Information</mat-card-title>
       <mat-form-field>
-        <input type='text' matInput name="firstName" placeholder="First Name" [ngModel]="contactInfo?.firstName"
-          required #firstName="ngModel">
+        <input type='text'
+          matInput name="firstName"
+          placeholder="First Name"
+          [ngModel]="contactInfo?.firstName"
+          required
+          #firstName="ngModel">
         <mat-error *ngIf="firstName.invalid">Please enter your first name</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput name="lastName" placeholder="Last Name" [ngModel]="contactInfo?.lastName" required
+        <input
+          matInput name="lastName"
+          placeholder="Last Name"
+          [ngModel]="contactInfo?.lastName"
+          required
           #lastName="ngModel">
       </mat-form-field>
       <mat-form-field>
-        <input matInput name="homeAddress" placeholder="Home Address" [ngModel]="contactInfo?.homeAddress" required
+        <input
+          matInput name="homeAddress"
+          placeholder="Home Address"
+          [ngModel]="contactInfo?.homeAddress"
+          required
           #homeAddress="ngModel">
       </mat-form-field>
       <mat-form-field>
-        <input matInput name="phoneNumber" placeholder="Phone Number" [ngModel]="contactInfo?.phoneNumber" required
+        <input
+          matInput
+          name="phoneNumber"
+          placeholder="Phone Number"
+          [ngModel]="contactInfo?.phoneNumber"
+          required
           #phoneNumber="ngModel">
       </mat-form-field>
       <mat-form-field>
-        <input matInput name="emailAddress" placeholder="Email Address" [ngModel]="contactInfo?.emailAddress" required
+        <input
+          matInput name="emailAddress"
+          placeholder="Email Address"
+          [ngModel]="contactInfo?.emailAddress"
+          required
           #emailAddress="ngModel">
       </mat-form-field>
       <mat-form-field>
-        <input matInput name="socialMediaLink" placeholder="Social Media Link" [ngModel]="contactInfo?.socialMediaLink" required
+        <input matInput name="socialMediaLink"
+          placeholder="Social Media Link"
+          [ngModel]="contactInfo?.socialMediaLink"
+          required
           #socialMediaLink>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button
+          mat-raised-button color="primary"
+          type="submit">Save</button>
+          <a
+          mat-button color="warn"
+          [routerLink]="['/resume']">Cancel</a>
       </mat-card-actions>
     </mat-card>
   </form>
