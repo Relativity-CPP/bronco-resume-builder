@@ -1,4 +1,10 @@
 mat-form-field {
   width: 100%;
 }
+mat-card {
+  width: 50%;
+  display: flex;
+  left: 25%;
+  margin-top: 150px;
 
+}

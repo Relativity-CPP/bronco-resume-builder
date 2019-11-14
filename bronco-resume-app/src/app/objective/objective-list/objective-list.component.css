@@ -6,7 +6,9 @@
 .objective-statement-container > * {
   width: 100%;
 }
-
+mat-action-row {
+  place-content: space-between;
+}
 .objective-statement-container mat-card {
   margin-top: 1rem;
   margin: auto;

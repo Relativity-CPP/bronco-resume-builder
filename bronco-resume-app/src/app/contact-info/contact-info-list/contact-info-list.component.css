@@ -6,7 +6,9 @@
 .contact-info-list-container > * {
   width: 100%;
 }
-
+mat-action-row {
+  place-content: space-between;
+}
 .contact-info-list-container mat-card {
   margin-top: 1rem;
   margin: auto;
