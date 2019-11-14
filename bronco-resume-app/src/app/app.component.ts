@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Packer } from 'docx';
 import { saveAs } from 'file-saver/FileSaver';
 import {DocumentCreator} from './cv-generator';
-import { experiences, education, skills, achievements } from './cv-data';
 import {AwardsService} from './awards/awards.service';
 import {ContactInfoService} from './contact-info/contact-info.service';
 import {EducationService} from './education/education.service';
