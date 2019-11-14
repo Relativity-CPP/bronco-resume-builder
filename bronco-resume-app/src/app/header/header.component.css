@@ -17,3 +17,8 @@ ul {
 .mat-toolbar{
   background-color: #1e4d2b;
 }
+
+button {
+  height: 100%;
+  width: 20%;
+}

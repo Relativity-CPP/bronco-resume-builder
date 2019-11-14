@@ -1,19 +1,15 @@
-.objective-statement-container {
+:host {
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
-}
-.objective-statement-container > * {
-  width: 100%;
-}
-
-.objective-statement-container mat-card {
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 1rem;
-  margin: auto;
 }
 
-.objective-statement-container mat-card mat-action-row {
-  margin-top: 0px;
-  display: block;
+.info-text {
+  text-align: center;
+}
+
+mat-spinner {
   margin: auto;
 }

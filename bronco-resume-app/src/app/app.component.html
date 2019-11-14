@@ -1,16 +1,16 @@
 <app-header></app-header>
 <main>
   <mat-sidenav-container>
-      <mat-sidenav opened mode="side" #sidenav >
+      <mat-sidenav opened mode="side" #sidenav *ngIf="userIsAuth">
         <mat-nav-list>
-          <a mat-list-item [routerLink]="'/contact'"> Contact Info </a>
-          <a mat-list-item [routerLink]="'/objective'"> Objective </a>
+          <a mat-list-item [routerLink]="'contact'"> Contact Info </a>
+          <a mat-list-item [routerLink]="'objective'"> Objective </a>
           <a mat-list-item [routerLink]="'/education'"> Education </a>
           <a mat-list-item [routerLink]="'/skills'"> Skills </a>
           <a mat-list-item [routerLink]="'/experience'"> Experience </a>
           <a mat-list-item [routerLink]="'/projects'"> Projects </a>
-          <a mat-list-item [routerLink]="'/awards'"> Awards/Accomplishments </a>
-          <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+          <a mat-list-item [routerLink]="'/awards'"> Awards </a>
+          <a mat-list-item [routerLink]="'/resume'">Review and Create</a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>

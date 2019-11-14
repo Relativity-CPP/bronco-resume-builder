@@ -1,4 +1,4 @@
-<mat-accordion multi="true" *ngIf="skillList.length > 0">
+<mat-card multi="true" *ngIf="skillList.length > 0">
   <mat-grid-list cols = "5" rowHeight="5:1">
       <mat-grid-tile *ngFor="let skill of skillList">
         <button mat-button color="primary" (click) = "onDelete(skill.id)">
@@ -9,7 +9,7 @@
         </button>
       </mat-grid-tile>
   </mat-grid-list>
-</mat-accordion>
+</mat-card>
 <a
   mat-button color="primary"
   [routerLink]="['/create/skill']">Add Skill</a>

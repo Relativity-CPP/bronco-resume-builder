@@ -1,8 +1,11 @@
-.contact-info-list-container {
+:host {
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
 }
+
 .contact-info-list-container > * {
   width: 100%;
 }
@@ -16,4 +19,8 @@
   margin-top: 0px;
   display: block;
   margin: auto;
+}
+
+.contact-info-list-container a {
+  margin-left: 48%;
 }
