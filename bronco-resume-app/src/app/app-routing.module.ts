@@ -12,6 +12,13 @@ import { ProjectCreateComponent } from './projects/project-create/project-create
 import { SkillCreateComponent } from './skills/skill-create/skill-create.component';
 
 import { AuthGuard } from './auth/auth.guards';
+import { ContactInfoListComponent } from './contact-info/contact-info-list/contact-info-list.component';
+import { AwardListComponent } from './awards/award-list/award-list.component';
+import { EducationListComponent } from './education/education-list/education-list.component';
+import { ExperienceListComponent } from './experience/experience-list/experience-list.component';
+import { ObjectiveListComponent } from './objective/objective-list/objective-list.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { SkillListComponent } from './skills/skill-list/skill-list.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -30,6 +37,14 @@ const routes: Routes = [
   {path: 'create/objective', component: ObjectiveCreateComponent, canActivate: [AuthGuard]},
   {path: 'create/project', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path: 'create/skill', component: SkillCreateComponent, canActivate: [AuthGuard]},
+
+  {path: 'contact', component: ContactInfoListComponent, canActivate: [AuthGuard]},
+  {path: 'awards', component: AwardListComponent, canActivate: [AuthGuard]},
+  {path: 'education', component: EducationListComponent, canActivate: [AuthGuard]},
+  {path: 'experience', component: ExperienceListComponent, canActivate: [AuthGuard]},
+  {path: 'objective', component: ObjectiveListComponent, canActivate: [AuthGuard]},
+  {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
+  {path: 'skills', component: SkillListComponent, canActivate: [AuthGuard]},
 
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},

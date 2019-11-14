@@ -47,7 +47,7 @@ export class AwardsService {
         award.id = id;
         this.awards.push(award);
         this.awardsUpdated.next([...this.awards]);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/awards']);
     });
   }
   updateAward(id: string, award: Award) {
@@ -57,7 +57,7 @@ export class AwardsService {
         const oldAwardIndex = updatedAwards.findIndex(a => a.id === award.id);
         updatedAwards[oldAwardIndex] = award;
         this.awardsUpdated.next([...this.awards]);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/awards']);
       });
   }
   deleteAward(awardId: string) {

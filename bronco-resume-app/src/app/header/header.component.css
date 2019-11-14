@@ -6,7 +6,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: gold;
+  color: white;
 }
 ul {
   display: flex;
@@ -17,6 +17,8 @@ ul {
 .mat-toolbar{
   background-color: #1e4d2b;
 }
+
 button {
-  color: gold;
+  height: 100%;
+  width: 20%;
 }

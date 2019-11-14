@@ -21,6 +21,7 @@ export class ContactInfoListComponent implements OnInit, OnDestroy {
   constructor(public contactInfoService: ContactInfoService, private authService: AuthService) {}
 
   ngOnInit() {
+    this.userIsAuthenticated = false;
     this.contactInfoService.getContactInfo();
     this.contactInfoSub = this.contactInfoService.getContactInfoUpdateListener()
       .subscribe((contactInfo: ContactInfo) => {

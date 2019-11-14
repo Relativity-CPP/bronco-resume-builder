@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,6 +17,8 @@ import {
   MatNativeDateModule,
   MatListModule,
   MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatIconModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -72,7 +74,9 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     MatToolbarModule,
+    MatSidenavModule,
     MatInputModule,
     MatExpansionModule,
     MatDatepickerModule,

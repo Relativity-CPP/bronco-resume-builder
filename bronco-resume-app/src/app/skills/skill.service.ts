@@ -44,7 +44,7 @@ export class SkillService {
         this.skillList.push(skill);
         this.skillListUpdated.next([...this.skillList]);
         console.log(responseData.message);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/skills']);
     });
   }
   deleteSkill(skillId: string) {

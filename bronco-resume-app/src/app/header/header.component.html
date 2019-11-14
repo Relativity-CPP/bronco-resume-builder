@@ -3,11 +3,10 @@
   <span>
     <a routerLink = "/">Bronco Resume Builder</a>
   </span>
-
   <span class = "spacer"></span>
   <ul>
     <li *ngIf='!userIsAuthenticated'>
-      <a mat-button [routerLink]="['/login']" routerLinkActive="gold">Login</a>
+      <a mat-button [routerLink]="['/login']" routerLinkActive="mat-accent">Login</a>
     </li>
     <li *ngIf='userIsAuthenticated'>
       <button mat-button (click)='onLogout()'>Logout</button>

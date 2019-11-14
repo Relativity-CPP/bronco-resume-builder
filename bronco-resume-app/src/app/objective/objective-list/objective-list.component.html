@@ -1,11 +1,12 @@
-<mat-card class="objective-statement-container">
-  <div *ngIf='userIsAuthenticated && objectiveStatement'>
-    <div>
-      <p>Objective: {{ objectiveStatement?.statement }}</p>
-    </div>
+<div *ngIf='userIsAuthenticated && objectiveStatement'>
+  <mat-card>
+    <p>Objective: {{ objectiveStatement?.statement }}</p>
     <mat-action-row>
-        <a *ngIf='objectiveStatement' mat-button color="primary" [routerLink]="['/edit/objective/', objectiveStatement.id]">Edit</a>
+      <a *ngIf='objectiveStatement' mat-button color="primary"
+        [routerLink]="['/edit/objective/', objectiveStatement.id]">Edit</a>
     </mat-action-row>
-    <a *ngIf='!objectiveStatement' mat-button color="primary" [routerLink]="['/create/objective']">Add Objective Statement</a>
-  </div>
-</mat-card>
+  </mat-card>
+</div>
+<a *ngIf='!objectiveStatement'
+  mat-button color="primary"
+  [routerLink]="['/create/objective']">Add Objective Statement</a>

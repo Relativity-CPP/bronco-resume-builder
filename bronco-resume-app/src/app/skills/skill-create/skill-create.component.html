@@ -3,19 +3,22 @@
       <mat-card>
           <mat-card-title>Skills</mat-card-title>
           <mat-form-field>
-            <input 
-              matInput 
+            <input
+              matInput
               name="description"
-              placeholder="New skill" 
+              placeholder="New skill"
               ngModel
-              required 
+              required
               #description="ngModel">
           </mat-form-field>
           <mat-card-actions>
-            <button 
-              mat-raised-button 
-              color="primary" 
+            <button
+              mat-raised-button
+              color="primary"
               type="submit">Save</button>
+              <a
+              mat-button color="warn"
+              [routerLink]="['/projects']">Cancel</a>
           </mat-card-actions>
         </mat-card>
   </form>

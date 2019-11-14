@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Packer } from 'docx';
 import { saveAs } from 'file-saver/FileSaver';
 import {DocumentCreator} from './cv-generator';
+import { experiences, education, skills, achievements } from './cv-data';
 import {AwardsService} from './awards/awards.service';
 import {ContactInfoService} from './contact-info/contact-info.service';
 import {EducationService} from './education/education.service';
@@ -11,6 +12,7 @@ import {ProjectService} from './projects/project.service';
 import {SkillService} from './skills/skill.service';
 
 import { AuthService } from './auth/auth.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -20,6 +22,8 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  userIsAuth = false;
+  private authListenerSubs: Subscription;
   constructor( public awardsService: AwardsService, public contactInfoService: ContactInfoService,
                public educationService: EducationService, public experienceService: ExperienceService,
                public objectiveStatementService: ObjectiveStatementService, public projectService: ProjectService,
@@ -39,5 +43,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.autoAuthUser();
+    this.userIsAuth = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService.getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuth = isAuthenticated;
+    });
   }
 }

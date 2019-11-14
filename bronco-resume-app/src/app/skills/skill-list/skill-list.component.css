@@ -1,5 +1,8 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 1rem;
 }
 
@@ -9,3 +12,4 @@
 mat-card-title {
   font-size: 12px;
 }
+

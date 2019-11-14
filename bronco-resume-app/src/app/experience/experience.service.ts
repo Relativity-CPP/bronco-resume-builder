@@ -50,7 +50,7 @@ export class ExperienceService {
         this.experienceList.push(experience);
         this.experienceListUpdated.next([...this.experienceList]);
         console.log(responseData.message);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/experience']);
     });
   }
   updateExperience(id: string, experience: Experience) {
@@ -60,7 +60,7 @@ export class ExperienceService {
         const oldExperienceIndex = updatedExperiences.findIndex(a => a.id === experience.id);
         updatedExperiences[oldExperienceIndex] = experience;
         this.experienceListUpdated.next([...this.experienceList]);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/experience']);
       });
   }
   deleteExperience(experienceId: string) {

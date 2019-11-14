@@ -58,14 +58,14 @@ export class ContactInfoService {
         const id = responseData.contactId;
         contactInfo.id = id;
         this.contactInfoUpdated.next(Object.create(this.contactInfo));
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/contact']);
     });
   }
   updateContactInfo(id: string, contact: ContactInfo) {
     this.http.put(BACKEND_URL + '/' + id, contact)
       .subscribe((response) => {
         console.log(response);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/contact']);
     });
   }
   getContactInfoUpdateListener() {
