@@ -51,14 +51,14 @@ export class ObjectiveStatementService {
             const id = responseData.objectiveId;
             objectiveStatement.id = id;
             this.objectiveStatementUpdated.next(Object.create(this.objectiveStatement));
-            this.router.navigate(['/resume']);
+            this.router.navigate(['/objective']);
           });
     }
     updateObjective(id: string, objective: ObjectiveStatement) {
       this.http.put(BACKEND_URL + '/' + id, objective)
         .subscribe((response) => {
           console.log(response);
-          this.router.navigate(['/resume']);
+          this.router.navigate(['/objective']);
       });
     }
     getObjectiveStatementUpdateListener() {

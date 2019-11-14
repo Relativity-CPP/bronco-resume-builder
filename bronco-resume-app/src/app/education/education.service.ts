@@ -51,7 +51,7 @@ export class EducationService {
         education.id = id;
         this.educationList.push(education);
         this.educationListUpdated.next([...this.educationList]);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/education']);
     });
   }
   updateEducation(id: string, education: Education) {
@@ -62,7 +62,7 @@ export class EducationService {
         const oldEducationIndex = updatedEducations.findIndex(a => a.id === education.id);
         updatedEducations[oldEducationIndex] = education;
         this.educationListUpdated.next([...this.educationList]);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/education']);
       });
   }
   deleteEducation(educationId: string) {

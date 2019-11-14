@@ -48,7 +48,7 @@ export class ProjectService {
         this.projectList.push(project);
         this.projectListUpdated.next([...this.projectList]);
         console.log(responseData.message);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/project']);
     });
   }
   updateProject(id: string, project: Project) {
@@ -58,7 +58,7 @@ export class ProjectService {
         const oldProjectIndex = updatedProjects.findIndex(a => a.id === project.id);
         updatedProjects[oldProjectIndex] = project;
         this.projectListUpdated.next([...this.projectList]);
-        this.router.navigate(['/resume']);
+        this.router.navigate(['/project']);
       });
   }
   deleteProject(projectId: string) {
