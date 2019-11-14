@@ -14,3 +14,6 @@ ul {
 .spacer {
   flex: 1 1 auto;
 }
+.mat-toolbar{
+  background-color: #1e4d2b;
+}
