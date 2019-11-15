@@ -72,7 +72,7 @@ create() {
           document.addParagraph(this.createBullet (bulletPoint));
         }
       });
-      // document.addParagraph(this.createBullet(this.experienceList[i].description));
+
     }
     // Skills Section
     document.addParagraph(this.createHeading('Skills'));
@@ -92,7 +92,7 @@ create() {
         document.addParagraph(this.createBullet (bulletPoint));
       }
       });
-    // document.addParagraph(this.createBullet(this.projectList[i].description));
+
   }
     // Awards
     document.addParagraph(this.createHeading('Awards'));
@@ -107,7 +107,7 @@ create() {
         document.addParagraph(this.createBullet (bulletPoint));
       }
     });
-    // document.addParagraph(this.createBullet(this.awardList[i].description));
+
   }
     // end education for loop
     return document;

@@ -24,4 +24,30 @@ export class SkillCreateComponent {
     this.skillService.addSkill(skill);
     form.resetForm();
   }
+  onAddSkillCS1400() {
+    const skill: Skill = {
+      id: '',
+      description: 'Java',
+    };
+    this.skillService.addSkill(skill);
+  }
+  onAddSkillCS2400() {
+    const skill: Skill = {
+      id: '',
+      description: 'Data Structures',
+    };
+    this.skillService.addSkill(skill);
+  }onAddSkillCS3310() {
+    const skill: Skill = {
+      id: '',
+      description: 'Algorithm design',
+    };
+    this.skillService.addSkill(skill);
+  }onAddSkillCS4800() {
+    const skill: Skill = {
+      id: '',
+      description: 'Fullstack Knowledge',
+    };
+    this.skillService.addSkill(skill);
+  }
 }
