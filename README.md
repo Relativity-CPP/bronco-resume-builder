@@ -8,6 +8,6 @@ and print out the resume on a Microsoft Word document.
 How to run:
 1. After downloading repository, open terminal and cd into bronco-resume-app directory
 2. run npm install
-3. run ng serve
+3. run npm run start:server
 4. Open second terminal and cd into bronco-resume-app directory
-5. run npm run start:server
+5. run ng serve
