@@ -5,9 +5,9 @@ useful suggestions to better their descriptions of their experience,
 provide clean templates to keep their resume organized,
 and print out the resume on a Microsoft Word document.
 
-Website will soon be found in cpp-relativity.com, but only locally at the moment.
-
-To see the template web page, download the new frontend folder, 
-ensure angular cli is installed, navigate to the frontend folder, 
-run ng serve --open
-npm run start:server
+How to run:
+1. After downloading repository, open terminal and cd into bronco-resume-app directory
+2. run npm install
+3. run npm run start:server
+4. Open second terminal and cd into bronco-resume-app directory
+5. run ng serve

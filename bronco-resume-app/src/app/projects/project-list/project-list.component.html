@@ -1,15 +1,33 @@
-<mat-spinner *ngIf='isLoading'></mat-spinner>
-<mat-accordion multi="true" *ngIf="projectList.length > 0 && !isLoading && userIsAuthenticated">
+<a href="https://github.com/tuvtran/project-based-learning" target="_blank"
+  >Sample Projects</a
+>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion
+  multi="true"
+  *ngIf="projectList.length > 0 && !isLoading && userIsAuthenticated"
+>
   <mat-expansion-panel *ngFor="let project of projectList">
     <mat-expansion-panel-header>
       {{ project.title }}
     </mat-expansion-panel-header>
-    <p>Start Date: {{ project.startDate.substring(5, 7) }}/{{ project.startDate.substring(0,4) }}</p>
-    <p>End Date: {{ project.endDate.substring(5, 7) }}/{{ project.endDate.substring(0,4) }}</p>
+    <p>
+      Start Date: {{ project.startDate.substring(5, 7) }}/{{
+        project.startDate.substring(0, 4)
+      }}
+    </p>
+    <p>
+      End Date: {{ project.endDate.substring(5, 7) }}/{{
+        project.endDate.substring(0, 4)
+      }}
+    </p>
     <p>Description: {{ project.description }}</p>
     <mat-action-row>
-      <a mat-button color="primary" [routerLink]="['/edit/project', project.id]">Edit</a>
-      <button mat-button color="warn" (click)="onDelete(project.id)">Delete</button>
+      <a mat-button color="primary" [routerLink]="['/edit/project', project.id]"
+        >Edit</a
+      >
+      <button mat-button color="warn" (click)="onDelete(project.id)">
+        Delete
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
