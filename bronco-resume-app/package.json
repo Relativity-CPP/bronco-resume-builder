@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -22,6 +23,7 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
+    "@schuchard/prettier": "^3.1.0",
     "angular": "^1.7.8",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -46,6 +48,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.2.0",
+    "husky": "3.0.9",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -53,10 +56,13 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lint-staged": "9.4.3",
     "nodemon": "^1.19.4",
+    "prettier": "1.19.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
+    "tslint-config-prettier": "1.18.0",
     "typescript": "~3.5.3"
   },
   "pkg": {
@@ -66,5 +72,16 @@
   "assets": [
     "assets/**/*",
     "images/**/*"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,less,md,ts,html,component.html}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
