@@ -1,5 +1,4 @@
 import { Document, Paragraph, Packer, TextRun } from 'docx';
-import {ResumeInfoComponent} from './resume-info/resume-info/resume-info.component';
 import { ContactInfo } from 'src/app/contact-info/contact-info.model';
 import {Award} from './awards/award.model';
 import {Education} from './education/education.model';
@@ -221,6 +220,5 @@ create() {
         return 'Dec';
     }
   }
-  // move the download function to the resume-info as a new component
 }
 
