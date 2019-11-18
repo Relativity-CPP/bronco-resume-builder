@@ -1,17 +1,116 @@
 <mat-card multi="true" *ngIf="skillList.length > 0">
-  <mat-grid-list cols = "5" rowHeight="5:1">
-      <mat-grid-tile *ngFor="let skill of skillList">
-        <button mat-button color="primary" (click) = "onDelete(skill.id)">
-          {{skill.description}}
-          <img
-            src="https://img.icons8.com/color/48/000000/delete.png"
-            height = "15">
-        </button>
-      </mat-grid-tile>
+  <mat-grid-list cols="5" rowHeight="5:1">
+    <mat-grid-tile *ngFor="let skill of skillList">
+      <button mat-button color="primary" (click)="onDelete(skill.id)">
+        {{ skill.description }}
+        <img
+          src="https://img.icons8.com/color/48/000000/delete.png"
+          height="15"
+        />
+      </button>
+    </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
-<a
-  mat-button color="primary"
-  [routerLink]="['/create/skill']">Add Skill</a>
-
-
+<a mat-button color="primary" [routerLink]="['/create/skill']">Add Skill</a>
+<mat-card *ngIf="hasMajor('Computer Science')">
+  <mat-label
+    >Want to preload some skills? Click the classes you have taken!</mat-label
+  >
+  <p></p>
+  <button
+    *ngIf="!hasSkill('Java')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Java')"
+  >
+    CS 1400
+  </button>
+  <button
+    *ngIf="!hasSkill('Data Structures')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Data Structures')"
+  >
+    CS 2400
+  </button>
+  <button
+    *ngIf="!hasSkill('GUI Design')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('GUI Design')"
+  >
+    CS 2450
+  </button>
+  <button
+    *ngIf="!hasSkill('Python')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Python')"
+  >
+    CS 2520
+  </button>
+  <button
+    *ngIf="!hasSkill('C++')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('C++')"
+  >
+    CS 2560
+  </button>
+  <button
+    *ngIf="!hasSkill('Algorithm Design')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Algorithm Design')"
+  >
+    CS 3310
+  </button>
+  <button
+    *ngIf="!hasSkill('Object-Oriented Programming')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Object-Oriented Programming')"
+  >
+    CS 3560
+  </button>
+  <button
+    *ngIf="!hasSkill('A.I.')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('A.I.')"
+  >
+    CS 4200
+  </button>
+  <button
+    *ngIf="!hasSkill('SQL')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('SQL')"
+  >
+    CS 4350
+  </button>
+  <button
+    *ngIf="!hasSkill('Big Data/Cloud Computing')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Big Data/Cloud Computing')"
+  >
+    CS 4650
+  </button>
+  <button
+    *ngIf="!hasSkill('Game Development')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Game Development')"
+  >
+    CS 4700
+  </button>
+  <button
+    *ngIf="!hasSkill('Full-Stack Development')"
+    mat-raised-button
+    color="primary"
+    (click)="onAddCsSkill('Full-Stack Development')"
+  >
+    CS 4800
+  </button>
+</mat-card>

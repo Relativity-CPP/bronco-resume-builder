@@ -1,18 +1,35 @@
-<mat-spinner *ngIf='isLoading'></mat-spinner>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="educationList.length > 0">
   <mat-expansion-panel *ngFor="let education of educationList">
     <mat-expansion-panel-header>
       {{ education.schoolName }}
     </mat-expansion-panel-header>
     <p>Degree: {{ education.degreeType }}</p>
-    <p>Major:  {{ education.major }}</p>
-    <p *ngIf="education.gpa.length > 0">{{education.gpa}}</p>
-    <p>Start:  {{ education.schoolStartDate.substring(5, 7)}}/{{ education.schoolStartDate.substring(0,4) }}</p>
-    <p>End:    {{ education.schoolEndDate.substring(5,7)}}/{{ education.schoolEndDate.substring(0,4) }}</p>
+    <p>Major: {{ education.major }}</p>
+    <p *ngIf="education.gpa.length > 0">GPA: {{ education.gpa }}</p>
+    <p>
+      Start: {{ education.schoolStartDate.substring(5, 7) }}/{{
+        education.schoolStartDate.substring(0, 4)
+      }}
+    </p>
+    <p>
+      End: {{ education.schoolEndDate.substring(5, 7) }}/{{
+        education.schoolEndDate.substring(0, 4)
+      }}
+    </p>
     <mat-action-row>
-      <a mat-button color="primary" [routerLink]="['/edit/education', education.id]">Edit</a>
-      <button mat-button color="warn" (click)="onDelete(education.id)">Delete</button>
+      <a
+        mat-button
+        color="primary"
+        [routerLink]="['/edit/education', education.id]"
+        >Edit</a
+      >
+      <button mat-button color="warn" (click)="onDelete(education.id)">
+        Delete
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<a mat-button color="primary" [routerLink]="['/create/education']">Add Education</a>
+<a mat-button color="primary" [routerLink]="['/create/education']"
+  >Add Education</a
+>

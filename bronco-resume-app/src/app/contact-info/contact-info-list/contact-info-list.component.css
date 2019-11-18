@@ -6,18 +6,10 @@
   margin-top: 1rem;
 }
 
-.contact-info-list-container > * {
-  width: 100%;
+.info-text {
+  text-align: center;
 }
 
-.contact-info-list-container mat-card {
-  margin-top: 1rem;
+mat-spinner {
   margin: auto;
-  width: 80%;
-
-}
-
-.contact-info-list-container mat-action-row {
-  margin-left: auto;
-  margin-right: auto;
 }

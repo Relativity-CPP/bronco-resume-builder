@@ -24,6 +24,7 @@ import { ClubsInfoComponent } from "./clubs/clubs-info/clubs-info.component";
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "resume", component: ResumeInfoComponent, canActivate: [AuthGuard] },
+
   {
     path: "edit/contact/:contactId",
     component: ContactInfoCreateComponent,
@@ -119,7 +120,6 @@ const routes: Routes = [
   },
   { path: "skills", component: SkillListComponent, canActivate: [AuthGuard] },
   { path: "clubs", component: ClubsInfoComponent, canActivate: [AuthGuard] },
-
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent }
 ];
