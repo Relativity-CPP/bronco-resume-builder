@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://broncoserver.jqps9dc3pk.us-west-1.elasticbeanstalk.com/api'
+  apiUrl:
+    "http://bronco-resume-builder-env.xba292edmm.us-east-2.elasticbeanstalk.com/api"
 };
