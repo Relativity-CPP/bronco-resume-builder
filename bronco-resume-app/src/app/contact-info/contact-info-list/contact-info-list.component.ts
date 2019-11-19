@@ -1,16 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
 
-import { ContactInfo } from '../contact-info.model';
-import { ContactInfoService } from '../contact-info.service';
-import { AuthService } from 'src/app/auth/auth.service';
+import { ContactInfo } from "../contact-info.model";
+import { ContactInfoService } from "../contact-info.service";
+import { AuthService } from "src/app/auth/auth.service";
 
-@Component ({
-  selector: 'app-contact-info-list',
-  templateUrl: './contact-info-list.component.html',
-  styleUrls: ['./contact-info-list.component.css']
+@Component({
+  selector: "app-contact-info-list",
+  templateUrl: "./contact-info-list.component.html",
+  styleUrls: ["./contact-info-list.component.css"]
 })
-
 export class ContactInfoListComponent implements OnInit, OnDestroy {
   contactInfo: ContactInfo;
   userIsAuthenticated = false;
@@ -18,21 +17,27 @@ export class ContactInfoListComponent implements OnInit, OnDestroy {
   private contactInfoSub: Subscription;
   private authStatusSub: Subscription;
 
-  constructor(public contactInfoService: ContactInfoService, private authService: AuthService) {}
+  constructor(
+    public contactInfoService: ContactInfoService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.userIsAuthenticated = false;
-    this.contactInfoService.getContactInfo();
-    this.contactInfoSub = this.contactInfoService.getContactInfoUpdateListener()
-      .subscribe((contactInfo: ContactInfo) => {
-        this.isLoading = false;
-        this.contactInfo = contactInfo;
-      });
+    this.isLoading = true;
     this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService.getAuthStatusListener()
-      .subscribe( isAuthenticated => {
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
+    this.contactInfoService.getContactInfo();
+    this.contactInfoSub = this.contactInfoService
+      .getContactInfoUpdateListener()
+      .subscribe((contactInfo: ContactInfo) => {
+        this.contactInfo = contactInfo;
+      });
+    this.isLoading = false;
   }
 
   ngOnDestroy() {

@@ -1,6 +1,6 @@
 <div *ngIf="userIsAuthenticated">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <mat-card *ngIf="contactInfo">
+  <mat-card *ngIf="contactInfo && !isLoading">
     <p>First Name: {{ contactInfo?.firstName }}</p>
     <p>Last Name: {{ contactInfo?.lastName }}</p>
     <p>Home Address: {{ contactInfo?.homeAddress }}</p>
@@ -19,9 +19,10 @@
   </mat-card>
 </div>
 <a
-  *ngIf="!contactInfo"
+  *ngIf="!contactInfo && !isLoading && userIsAuthenticated"
   mat-button
   color="primary"
   [routerLink]="['/create/contact']"
-  >Add Contact Information</a
+>
+  Add Contact Information</a
 >
