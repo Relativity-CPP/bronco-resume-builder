@@ -23,6 +23,8 @@ import { ClubsInfoComponent } from "./clubs/clubs-info/clubs-info.component";
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
+  { path: "signup", component: SignupComponent },
+  { path: "login", component: LoginComponent },
   { path: "resume", component: ResumeInfoComponent, canActivate: [AuthGuard] },
 
   {
@@ -119,11 +121,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: "skills", component: SkillListComponent, canActivate: [AuthGuard] },
-  { path: "clubs", component: ClubsInfoComponent, canActivate: [AuthGuard] },
-  { path: "signup", component: SignupComponent },
-  { path: "login", component: LoginComponent }
+  { path: "clubs", component: ClubsInfoComponent, canActivate: [AuthGuard] }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

@@ -62,7 +62,7 @@ export class DocumentCreator {
       );
     }
     // Education History
-    if (this.educationList.length > 0) {
+    if (Object.keys(this.educationList).length > 0) {
       document.addParagraph(this.createHeading("Education"));
       // for loop to display education
       for (const i of Object.keys(this.educationList)) {
@@ -87,7 +87,7 @@ export class DocumentCreator {
     }
 
     // Experience History
-    if (this.experienceList.length > 0) {
+    if (Object.keys(this.experienceList).length > 0) {
       document.addParagraph(this.createHeading("Experience"));
       for (let i of Object.keys(this.experienceList)) {
         document.addParagraph(
@@ -114,13 +114,13 @@ export class DocumentCreator {
     }
 
     // Skills Section
-    if (this.skillList.length > 0) {
+    if (Object.keys(this.skillList).length > 0) {
       document.addParagraph(this.createHeading("Skills"));
       document.addParagraph(this.skillHeader());
     }
 
     // Project Section
-    if (this.projectList.length > 0) {
+    if (Object.keys(this.projectList).length > 0) {
       document.addParagraph(this.createHeading("Projects"));
       for (let i of Object.keys(this.projectList)) {
         document.addParagraph(
@@ -144,7 +144,7 @@ export class DocumentCreator {
     }
 
     // Awards
-    if (this.awardList.length > 0) {
+    if (Object.keys(this.awardList).length > 0) {
       document.addParagraph(this.createHeading("Awards"));
       for (let i of Object.keys(this.awardList)) {
         document.addParagraph(

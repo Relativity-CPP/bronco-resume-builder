@@ -22,8 +22,7 @@
           mat-button
           color="primary"
           [routerLink]="['/edit/experience', experience.id]"
-        >
-          Edit</a
+          >Edit</a
         >
         <button mat-button color="warn" (click)="onDelete(experience.id)">
           Delete
@@ -44,6 +43,5 @@
   *ngIf="hasMajor('Computer Science') && !isLoading && userIsAuthenticated"
   mat-list-item
   [routerLink]="'/clubs'"
->
-  Need some experience?</a
+  >Need some experience?</a
 >

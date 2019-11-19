@@ -24,17 +24,17 @@ export class ObjectiveListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
-      });
     this.objectiveStatementService.getObjectiveStatement();
     this.objectiveStatementSub = this.objectiveStatementService
       .getObjectiveStatementUpdateListener()
       .subscribe((objectiveStatement: ObjectiveStatement) => {
         this.objectiveStatement = objectiveStatement;
+      });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
       });
     this.isLoading = false;
   }
