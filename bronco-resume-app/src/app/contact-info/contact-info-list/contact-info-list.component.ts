@@ -36,6 +36,7 @@ export class ContactInfoListComponent implements OnInit, OnDestroy {
       .getContactInfoUpdateListener()
       .subscribe((contactInfo: ContactInfo) => {
         this.contactInfo = contactInfo;
+        this.isLoading = false;
       });
     this.isLoading = false;
   }

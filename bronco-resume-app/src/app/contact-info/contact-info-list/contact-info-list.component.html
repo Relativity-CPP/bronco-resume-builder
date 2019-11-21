@@ -18,9 +18,10 @@
   </mat-card>
 </div>
 <a
+  class="bottom-button"
   *ngIf="!contactInfo && !isLoading && userIsAuthenticated"
   mat-button
-  color="primary"
+  color="white"
   [routerLink]="['/create/contact']"
   >Add Contact Information</a
 >
