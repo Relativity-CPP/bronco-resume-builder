@@ -1,14 +1,14 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Education } from "../education.model";
-import { EducationService } from "../education.service";
-import { AuthService } from "src/app/auth/auth.service";
+import { Education } from '../education.model';
+import { EducationService } from '../education.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
-  selector: "app-education-list",
-  templateUrl: "./education-list.component.html",
-  styleUrls: ["./education-list.component.css"]
+  selector: 'app-education-list',
+  templateUrl: './education-list.component.html',
+  styleUrls: ['./education-list.component.css']
 })
 export class EducationListComponent implements OnInit, OnDestroy {
   educationList: Education[] = [];
