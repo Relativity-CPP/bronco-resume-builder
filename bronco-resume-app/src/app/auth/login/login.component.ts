@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { AuthService } from "../auth.service";
-import { Router } from "@angular/router";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
@@ -18,10 +18,10 @@ export class LoginComponent implements OnInit {
     this.invalidLogin = false;
     this.userIsAuthenticated = this.authService.getIsAuth();
     if (this.userIsAuthenticated) {
-      this.router.navigate(["/resume"]);
+      this.router.navigate(['/resume']);
     } else {
       this.isLoading = false;
-      this.router.navigate(["/login"]);
+      this.router.navigate(['/login']);
     }
   }
   onLogin(form: NgForm) {

@@ -4,24 +4,21 @@
       <mat-card-title>Sign Up</mat-card-title>
       <mat-form-field>
         <mat-label>E-mail</mat-label>
-        <input
-          matInput
+        <input matInput
           name="email"
           ngModel
           type="email"
           placeholder="john@doe.com"
           #emailInput="ngModel"
           required
-          email
-        />
-        <mat-error *ngIf="emailInput.invalid"
-          >Please enter a valid email.</mat-error
-        >
+          email/>
+        <mat-error *ngIf="emailInput.invalid">
+          Please enter a valid email.
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input
-          class="input"
+        <input class="input"
           matInput
           type="password"
           name="password"
@@ -30,9 +27,7 @@
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           placeholder="Password123"
           #passwordInput="ngModel"
-          required
-          color="my-theme-primar"
-        />
+          required>
         <mat-error class="password" *ngIf="passwordInput.invalid">
           <p>Password must contain:</p>
           <p>* at least 8 characters</p>
@@ -41,7 +36,10 @@
           <p>* at least one number</p>
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button type="submit">Sign Up</button>
+      <button mat-raised-button
+        type="submit">
+        Sign Up
+      </button>
       <p *ngIf="accountExists">Account already exists! Try a different email</p>
     </form>
   </mat-card>

@@ -1,9 +1,7 @@
 <div class="objective-statement-container">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form
-    (submit)="onSaveObjectiveStatement(objectiveStatementForm)"
-    #objectiveStatementForm="ngForm"
-  >
+  <form (submit)="onSaveObjectiveStatement(objectiveStatementForm)"
+    #objectiveStatementForm="ngForm">
     <mat-card>
       <mat-card-title>Objective Statement</mat-card-title>
       <mat-form-field>
@@ -17,8 +15,12 @@
         ></textarea>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-button color="white" type="submit">Save</button>
-        <a mat-button color="warn" [routerLink]="['/objective']">Cancel</a>
+        <button mat-button
+        color="white"
+        type="submit">Save</button>
+        <a mat-button
+        color="warn"
+        [routerLink]="['/objective']">Cancel</a>
       </mat-card-actions>
     </mat-card>
   </form>

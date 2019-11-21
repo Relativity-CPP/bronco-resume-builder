@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { AuthService } from "../auth.service";
-import { Router } from "@angular/router";
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Component({
-  templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.css"]
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
   isLoading = false;

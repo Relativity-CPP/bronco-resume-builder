@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Project } from "../project.model";
-import { ProjectService } from "../project.service";
-import { AuthService } from "src/app/auth/auth.service";
-import { EducationService } from "src/app/education/education.service";
-import { Education } from "src/app/education/education.model";
+import { Project } from '../project.model';
+import { ProjectService } from '../project.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { EducationService } from 'src/app/education/education.service';
+import { Education } from 'src/app/education/education.model';
 
 @Component({
-  selector: "app-project-list",
-  templateUrl: "./project-list.component.html",
-  styleUrls: ["./project-list.component.css"]
+  selector: 'app-project-list',
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.css']
 })
 export class ProjectListComponent implements OnInit, OnDestroy {
   projectList: Project[] = [];

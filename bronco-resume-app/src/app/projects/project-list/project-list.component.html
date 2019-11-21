@@ -5,41 +5,34 @@
       <mat-expansion-panel-header>
         {{ project.title }}
       </mat-expansion-panel-header>
-      <p>
-        Start Date: {{ project.startDate.substring(5, 7) }}/{{
-          project.startDate.substring(0, 4)
-        }}
-      </p>
-      <p>
-        End Date: {{ project.endDate.substring(5, 7) }}/{{
-          project.endDate.substring(0, 4)
-        }}
-      </p>
+      <p>Start Date: {{ project.startDate.substring(5, 7) }}/{{ project.startDate.substring(0, 4) }}</p>
+      <p>End Date: {{ project.endDate.substring(5, 7) }}/{{ project.endDate.substring(0, 4) }}</p>
       <p>Description: {{ project.description }}</p>
       <mat-action-row>
-        <a mat-button color="white" [routerLink]="['/edit/project', project.id]"
-          >Edit</a
-        >
-        <button mat-button color="warn" (click)="onDelete(project.id)">
+        <a mat-button
+          color="white"
+          [routerLink]="['/edit/project', project.id]">
+          Edit
+        </a>
+        <button mat-button color="warn"
+          (click)="onDelete(project.id)">
           Delete
         </button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-<a
-  class="bottom-button"
+<a class="bottom-button"
   *ngIf="userIsAuthenticated && !isLoading"
   mat-button
   color="white"
-  [routerLink]="['/create/project']"
-  >Add Project</a
->
+  [routerLink]="['/create/project']">
+  Add Project
+</a>
 <p></p>
-<a
-  class="bottom-link"
+<a class="bottom-link"
   *ngIf="userIsAuthenticated && !isLoading && hasMajor('Computer Science')"
   href="https://github.com/tuvtran/project-based-learning"
-  target="_blank"
-  >Need some project ideas?</a
->
+  target="_blank" >
+  Need some project ideas?
+  </a>

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 export interface PeriodicElement {
   name: string;
@@ -8,44 +8,44 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
-    name: "CSS",
+    name: 'CSS',
     description:
-      "Encourage the development of software engineering skills in students",
-    weblink: "https://cppcss.club"
+      'Encourage the development of software engineering skills in students',
+    weblink: 'https://cppcss.club'
   },
   // tslint:disable-next-line:max-line-length
   {
-    name: "She Code",
+    name: 'She Code',
     description:
-      "Work to promoteand support the growing community of women, including allies, in computer science and technology",
-    weblink: "https://www.cpp.edu/~shecodes/"
+      'Work to promoteand support the growing community of women, including allies, in computer science and technology',
+    weblink: 'https://www.cpp.edu/~shecodes/'
   },
   // tslint:disable-next-line:max-line-length
   {
-    name: "Software Engineering Association",
+    name: 'Software Engineering Association',
     description:
-      "Teaches and encourages the professional skills needed to be a Software Engineer",
-    weblink: "https://www.cppsea.com"
+      'Teaches and encourages the professional skills needed to be a Software Engineer',
+    weblink: 'https://www.cppsea.com'
   },
   // tslint:disable-next-line:max-line-length
   {
-    name: "Swift",
+    name: 'Swift',
     description:
-      "Dynamic landscape of information security, cyber security, and information technology",
-    weblink: "https://www.calpolyswift.org"
+      'Dynamic landscape of information security, cyber security, and information technology',
+    weblink: 'https://www.calpolyswift.org'
   },
   {
-    name: "Game Design and Development",
+    name: 'Game Design and Development',
     description:
-      "Promote and educate students about the world of game design and development",
-    weblink: "https://www.cppgamedev.com"
+      'Promote and educate students about the world of game design and development',
+    weblink: 'https://www.cppgamedev.com'
   },
   // tslint:disable-next-line:max-line-length
   {
-    name: "Fast",
+    name: 'Fast',
     description:
-      "Study Digital Forensics, Cyber Crime, and Cyber Security by working with government agencies, and private firms",
-    weblink: "https://www.cppfast.org"
+      'Study Digital Forensics, Cyber Crime, and Cyber Security by working with government agencies, and private firms',
+    weblink: 'https://www.cppfast.org'
   }
 ];
 
@@ -53,11 +53,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
  * @title Basic use of `<table mat-table>`
  */
 @Component({
-  selector: "app-clubs-info",
-  templateUrl: "./clubs-info.component.html",
-  styleUrls: ["./clubs-info.component.css"]
+  selector: 'app-clubs-info',
+  templateUrl: './clubs-info.component.html',
+  styleUrls: ['./clubs-info.component.css']
 })
 export class ClubsInfoComponent {
-  displayedColumns: string[] = ["name", "description"];
+  displayedColumns: string[] = ['name', 'description'];
   dataSource = ELEMENT_DATA;
 }

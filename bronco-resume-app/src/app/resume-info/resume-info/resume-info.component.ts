@@ -1,29 +1,29 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
-import { saveAs } from "file-saver/FileSaver";
-import { Award } from "../../awards/award.model";
-import { AwardsService } from "../../awards/awards.service";
-import { ContactInfo } from "../../contact-info/contact-info.model";
-import { ContactInfoService } from "../../contact-info/contact-info.service";
-import { Education } from "../../education/education.model";
-import { EducationService } from "../../education/education.service";
-import { Experience } from "../../experience/experience.model";
-import { ExperienceService } from "../../experience/experience.service";
-import { ObjectiveStatement } from "../../objective/objectiveStatement.model";
-import { ObjectiveStatementService } from "../../objective/objectveStatement.service";
-import { Project } from "../../projects/project.model";
-import { ProjectService } from "../../projects/project.service";
-import { Skill } from "../../skills/skill.model";
-import { SkillService } from "../../skills/skill.service";
-import { Router } from "@angular/router";
-import { AuthService } from "src/app/auth/auth.service";
-import { DocumentCreator } from "../../cv-generator";
-import { Packer } from "docx";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { saveAs } from 'file-saver/FileSaver';
+import { Award } from '../../awards/award.model';
+import { AwardsService } from '../../awards/awards.service';
+import { ContactInfo } from '../../contact-info/contact-info.model';
+import { ContactInfoService } from '../../contact-info/contact-info.service';
+import { Education } from '../../education/education.model';
+import { EducationService } from '../../education/education.service';
+import { Experience } from '../../experience/experience.model';
+import { ExperienceService } from '../../experience/experience.service';
+import { ObjectiveStatement } from '../../objective/objectiveStatement.model';
+import { ObjectiveStatementService } from '../../objective/objectveStatement.service';
+import { Project } from '../../projects/project.model';
+import { ProjectService } from '../../projects/project.service';
+import { Skill } from '../../skills/skill.model';
+import { SkillService } from '../../skills/skill.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { DocumentCreator } from '../../cv-generator';
+import { Packer } from 'docx';
 
 @Component({
-  selector: "app-resume-info",
-  templateUrl: "./resume-info.component.html",
-  styleUrls: ["./resume-info.component.css"]
+  selector: 'app-resume-info',
+  templateUrl: './resume-info.component.html',
+  styleUrls: ['./resume-info.component.css']
 })
 export class ResumeInfoComponent implements OnInit, OnDestroy {
   awardList: Award[] = [];
@@ -67,8 +67,8 @@ export class ResumeInfoComponent implements OnInit, OnDestroy {
     const packer = new Packer();
     packer.toBlob(doc).then(blob => {
       console.log(blob);
-      saveAs(blob, "myresume.docx");
-      console.log("Document created successfully");
+      saveAs(blob, 'myresume.docx');
+      console.log('Document created successfully');
     });
   }
 
