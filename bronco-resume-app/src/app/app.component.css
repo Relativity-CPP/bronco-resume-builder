@@ -1,9 +1,5 @@
 main {
   width: 100%;
-  margin: 1rem auto;
-  padding: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 mat-sidenav-content {
@@ -19,6 +15,6 @@ mat-sidenav {
   margin: auto;
 }
 
-:host {
-  margin-top: 3rem;
+mat-sidenav-container {
+  background-color: black;
 }

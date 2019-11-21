@@ -14,8 +14,14 @@ ul {
 .spacer {
   flex: 1 1 auto;
 }
-.mat-toolbar{
-  background-color: #1e4d2b;
+.mat-toolbar {
+  background-color: rgb(52, 53, 53);
+  border-style: solid;
+  border-bottom-color: grey;
+  border-right-color: rgb(52, 53, 53);
+  border-left-color: rgb(52, 53, 53);
+  border-top-color: rgb(52, 53, 53);
+  border-width: 1px;
 }
 
 button {

@@ -6,7 +6,7 @@
       <a
         *ngIf="objectiveStatement"
         mat-button
-        color="primary"
+        color="white"
         [routerLink]="['/edit/objective/', objectiveStatement.id]"
         >Edit</a
       >
@@ -16,7 +16,7 @@
 <a
   *ngIf="!objectiveStatement && !isLoading && userIsAuthenticated"
   mat-button
-  color="primary"
+  color="white"
   [routerLink]="['/create/objective']"
   >Add Objective Statement</a
 >

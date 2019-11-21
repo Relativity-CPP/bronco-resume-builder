@@ -1,17 +1,45 @@
 mat-form-field {
   display: block;
+  margin: auto;
   width: 90%;
 }
 
 mat-card {
-  width: 80%;
+  width: 60%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: rgb(52, 53, 53);
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
 }
 
 :host {
-  padding-left: 15%;
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   text-align: center;
+}
+
+.login {
+  margin: 0;
+  background-image: url("../blackhole.gif");
+  position: relative;
+}
+
+button {
+  background-color: rgb(24, 24, 24);
+  color: white;
+}
+
+mat-label {
+  color: white;
+}
+
+a {
+  color: white;
 }
