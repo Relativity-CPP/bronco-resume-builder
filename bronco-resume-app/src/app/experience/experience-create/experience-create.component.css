@@ -1,22 +1,29 @@
-.experience-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-  margin: center;
-}
-.experience-container > * {
-  width: 100%;
-}
-
 .experience-container mat-card {
-  margin-top: 16px;
-  margin: center;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  background-color: rgb(52, 53, 53);
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
 }
 
-.experience-container mat-card mat-form-field {
-  margin-top: 0px;
-  width: 75%;
+.experience-container mat-form-field {
+  display: block;
+  margin: auto;
+  width: 90%;
 }
-textarea {
-  height: 150px;
+
+.experience-container mat-spinner {
+  margin: auto;
+}
+
+mat-label {
+  color: white;
+}
+
+button {
+  margin: auto;
+  background-color: rgb(24, 24, 24);
 }

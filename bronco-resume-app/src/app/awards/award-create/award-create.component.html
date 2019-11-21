@@ -1,48 +1,56 @@
 <div class="award-container">
-  <mat-spinner *ngIf='isLoading'></mat-spinner>
-  <form (submit)="onSaveAward(awardForm)" #awardForm="ngForm" *ngIf='!isLoading'>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form
+    (submit)="onSaveAward(awardForm)"
+    #awardForm="ngForm"
+    *ngIf="!isLoading"
+  >
     <mat-card>
       <mat-card-title>Awards</mat-card-title>
       <mat-form-field>
+        <mat-label>Title</mat-label>
         <input
           matInput
           name="title"
-          placeholder="Award Title"
+          placeholder="MVP"
           [ngModel]="award?.title"
           required
-          #title="ngModel">
-          <mat-error *ngIf="title.invalid">Please enter an award title.</mat-error>
+          #title="ngModel"
+        />
+        <mat-error *ngIf="title.invalid"
+          >Please enter an award title.</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Date</mat-label>
         <input
           matInput
           name="date"
           [matDatepicker]="picker"
-          placeholder="Date"
           [ngModel]="award?.date"
           required
-          #date="ngModel">
+          #date="ngModel"
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Description</mat-label>
         <textarea
           matInput
           name="description"
           maxlength="50"
-          placeholder="Enter your description here..."
+          placeholder="Carried the team across the finish line..."
           [ngModel]="award?.description"
-          #desc="ngModel"></textarea>
-          <mat-error *ngIf="desc.invalid">Please shorten your description.</mat-error>
+          #desc="ngModel"
+        ></textarea>
+        <mat-error *ngIf="desc.invalid"
+          >Please shorten your description.</mat-error
+        >
       </mat-form-field>
       <mat-card-actions>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit">Save</button>
-          <a
-          mat-button color="warn"
-          [routerLink]="['/awards']">Cancel</a>
+        <button mat-button color="white" type="submit">Save</button>
+        <a mat-button color="warn" [routerLink]="['/awards']">Cancel</a>
       </mat-card-actions>
     </mat-card>
   </form>

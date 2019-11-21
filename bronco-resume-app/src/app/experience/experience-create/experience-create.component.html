@@ -1,26 +1,35 @@
 <div class="experience-container">
-  <form (submit)="onSaveExperience(experienceForm)" #experienceForm="ngForm" *ngIf='!isLoading'>
+  <form
+    (submit)="onSaveExperience(experienceForm)"
+    #experienceForm="ngForm"
+    *ngIf="!isLoading"
+  >
     <mat-card>
       <mat-card-title>Experience</mat-card-title>
       <mat-form-field>
+        <mat-label>Company Name</mat-label>
         <input
           matInput
           name="companyName"
-          placeholder="Company Name"
+          placeholder="Google"
           [ngModel]="experience?.companyName"
           required
-          #companyName="ngModel">
+          #companyName="ngModel"
+        />
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Job Title</mat-label>
         <input
           matInput
           name="jobTitle"
-          placeholder="Job Title"
+          placeholder="Code Monkey"
           [ngModel]="experience?.jobTitle"
           required
-          #jobTitle="ngModel">
+          #jobTitle="ngModel"
+        />
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Start Date</mat-label>
         <input
           matInput
           name="jobStartDate"
@@ -28,11 +37,16 @@
           placeholder="Start Date"
           [ngModel]="experience?.jobStartDate"
           required
-          #jobStartDate="ngModel">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          #jobStartDate="ngModel"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>End Date</mat-label>
         <input
           matInput
           name="jobEndDate"
@@ -40,26 +54,27 @@
           placeholder="End Date"
           [ngModel]="experience?.jobEndDate"
           required
-          #jobEndDate="ngModel">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          #jobEndDate="ngModel"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Description of your duties/accomplishments..</mat-label>
         <textarea
           matInput
           name="description"
-          placeholder="Describe your duties/accommplishments here..."
+          placeholder="Deployed MEAN stack project on AWS."
           [ngModel]="experience?.description"
-          #description="ngModel"></textarea>
+          #description="ngModel"
+        ></textarea>
       </mat-form-field>
       <mat-card-actions>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit">Save</button>
-          <a
-          mat-button color="warn"
-          [routerLink]="['/experience']">Cancel</a>
+        <button mat-button color="white" type="submit">Save</button>
+        <a mat-button color="warn" [routerLink]="['/experience']">Cancel</a>
       </mat-card-actions>
     </mat-card>
   </form>

@@ -29,18 +29,18 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
     this.projectService.getProject();
     this.projectSub = this.projectService
       .getProjectUpdateListener()
       .subscribe((project: Project[]) => {
         this.isLoading = false;
         this.projectList = project;
-      });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
       });
     this.educationService.getEducation();
     this.educationSub = this.educationService

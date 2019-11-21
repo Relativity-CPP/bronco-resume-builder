@@ -46,7 +46,9 @@ export class DocumentCreator {
     document.addParagraph(
       new Paragraph(
         this.contactInfo.firstName + " " + this.contactInfo.lastName
-      ).title()
+      )
+        .title()
+        .center()
     );
     document.addParagraph(
       this.createContactInfo(

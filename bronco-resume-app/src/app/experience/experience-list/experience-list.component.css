@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1rem;
+  margin-top: 10%;
 }
 
 .info-text {
@@ -16,4 +16,26 @@ mat-spinner {
 
 a {
   margin: auto;
+  background-color: rgb(24, 24, 24);
+}
+
+.bottom-button {
+  margin-top: 25px;
+  color: white;
+  background-color: rgb(70, 103, 124);
+}
+
+.bottom-link {
+  margin-bottom: 50px;
+  color: white;
+}
+
+mat-expansion-panel {
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  background-color: rgb(52, 53, 53);
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
 }

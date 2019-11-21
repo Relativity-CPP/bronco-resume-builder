@@ -8,10 +8,11 @@
     <mat-card>
       <mat-card-title>Education</mat-card-title>
       <mat-form-field>
+        <mat-label>School Name</mat-label>
         <input
           matInput
           name="schoolName"
-          placeholder="School Name"
+          placeholder="California State Polytechnic University, Pomona"
           [ngModel]="education?.schoolName"
           required
           spellcheck="true"
@@ -122,16 +123,18 @@
         </select>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>GPA</mat-label>
         <input
           matInput
           name="GPA"
           required
-          placeholder="GPA out of 4.0"
+          placeholder="4.0"
           [ngModel]="education?.gpa"
           #GPA="ngModel"
         />
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Start Date</mat-label>
         <input
           matInput
           name="schoolStartDate"
@@ -148,6 +151,7 @@
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
+        <mat-label>End Date</mat-label>
         <input
           matInput
           name="schoolEndDate"
@@ -164,7 +168,7 @@
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-button color="white" type="submit">Save</button>
         <a mat-button color="warn" [routerLink]="['/education']">Cancel</a>
       </mat-card-actions>
     </mat-card>

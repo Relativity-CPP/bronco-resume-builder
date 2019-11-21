@@ -1,5 +1,8 @@
 <html class="login">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <h3 style="color: white; font-family: cursive; font-size: 24pt">
+    Making resumes relatively easy!
+  </h3>
   <mat-card *ngIf="!isLoading">
     <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
       <mat-card-title>Login</mat-card-title>

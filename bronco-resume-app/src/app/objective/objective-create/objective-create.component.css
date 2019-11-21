@@ -1,26 +1,29 @@
-.objective-statement-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-}
-.objective-statement-container > * {
-  width: 100%;
+.objective-statement-container mat-card {
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  background-color: rgb(52, 53, 53);
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
 }
 
-.objective-statement-containermat-card {
-  margin-top: 16px;
+.objective-statement-container mat-form-field {
+  display: block;
   margin: auto;
-  width: 15%;
-}
-
-.objective-statement-container mat-card mat-form-field {
-  width: 100%;
-  height: 1;
+  width: 90%;
 }
 
 .objective-statement-container mat-spinner {
   margin: auto;
 }
-textarea {
-  height: 150px;
+
+mat-label {
+  color: white;
+}
+
+button {
+  margin: auto;
+  background-color: rgb(24, 24, 24);
 }

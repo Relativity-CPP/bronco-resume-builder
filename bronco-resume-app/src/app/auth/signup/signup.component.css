@@ -29,6 +29,7 @@ mat-card {
   margin: 0;
   background-image: url("../blackhole.gif");
   position: relative;
+  background-position: center center;
 }
 
 button {
@@ -37,9 +38,5 @@ button {
 }
 
 mat-label {
-  color: white;
-}
-
-a {
   color: white;
 }

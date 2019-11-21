@@ -1,22 +1,24 @@
 <div class="objective-statement-container">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onSaveObjectiveStatement(objectiveStatementForm)" #objectiveStatementForm="ngForm">
+  <form
+    (submit)="onSaveObjectiveStatement(objectiveStatementForm)"
+    #objectiveStatementForm="ngForm"
+  >
     <mat-card>
       <mat-card-title>Objective Statement</mat-card-title>
       <mat-form-field>
         <textarea
-          matInput name="statement"
+          matInput
+          name="statement"
           placeholder="I am pursuing..."
           [ngModel]="objective?.statement"
-          required #statement="ngModel"></textarea>
+          required
+          #statement="ngModel"
+        ></textarea>
       </mat-form-field>
       <mat-card-actions>
-        <button
-          mat-raised-button color="primary"
-          type="submit">Save</button>
-          <a
-          mat-button color="warn"
-          [routerLink]="['/objective']">Cancel</a>
+        <button mat-button color="white" type="submit">Save</button>
+        <a mat-button color="warn" [routerLink]="['/objective']">Cancel</a>
       </mat-card-actions>
     </mat-card>
   </form>

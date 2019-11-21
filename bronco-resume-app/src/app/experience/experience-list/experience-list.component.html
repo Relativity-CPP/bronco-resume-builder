@@ -20,7 +20,7 @@
       <mat-action-row>
         <a
           mat-button
-          color="primary"
+          color="white"
           [routerLink]="['/edit/experience', experience.id]"
           >Edit</a
         >
@@ -32,14 +32,16 @@
   </mat-accordion>
 </div>
 <a
+  class="bottom-button"
   *ngIf="!isLoading && userIsAuthenticated"
   mat-button
-  color="primary"
+  color="white"
   [routerLink]="['/create/experience']"
   >Add Experience</a
 >
 <p></p>
 <a
+  class="bottom-link"
   *ngIf="hasMajor('Computer Science') && !isLoading && userIsAuthenticated"
   mat-list-item
   [routerLink]="'/clubs'"

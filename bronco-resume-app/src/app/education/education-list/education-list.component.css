@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
 .info-text {
   text-align: center;
 }
@@ -8,14 +14,20 @@ mat-spinner {
 
 a {
   margin: auto;
-  background-color: black;
+  background-color: rgb(24, 24, 24);
 }
 
-mat-accordion mat-expansion-panel {
-  width: 80%;
+.bottom-button {
+  margin-bottom: 50px;
+  margin-top: 25px;
+  color: white;
+  background-color: rgb(70, 103, 124);
+}
+
+mat-expansion-panel {
   margin-bottom: auto;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 10%;
+  margin-right: 10%;
   color: white;
   background-color: rgb(52, 53, 53);
   border-style: solid;

@@ -1,116 +1,115 @@
-<mat-card multi="true" *ngIf="skillList.length > 0">
-  <mat-grid-list cols="5" rowHeight="5:1">
-    <mat-grid-tile *ngFor="let skill of skillList">
-      <button mat-button color="primary" (click)="onDelete(skill.id)">
-        {{ skill.description }}
-        <img
-          src="https://img.icons8.com/color/48/000000/delete.png"
-          height="15"
-        />
-      </button>
-    </mat-grid-tile>
-  </mat-grid-list>
+<mat-card *ngIf="skillList.length > 0">
+  <a *ngFor="let skill of skillList" mat-button (click)="onDelete(skill.id)">
+    {{ skill.description }}
+    <mat-icon>delete</mat-icon>
+  </a>
 </mat-card>
-<a mat-button color="primary" [routerLink]="['/create/skill']">Add Skill</a>
-<mat-card *ngIf="hasMajor('Computer Science')">
+<a
+  class="bottom-button"
+  mat-button
+  color="white"
+  [routerLink]="['/create/skill']"
+  >Add Skill</a
+>
+<mat-card class="skill-box" *ngIf="hasMajor('Computer Science')">
   <mat-label
-    >Want to preload some skills? Click the classes you have taken!</mat-label
+    >Can't think of any skills? Click the classes you have taken!</mat-label
   >
   <p></p>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Java')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Java')"
+    >CS 1400</a
   >
-    CS 1400
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Data Structures')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Data Structures')"
+    >CS 2400</a
   >
-    CS 2400
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('GUI Design')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('GUI Design')"
+    >CS 2450</a
   >
-    CS 2450
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Python')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Python')"
+    >CS 2520</a
   >
-    CS 2520
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('C++')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('C++')"
+    >CS 2560</a
   >
-    CS 2560
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Algorithm Design')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Algorithm Design')"
+    >CS 3310</a
   >
-    CS 3310
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Object-Oriented Programming')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Object-Oriented Programming')"
+    >CS 3560</a
   >
-    CS 3560
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('A.I.')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('A.I.')"
+    >CS 4200</a
   >
-    CS 4200
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('SQL')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('SQL')"
+    >CS 4350</a
   >
-    CS 4350
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Big Data/Cloud Computing')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Big Data/Cloud Computing')"
+    >CS 4650</a
   >
-    CS 4650
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Game Development')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Game Development')"
+    >CS 4700</a
   >
-    CS 4700
-  </button>
-  <button
+  <a
+    class="class"
     *ngIf="!hasSkill('Full-Stack Development')"
-    mat-raised-button
-    color="primary"
+    mat-button
+    color="white"
     (click)="onAddCsSkill('Full-Stack Development')"
+    >CS 4800</a
   >
-    CS 4800
-  </button>
 </mat-card>

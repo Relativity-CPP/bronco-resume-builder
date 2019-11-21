@@ -1,26 +1,29 @@
-.award-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-}
-.award-container > * {
-  width: 100%;
-}
-
 .award-container mat-card {
-  margin-top: 16px;
-  margin: auto;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  background-color: rgb(52, 53, 53);
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
 }
 
-.award-container mat-card mat-form-field {
-  margin-top: 0px;
-  width: 75%;
+.award-container mat-form-field {
+  display: block;
   margin: auto;
+  width: 90%;
 }
 
 .award-container mat-spinner {
   margin: auto;
 }
-textarea {
-  height: 150px;
+
+mat-label {
+  color: white;
+}
+
+button {
+  margin: auto;
+  background-color: rgb(24, 24, 24);
 }

@@ -6,7 +6,7 @@ mat-form-field {
 
 mat-card {
   width: 60%;
-  top: 50%;
+  top: 30%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   margin-left: auto;
@@ -29,6 +29,7 @@ mat-card {
   margin: 0;
   background-image: url("../blackhole.gif");
   position: relative;
+  background-position: center center;
 }
 
 button {
