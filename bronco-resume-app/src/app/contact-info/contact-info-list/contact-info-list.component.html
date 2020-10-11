@@ -8,19 +8,18 @@
     <p>Email Address: {{ contactInfo?.emailAddress }}</p>
     <p>Social Media Link: {{ contactInfo?.socialMediaLink }}</p>
     <mat-action-row>
-      <a
-        mat-button
+      <a mat-button
         color="white"
-        [routerLink]="['/edit/contact/', contactInfo.id]"
-        >Edit</a
-      >
+        [routerLink]="['/edit/contact/', contactInfo.id]">
+        Edit
+        </a>
     </mat-action-row>
   </mat-card>
 </div>
-<a
+<a class="bottom-button"
   *ngIf="!contactInfo && !isLoading && userIsAuthenticated"
   mat-button
-  color="primary"
-  [routerLink]="['/create/contact']"
-  >Add Contact Information</a
->
+  color="white"
+  [routerLink]="['/create/contact']">
+  Add Contact Information
+</a>

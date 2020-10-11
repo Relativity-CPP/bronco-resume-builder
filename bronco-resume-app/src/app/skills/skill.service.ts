@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Subject } from "rxjs";
-import { map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { Skill } from "./skill.model";
+import { Skill } from './skill.model';
 
-import { environment } from "../../environments/environment";
-const BACKEND_URL = environment.apiUrl + "/skills";
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/skills';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class SkillService {
   private skillList: Skill[] = [];
   private skillListUpdated = new Subject<Skill[]>();
@@ -45,7 +45,7 @@ export class SkillService {
       });
   }
   deleteSkill(skillId: string) {
-    this.http.delete(BACKEND_URL + "/" + skillId).subscribe(() => {
+    this.http.delete(BACKEND_URL + '/' + skillId).subscribe(() => {
       const updatedSkillList = this.skillList.filter(
         skill => skill.id !== skillId
       );

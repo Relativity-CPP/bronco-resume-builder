@@ -3,20 +3,18 @@
   <mat-card *ngIf="objectiveStatement && !isLoading">
     <p>Objective: {{ objectiveStatement?.statement }}</p>
     <mat-action-row>
-      <a
-        *ngIf="objectiveStatement"
+      <a *ngIf="objectiveStatement"
         mat-button
         color="white"
-        [routerLink]="['/edit/objective/', objectiveStatement.id]"
-        >Edit</a
-      >
+        [routerLink]="['/edit/objective/', objectiveStatement.id]">Edit
+      </a>
     </mat-action-row>
   </mat-card>
 </div>
-<a
+<a class="bottom-button"
   *ngIf="!objectiveStatement && !isLoading && userIsAuthenticated"
   mat-button
   color="white"
-  [routerLink]="['/create/objective']"
-  >Add Objective Statement</a
->
+  [routerLink]="['/create/objective']">
+  Add Objective Statement
+</a>

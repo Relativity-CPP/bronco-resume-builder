@@ -1,25 +1,26 @@
 <mat-toolbar color="primary">
-  <img
-    src="https://media.giphy.com/media/8JWON5SW6m1D3YoO9Y/giphy.gif"
-    height="100"
-  />
   <span>
-    <a routerLink="/">Relativity</a>
+    <a routerLink="/">Relativity Resume</a>
   </span>
   <span class="spacer"></span>
   <ul>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button [routerLink]="['/login']" routerLinkActive="mat-accent"
-        >Login</a
-      >
+      <a mat-button
+        [routerLink]="['/login']"
+        routerLinkActive="mat-accent">
+        Login
+      </a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a mat-button [routerLink]="['/signup']" routerLinkActive="mat-accent"
-        >Signup</a
-      >
+      <a mat-button
+        [routerLink]="['/signup']"
+        routerLinkActive="mat-accent">
+        Signup
+      </a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <button mat-button (click)="onLogout()">Logout</button>
+      <button mat-button
+      (click)="onLogout()">Logout</button>
     </li>
   </ul>
 </mat-toolbar>

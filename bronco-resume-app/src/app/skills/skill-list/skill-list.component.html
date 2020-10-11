@@ -4,112 +4,94 @@
     <mat-icon>delete</mat-icon>
   </a>
 </mat-card>
-<a
-  class="bottom-button"
+<a class="bottom-button"
   mat-button
   color="white"
-  [routerLink]="['/create/skill']"
-  >Add Skill</a
->
+  [routerLink]="['/create/skill']">
+  Add Skill
+</a>
 <mat-card class="skill-box" *ngIf="hasMajor('Computer Science')">
-  <mat-label
-    >Can't think of any skills? Click the classes you have taken!</mat-label
-  >
+  <mat-label>
+    Can't think of any skills? Click the classes you have taken!
+  </mat-label>
   <p></p>
-  <a
-    class="class"
+  <a class="class"
     *ngIf="!hasSkill('Java')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Java')"
-    >CS 1400</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Java')">
+    CS 1400
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('Data Structures')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Data Structures')"
-    >CS 2400</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Data Structures')">
+    CS 2400
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('GUI Design')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('GUI Design')"
-    >CS 2450</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('GUI Design')">
+    CS 2450
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('Python')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Python')"
-    >CS 2520</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Python')">
+    CS 2520
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('C++')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('C++')"
-    >CS 2560</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('C++')">
+    CS 2560
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('Algorithm Design')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Algorithm Design')"
-    >CS 3310</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Algorithm Design')">
+    CS 3310
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('Object-Oriented Programming')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Object-Oriented Programming')"
-    >CS 3560</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Object-Oriented Programming')">
+    CS 3560</a>
+  <a class="class"
     *ngIf="!hasSkill('A.I.')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('A.I.')"
-    >CS 4200</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('A.I.')">
+    CS 4200</a>
+  <a class="class"
     *ngIf="!hasSkill('SQL')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('SQL')"
-    >CS 4350</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('SQL')">
+    CS 4350</a>
+  <a class="class"
     *ngIf="!hasSkill('Big Data/Cloud Computing')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Big Data/Cloud Computing')"
-    >CS 4650</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Big Data/Cloud Computing')">
+    CS 4650
+  </a>
+  <a class="class"
     *ngIf="!hasSkill('Game Development')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Game Development')"
-    >CS 4700</a
-  >
-  <a
-    class="class"
+    (click)="onAddCsSkill('Game Development')">
+    CS 4700</a>
+  <a class="class"
     *ngIf="!hasSkill('Full-Stack Development')"
     mat-button
     color="white"
-    (click)="onAddCsSkill('Full-Stack Development')"
-    >CS 4800</a
-  >
+    (click)="onAddCsSkill('Full-Stack Development')">CS 4800
+  </a>
 </mat-card>

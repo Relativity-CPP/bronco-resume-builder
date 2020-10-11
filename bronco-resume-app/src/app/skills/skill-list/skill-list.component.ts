@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Skill } from "../skill.model";
-import { SkillService } from "../skill.service";
-import { AuthService } from "src/app/auth/auth.service";
-import { EducationService } from "src/app/education/education.service";
-import { Education } from "src/app/education/education.model";
+import { Skill } from '../skill.model';
+import { SkillService } from '../skill.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { EducationService } from 'src/app/education/education.service';
+import { Education } from 'src/app/education/education.model';
 
 @Component({
-  selector: "app-skill-list",
-  templateUrl: "./skill-list.component.html",
-  styleUrls: ["./skill-list.component.css"]
+  selector: 'app-skill-list',
+  templateUrl: './skill-list.component.html',
+  styleUrls: ['./skill-list.component.css']
 })
 export class SkillListComponent implements OnInit, OnDestroy {
   skillList: Skill[] = [];
@@ -59,7 +59,7 @@ export class SkillListComponent implements OnInit, OnDestroy {
   }
   onAddCsSkill(skillName: string) {
     const skill: Skill = {
-      id: "",
+      id: '',
       description: skillName
     };
     this.skillService.addSkill(skill);

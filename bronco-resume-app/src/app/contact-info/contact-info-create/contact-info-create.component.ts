@@ -5,20 +5,21 @@ import { ContactInfo } from 'src/app/contact-info/contact-info.model';
 import { ContactInfoService } from '../contact-info.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-@Component ({
+@Component({
   selector: 'app-contact-info-create',
   templateUrl: './contact-info-create.component.html',
   styleUrls: ['./contact-info-create.component.css']
 })
-
 export class ContactInfoCreateComponent implements OnInit {
-
   contactInfo: ContactInfo = null;
   private mode = 'create';
   private contactId: string;
   isLoading = false;
 
-  constructor(public contactInfoService: ContactInfoService, public route: ActivatedRoute) {}
+  constructor(
+    public contactInfoService: ContactInfoService,
+    public route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -32,8 +33,10 @@ export class ContactInfoCreateComponent implements OnInit {
         console.log(this.contactInfo);
       } else {
         this.mode = 'create';
+        this.isLoading = false;
         this.contactId = null;
       }
+      this.isLoading = false;
     });
   }
 

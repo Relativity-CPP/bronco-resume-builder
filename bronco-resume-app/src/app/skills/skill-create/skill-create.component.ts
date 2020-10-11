@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { Skill } from "../skill.model";
-import { SkillService } from "../skill.service";
-import { Router } from "@angular/router";
+import { Skill } from '../skill.model';
+import { SkillService } from '../skill.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-skill-create",
-  templateUrl: "./skill-create.component.html",
-  styleUrls: ["./skill-create.component.css"]
+  selector: 'app-skill-create',
+  templateUrl: './skill-create.component.html',
+  styleUrls: ['./skill-create.component.css']
 })
 export class SkillCreateComponent {
   skillList: Skill[] = [];
@@ -19,11 +19,11 @@ export class SkillCreateComponent {
       return;
     }
     const skill: Skill = {
-      id: "",
+      id: '',
       description: form.value.description
     };
     this.skillService.addSkill(skill);
     form.resetForm();
-    this.router.navigate(["/skills"]);
+    this.router.navigate(['/skills']);
   }
 }

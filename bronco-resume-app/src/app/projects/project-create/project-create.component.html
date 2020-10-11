@@ -1,70 +1,66 @@
 <div class="project-container">
-  <form
-    (submit)="onSaveProject(projectForm)"
+  <form (submit)="onSaveProject(projectForm)"
     #projectForm="ngForm"
-    *ngIf="!isLoading"
-  >
+    *ngIf="!isLoading">
     <mat-card>
       <mat-card-title>Projects</mat-card-title>
       <mat-form-field>
         <mat-label>Project Title</mat-label>
-        <input
-          matInput
+        <input matInput
           name="title"
           placeholder="Resume Building App"
           [ngModel]="project?.title"
           required
-          #title="ngModel"
-        />
+          #title="ngModel"/>
       </mat-form-field>
-      <mat-form-field
-        >Date
+      <mat-form-field>
         <mat-label>Start Date</mat-label>
-        <input
-          matInput
+        <input matInput
           name="startDate"
           [matDatepicker]="picker1"
           placeholder="Start Date"
           [ngModel]="project?.startDate"
           required
-          #startDate="ngModel"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="picker1"
-        ></mat-datepicker-toggle>
+          #startDate="ngModel"/>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <mat-label>End Date</mat-label>
-        <input
-          matInput
+        <input matInput
           name="endDate"
           [matDatepicker]="picker2"
           placeholder="End Date"
           [ngModel]="project?.endDate"
           required
-          #endDate="ngModel"
-        />
+          #endDate="ngModel"/>
         <mat-datepicker-toggle
           matSuffix
-          [for]="picker2"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
+          [for]="picker2">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker2>
+        </mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <textarea
-          matInput
+        <textarea matInput
           name="description"
           placeholder="Developed web-service application using.."
           [ngModel]="project?.description"
-          #description="ngModel"
-        ></textarea>
+          #description="ngModel">
+        </textarea>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-button color="white" type="submit">Save</button>
-        <a mat-button color="warn" [routerLink]="['/projects']">Cancel</a>
+        <button mat-button
+          color="white"
+          type="submit">
+          Save
+        </button>
+        <a mat-button
+          color="warn"
+          [routerLink]="['/projects']">
+          Cancel
+        </a>
       </mat-card-actions>
     </mat-card>
   </form>

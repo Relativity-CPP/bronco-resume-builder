@@ -6,25 +6,17 @@
         {{ experience.jobTitle }}
       </mat-expansion-panel-header>
       <p>Company: {{ experience.companyName }}</p>
-      <p>
-        Start Date: {{ experience.jobStartDate.substring(5, 7) }}/{{
-          experience.jobStartDate.substring(0, 4)
-        }}
-      </p>
-      <p>
-        End Date: {{ experience.jobEndDate.substring(5, 7) }}/{{
-          experience.jobEndDate.substring(0, 4)
-        }}
-      </p>
+      <p>Start Date: {{ experience.jobStartDate.substring(5, 7) }}/{{ experience.jobStartDate.substring(0, 4) }}</p>
+      <p>End Date: {{ experience.jobEndDate.substring(5, 7) }}/{{ experience.jobEndDate.substring(0, 4) }}</p>
       <p>About: {{ experience.description }}</p>
       <mat-action-row>
-        <a
-          mat-button
+        <a mat-button
           color="white"
-          [routerLink]="['/edit/experience', experience.id]"
-          >Edit</a
-        >
-        <button mat-button color="warn" (click)="onDelete(experience.id)">
+          [routerLink]="['/edit/experience', experience.id]">
+          Edit</a>
+        <button mat-button
+          color="warn"
+          (click)="onDelete(experience.id)">
           Delete
         </button>
       </mat-action-row>

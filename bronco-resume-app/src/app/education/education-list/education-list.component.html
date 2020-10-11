@@ -8,35 +8,27 @@
       <p>Degree: {{ education.degreeType }}</p>
       <p>Major: {{ education.major }}</p>
       <p *ngIf="education.gpa.length > 0">GPA: {{ education.gpa }}</p>
-      <p>
-        Start Date: {{ education.schoolStartDate.substring(5, 7) }}/{{
-          education.schoolStartDate.substring(0, 4)
-        }}
-      </p>
-      <p>
-        End Date: {{ education.schoolEndDate.substring(5, 7) }}/{{
-          education.schoolEndDate.substring(0, 4)
-        }}
-      </p>
+      <p> Start Date: {{ education.schoolStartDate.substring(5, 7) }}/{{ education.schoolStartDate.substring(0, 4) }}</p>
+      <p>End Date: {{ education.schoolEndDate.substring(5, 7) }}/{{ education.schoolEndDate.substring(0, 4) }}</p>
       <mat-action-row>
-        <a
-          mat-button
+        <a mat-button
           color="white"
-          [routerLink]="['/edit/education', education.id]"
-          >Edit</a
-        >
-        <button mat-button color="warn" (click)="onDelete(education.id)">
+          [routerLink]="['/edit/education', education.id]">
+          Edit
+        </a>
+        <button mat-button
+          color="warn"
+          (click)="onDelete(education.id)">
           Delete
         </button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-<a
-  class="bottom-button"
+<a class="bottom-button"
   *ngIf="!isLoading && userIsAuthenticated"
   mat-button
   color="white"
-  [routerLink]="['/create/education']"
-  >Add Education</a
->
+  [routerLink]="['/create/education']">
+  Add Education
+</a>

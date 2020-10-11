@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Experience } from "../experience.model";
-import { ExperienceService } from "../experience.service";
-import { AuthService } from "src/app/auth/auth.service";
-import { EducationService } from "src/app/education/education.service";
-import { Education } from "src/app/education/education.model";
+import { Experience } from '../experience.model';
+import { ExperienceService } from '../experience.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { EducationService } from 'src/app/education/education.service';
+import { Education } from 'src/app/education/education.model';
 
 @Component({
-  selector: "app-experience-list",
-  templateUrl: "./experience-list.component.html",
-  styleUrls: ["./experience-list.component.css"]
+  selector: 'app-experience-list',
+  templateUrl: './experience-list.component.html',
+  styleUrls: ['./experience-list.component.css']
 })
 export class ExperienceListComponent implements OnInit, OnDestroy {
   experienceList: Experience[] = [];

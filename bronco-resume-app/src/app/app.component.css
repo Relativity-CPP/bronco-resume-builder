@@ -1,6 +1,7 @@
 main {
   width: 100%;
-  height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 mat-sidenav-content {
@@ -11,10 +12,32 @@ mat-sidenav-content {
 }
 
 mat-sidenav {
+  background-color: rgb(52, 53, 53);
+  border-right-color: grey;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+mat-sidenav {
   text-align: left;
   margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 mat-sidenav-container {
   background-color: black;
+  color: white;
+  height: auto;
+
+}
+
+.mat-list > .mat-list-item:nth-child() {
+  background-color: black;
+  color: white;
+}
+li {
+  list-style: none;
+  color: white;
 }

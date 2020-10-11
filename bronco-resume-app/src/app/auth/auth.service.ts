@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { AuthData } from "./auth-data.model";
-import { Subject } from "rxjs";
-import { Router } from "@angular/router";
+import { AuthData } from './auth-data.model';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
-import { environment } from "../../environments/environment";
-const BACKEND_URL = environment.apiUrl + "/user";
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl + '/user';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuthenticated = false;
   private token: string;
@@ -31,12 +31,12 @@ export class AuthService {
     let accountExists = true;
     this.http
       .post<{ message: string; result: string; success: boolean }>(
-        BACKEND_URL + "/signup",
+        BACKEND_URL + '/signup',
         authData
       )
       .subscribe(response => {
         accountExists = response.success;
-        this.router.navigate(["/login"]);
+        this.router.navigate(['/login']);
       });
     return accountExists;
   }
@@ -45,7 +45,7 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password };
     this.http
       .post<{ token: string; expiresIn: number }>(
-        BACKEND_URL + "/login",
+        BACKEND_URL + '/login',
         authData
       )
       .subscribe(response => {
@@ -63,7 +63,7 @@ export class AuthService {
             now.getTime() + expiresInDuration * 1000
           );
           this.saveAuthData(token, expirationDate);
-          this.router.navigate(["/resume"]);
+          this.router.navigate(['/resume']);
         }
       });
     return validLogin;
@@ -90,7 +90,7 @@ export class AuthService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(["/login"]);
+    this.router.navigate(['/login']);
   }
 
   private setAuthTimer(duration: number) {
@@ -99,18 +99,18 @@ export class AuthService {
     }, duration * 1000);
   }
   private saveAuthData(token: string, expirationDate: Date) {
-    localStorage.setItem("token", token);
-    localStorage.setItem("expiration", expirationDate.toISOString());
+    localStorage.setItem('token', token);
+    localStorage.setItem('expiration', expirationDate.toISOString());
   }
 
   private clearAuthData() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("expiration");
+    localStorage.removeItem('token');
+    localStorage.removeItem('expiration');
   }
 
   private getAuthData() {
-    const token = localStorage.getItem("token");
-    const expirationDate = localStorage.getItem("expiration");
+    const token = localStorage.getItem('token');
+    const expirationDate = localStorage.getItem('expiration');
     if (!token || !expirationDate) {
       return;
     }

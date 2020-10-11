@@ -3,18 +3,25 @@
     <mat-card>
       <mat-card-title>Skill</mat-card-title>
       <mat-form-field>
-        <input
-          matInput
+        <input matInput
           name="description"
           placeholder="Juggling"
           ngModel
           required
-          #description="ngModel"
-        />
+          #description="ngModel"/>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-button color="white" type="submit">Save</button>
-        <a mat-button color="warn" [routerLink]="['/skills']">Cancel</a>
+        <button
+          mat-button
+          color="white"
+          type="submit">
+          Save
+        </button>
+        <a mat-button
+          color="warn"
+          [routerLink]="['/skills']">
+          Cancel
+        </a>
       </mat-card-actions>
     </mat-card>
   </form>
